@@ -6,13 +6,29 @@
   <title>Hall Rental — American Legion Post 300</title>
   <link rel="stylesheet" href="../css/style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    .availability-legend { display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:1rem;font-size:0.82rem; }
+    .legend-item { display:flex;align-items:center;gap:0.4rem; }
+    .legend-dot { width:14px;height:14px;border-radius:3px; }
+    .dot-available { background:#0a3a1a;border:1px solid #27ae60; }
+    .dot-booked { background:#3a0a0a;border:1px solid #B22234; }
+    .dot-today { background:#B22234; }
+    .cal-day.booked { background:#3a0a0a !important; }
+    .cal-day.booked .day-num { color:#B22234; }
+    .cal-day.selected { background:#1a3a6a !important;border:2px solid #5b9bd5; }
+    .rental-features { display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;margin-bottom:2rem; }
+    .feature-card { background:#0B1F3A;border:1px solid #1a2a4a;border-radius:8px;padding:1.2rem;text-align:center; }
+    .feature-card .fi { font-size:1.8rem;margin-bottom:0.5rem; }
+    .feature-card h4 { font-family:'Oswald',sans-serif;color:#F5F5F5;font-size:1rem;margin-bottom:0.25rem; }
+    .feature-card p { color:#888;font-size:0.82rem; }
+  </style>
 </head>
 <body>
   <nav class="navbar">
     <div class="nav-inner">
       <div class="nav-brand">
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/American_Legion_emblem.svg/120px-American_Legion_emblem.svg.png" alt="American Legion" class="nav-logo" />
-        <span>American Legion Post 300<small>William J. Bordelon Post — San Antonio, TX</small></span>
+        <span>American Legion Post 300</span>
       </div>
       <div class="nav-links">
         <a href="../index.html">Home</a>
@@ -36,213 +52,211 @@
 
   <div class="page-hero">
     <h1>Rent Our Hall</h1>
-    <p>Post 300 · 3290 Grosenbacher Rd · San Antonio, TX 78245 · (210) 674-3364</p>
+    <p>Perfect for birthdays, receptions, quinceañeras, reunions &amp; private events</p>
   </div>
 
   <div class="section">
-    <div class="rental-layout">
 
-      <!-- LEFT: INFO + CALENDAR -->
-      <div>
-        <div class="info-box">
-          <h4>Facility Information</h4>
-          <ul>
-            <li>Legion canteen / bar available</li>
-            <li>Meeting & event space</li>
-            <li>Community gathering area</li>
-            <li>Family-friendly environment</li>
-            <li>Future expansion — new building plans underway</li>
-          </ul>
-        </div>
-        <div class="info-box">
-          <h4>Contact to Book</h4>
-          <p><strong style="color:#F5F5F5;">Phone:</strong> <a href="tel:2106743364">(210) 674-3364</a></p>
-          <p><strong style="color:#F5F5F5;">Email:</strong> <a href="mailto:alpost300@yahoo.com">alpost300@yahoo.com</a></p>
-          <p><strong style="color:#F5F5F5;">Address:</strong> 3290 Grosenbacher Rd, San Antonio, TX 78245</p>
-        </div>
+    <!-- FEATURES -->
+    <div class="rental-features">
+      <div class="feature-card"><div class="fi">🏛️</div><h4>Large Event Space</h4><p>Spacious hall for up to 300 guests</p></div>
+      <div class="feature-card"><div class="fi">🍺</div><h4>Full Canteen / Bar</h4><p>Legion canteen available for events</p></div>
+      <div class="feature-card"><div class="fi">🅿️</div><h4>Parking</h4><p>Ample free parking on-site</p></div>
+      <div class="feature-card"><div class="fi">🎤</div><h4>AV Equipment</h4><p>Sound system available for events</p></div>
+    </div>
 
-        <!-- AVAILABILITY CALENDAR -->
-        <div class="calendar-wrap">
-          <div class="cal-header">
-            <button class="cal-nav" onclick="prevMonth()">&#8249;</button>
-            <h3 id="calTitle"></h3>
-            <button class="cal-nav" onclick="nextMonth()">&#8250;</button>
-          </div>
-          <p style="font-size:0.8rem;color:#888;margin-bottom:0.75rem;">
-            <span style="color:#B22234;">&#9632;</span> Booked &nbsp;&nbsp;
-            <span style="color:#27ae60;">&#9632;</span> Available &nbsp;&nbsp;
-            Click a date to auto-fill the form
-          </p>
-          <div class="cal-grid">
-            <div class="cal-day-header">Sun</div><div class="cal-day-header">Mon</div>
-            <div class="cal-day-header">Tue</div><div class="cal-day-header">Wed</div>
-            <div class="cal-day-header">Thu</div><div class="cal-day-header">Fri</div>
-            <div class="cal-day-header">Sat</div>
-          </div>
-          <div class="cal-grid" id="calBody"></div>
-        </div>
+    <!-- CALENDAR AVAILABILITY -->
+    <h2 class="section-title">Check Availability</h2>
+    <p style="color:#888;margin-bottom:1rem;font-size:0.9rem;">Click a date to auto-fill the inquiry form below.</p>
+    <div class="availability-legend">
+      <div class="legend-item"><div class="legend-dot dot-available"></div><span style="color:#aaa;">Available</span></div>
+      <div class="legend-item"><div class="legend-dot dot-booked"></div><span style="color:#aaa;">Booked / Event</span></div>
+      <div class="legend-item"><div class="legend-dot dot-today" style="border-radius:50%;"></div><span style="color:#aaa;">Today</span></div>
+    </div>
+    <div class="calendar-wrap" style="margin-bottom:2rem;">
+      <div class="cal-header">
+        <button class="cal-nav" id="prevBtn">&#8249;</button>
+        <h3 id="calTitle">Loading...</h3>
+        <button class="cal-nav" id="nextBtn">&#8250;</button>
       </div>
+      <div class="cal-grid" id="calGrid"></div>
+    </div>
 
-      <!-- RIGHT: RENTAL FORM -->
-      <div>
-        <h2 class="section-title" style="margin-top:0;">Rental Inquiry</h2>
-        <div class="form-wrap" style="margin:0;">
-          <form id="rentalForm">
-            <div class="form-group">
-              <label>Full Name *</label>
-              <input type="text" id="r_name" required />
-            </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label>Email *</label>
-                <input type="email" id="r_email" required />
-              </div>
-              <div class="form-group">
-                <label>Phone *</label>
-                <input type="tel" id="r_phone" required />
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label>Event Date *</label>
-                <input type="date" id="r_date" required />
-              </div>
-              <div class="form-group">
-                <label>Event Type *</label>
-                <select id="r_event_type">
-                  <option value="Wedding Reception">Wedding Reception</option>
-                  <option value="Birthday Party">Birthday Party</option>
-                  <option value="Reunion">Reunion</option>
-                  <option value="Corporate Event">Corporate Event</option>
-                  <option value="Memorial Service">Memorial Service</option>
-                  <option value="Fundraiser">Fundraiser</option>
-                  <option value="Other">Other</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label>Start Time</label>
-                <input type="time" id="r_start_time" />
-              </div>
-              <div class="form-group">
-                <label>End Time</label>
-                <input type="time" id="r_end_time" />
-              </div>
-            </div>
-            <div class="form-group">
-              <label>Estimated Guest Count</label>
-              <input type="number" id="r_guests" min="1" placeholder="e.g. 75" />
-            </div>
-            <div class="form-group">
-              <label>Notes / Special Requests</label>
-              <textarea id="r_notes" placeholder="Bar service, setup requirements, AV needs, etc."></textarea>
-            </div>
-            <div id="r-error" class="form-error"></div>
-            <div id="r-success" class="form-success">
-              ✅ Rental inquiry submitted! We'll contact you within 1-2 business days to confirm availability.
-            </div>
-            <button type="submit" class="btn-primary" style="width:100%;">Submit Inquiry</button>
-          </form>
+    <!-- RENTAL FORM -->
+    <div class="form-wrap">
+      <h2 class="section-title">Submit a Rental Inquiry</h2>
+      <div id="form-error" class="form-error"></div>
+      <div id="form-success" class="form-success">✅ Your inquiry has been submitted! We'll contact you within 24–48 hours.</div>
+
+      <form id="rentalForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Your Name *</label>
+            <input type="text" id="contact_name" required />
+          </div>
+          <div class="form-group">
+            <label>Email *</label>
+            <input type="email" id="contact_email" required />
+          </div>
         </div>
-      </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Phone</label>
+            <input type="tel" id="contact_phone" />
+          </div>
+          <div class="form-group">
+            <label>Event Type *</label>
+            <select id="event_type" required>
+              <option value="">Select...</option>
+              <option>Birthday Party</option>
+              <option>Wedding Reception</option>
+              <option>Quinceañera</option>
+              <option>Reunion</option>
+              <option>Corporate Event</option>
+              <option>Funeral Reception</option>
+              <option>Graduation Party</option>
+              <option>Military Event</option>
+              <option>Fundraiser</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Event Date *</label>
+            <input type="date" id="event_date" required />
+          </div>
+          <div class="form-group">
+            <label>Estimated Guests</label>
+            <input type="number" id="guest_count" min="1" max="500" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Start Time</label>
+            <input type="time" id="start_time" />
+          </div>
+          <div class="form-group">
+            <label>End Time</label>
+            <input type="time" id="end_time" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Special Requests / Notes</label>
+          <textarea id="notes" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn-primary" style="width:100%;">Submit Inquiry</button>
+      </form>
+    </div>
+
+    <!-- CONTACT INFO -->
+    <div style="text-align:center;margin-top:2rem;padding:1.5rem;background:#0B1F3A;border:1px solid #1a2a4a;border-radius:8px;">
+      <p style="color:#F5F5F5;font-weight:600;margin-bottom:0.5rem;">Questions? Contact us directly:</p>
+      <p style="color:#888;">📞 (210) 674-3364 &nbsp;|&nbsp; ✉️ alpost300@yahoo.com</p>
+      <p style="color:#888;">📍 3290 Grosenbacher Rd, San Antonio, TX 78245</p>
     </div>
   </div>
 
   <footer class="footer">
     <div class="footer-inner">
-      <div class="footer-col"><h4>Post 300</h4><p>William J. Bordelon Post</p><p>3290 Grosenbacher Rd, San Antonio, TX 78245</p></div>
-      <div class="footer-col"><h4>Contact</h4><a href="tel:2106743364">(210) 674-3364</a><a href="mailto:alpost300@yahoo.com">alpost300@yahoo.com</a></div>
+      <p><strong>American Legion Post 300</strong> — William J. Bordelon Post | San Antonio, TX</p>
+      <p>© 2026 All rights reserved.</p>
     </div>
-    <div class="footer-bottom">© 2026 American Legion Post 300 — William J. Bordelon Post</div>
   </footer>
 
   <script src="../js/supabase.js"></script>
   <script>
-    function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+    let bookedDates = [];
+    let currentDate = new Date();
 
-    let calYear, calMonth, bookedDates = [];
-    const now = new Date();
-    calYear = now.getFullYear(); calMonth = now.getMonth();
-    const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    function today() { return new Date().toISOString().split('T')[0]; }
+    function toDate(v) { return (!v||v==='') ? null : v; }
+    function toStr(v) { return (!v||String(v).trim()==='') ? null : String(v).trim(); }
+    function toNum(v) { return (v===''||v===null||v===undefined||isNaN(Number(v))) ? null : Number(v); }
 
-    function renderCalendar() {
-      document.getElementById('calTitle').textContent = `${MONTHS[calMonth]} ${calYear}`;
-      const firstDay = new Date(calYear, calMonth, 1).getDay();
-      const daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
-      const todayStr = new Date().toISOString().split('T')[0];
-      let html = '';
-      for (let i = 0; i < firstDay; i++) html += `<div class="cal-day other-month"></div>`;
-      for (let d = 1; d <= daysInMonth; d++) {
-        const pad = String(d).padStart(2,'0'), mPad = String(calMonth+1).padStart(2,'0');
-        const dateStr = `${calYear}-${mPad}-${pad}`;
-        const isToday = dateStr === todayStr;
-        const isBooked = bookedDates.includes(dateStr);
-        const isPast = dateStr < todayStr;
-        html += `<div class="cal-day${isToday?' today':''}${isBooked?' booked':''}" 
-          style="cursor:${isPast?'default':'pointer'};${isBooked?'background:#3a0a10;':''}"
-          onclick="${isPast||isBooked?'':` "selectDate('${dateStr}')"`}">
-          <div class="day-num" style="color:${isBooked?'#B22234':isToday?'#F5F5F5':'#ccc'}">${d}</div>
-          ${isBooked?'<div class="day-event">Booked</div>':''}
-        </div>`;
-      }
-      document.getElementById('calBody').innerHTML = html;
-    }
-
-    function selectDate(d) {
-      document.getElementById('r_date').value = d;
-    }
-    function prevMonth() { calMonth--; if (calMonth < 0) { calMonth = 11; calYear--; } renderCalendar(); }
-    function nextMonth() { calMonth++; if (calMonth > 11) { calMonth = 0; calYear++; } renderCalendar(); }
-
-    document.addEventListener('supabase:ready', async function () {
-      const { data: rentals } = await window.supabase
-        .from('hall_rental_inquiries')
-        .select('event_date')
-        .in('status', ['confirmed', 'approved']);
-      bookedDates = (rentals || []).map(r => r.event_date).filter(Boolean);
+    document.addEventListener('supabase:ready', async () => {
+      // Load booked dates from both events and confirmed rentals
+      const [{ data: evts }, { data: rentals }] = await Promise.all([
+        window.supabase.from('events').select('event_date'),
+        window.supabase.from('hall_rental_inquiries').select('event_date').in('status', ['confirmed','approved'])
+      ]);
+      bookedDates = [
+        ...((evts||[]).map(e => e.event_date)),
+        ...((rentals||[]).map(r => r.event_date))
+      ].filter(Boolean);
       renderCalendar();
     });
 
-    document.getElementById('rentalForm').addEventListener('submit', async function (e) {
-      e.preventDefault();
-      const errEl = document.getElementById('r-error');
-      const sucEl = document.getElementById('r-success');
-      errEl.style.display = 'none'; sucEl.style.display = 'none';
+    function renderCalendar() {
+      const year = currentDate.getFullYear();
+      const month = currentDate.getMonth();
+      const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+      document.getElementById('calTitle').textContent = `${months[month]} ${year}`;
 
-      const name = toStr(document.getElementById('r_name').value);
-      const email = toStr(document.getElementById('r_email').value);
-      const phone = toStr(document.getElementById('r_phone').value);
-      const date = toDate(document.getElementById('r_date').value);
+      const firstDay = new Date(year, month, 1).getDay();
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+      const todayStr = today();
 
-      if (!name || !email || !phone || !date) {
-        errEl.textContent = 'Please fill in all required fields.';
-        errEl.style.display = 'block';
-        return;
+      let html = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].map(d => `<div class="cal-day-header">${d}</div>`).join('');
+      for (let i = 0; i < firstDay; i++) html += `<div class="cal-day other-month"></div>`;
+
+      for (let d = 1; d <= daysInMonth; d++) {
+        const dateStr = `${year}-${String(month+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+        const isBooked = bookedDates.includes(dateStr);
+        const isToday = dateStr === todayStr;
+        const isPast = dateStr < todayStr;
+        html += `<div class="cal-day${isBooked?' booked':''}${isToday?' today':''}${isPast?' other-month':''}"
+          onclick="${!isBooked && !isPast ? `selectDate('${dateStr}')` : ''}"
+          style="cursor:${isBooked||isPast?'default':'pointer'}">
+          <div class="day-num">${d}</div>
+          ${isBooked ? '<div class="day-event" style="background:#3a0a0a;border-color:#B22234;color:#B22234;">Booked</div>' : ''}
+        </div>`;
       }
+      document.getElementById('calGrid').innerHTML = html;
+    }
+
+    function selectDate(dateStr) {
+      document.querySelectorAll('.cal-day.selected').forEach(el => el.classList.remove('selected'));
+      event.currentTarget.classList.add('selected');
+      document.getElementById('event_date').value = dateStr;
+      document.querySelector('.form-wrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    document.getElementById('prevBtn').onclick = () => { currentDate.setMonth(currentDate.getMonth()-1); renderCalendar(); };
+    document.getElementById('nextBtn').onclick = () => { currentDate.setMonth(currentDate.getMonth()+1); renderCalendar(); };
+
+    document.getElementById('rentalForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const errEl = document.getElementById('form-error');
+      const sucEl = document.getElementById('form-success');
+      errEl.style.display = 'none';
+      sucEl.style.display = 'none';
 
       const payload = {
-        contact_name: name,
-        contact_email: email,
-        contact_phone: phone,
-        event_date: date,
-        event_type: toStr(document.getElementById('r_event_type').value),
-        start_time: toStr(document.getElementById('r_start_time').value),
-        end_time: toStr(document.getElementById('r_end_time').value),
-        guest_count: toNum(document.getElementById('r_guests').value),
-        notes: toStr(document.getElementById('r_notes').value),
+        contact_name: toStr(document.getElementById('contact_name').value),
+        contact_email: toStr(document.getElementById('contact_email').value),
+        contact_phone: toStr(document.getElementById('contact_phone').value),
+        event_type: toStr(document.getElementById('event_type').value),
+        event_date: toDate(document.getElementById('event_date').value),
+        guest_count: toNum(document.getElementById('guest_count').value),
+        start_time: toStr(document.getElementById('start_time').value),
+        end_time: toStr(document.getElementById('end_time').value),
+        notes: toStr(document.getElementById('notes').value),
         status: 'pending'
       };
 
-      const { error } = await window.supabase.from('hall_rental_inquiries').insert([payload]);
-      if (error) {
-        errEl.textContent = 'Submission error: ' + error.message;
-        errEl.style.display = 'block';
-      } else {
-        sucEl.style.display = 'block';
-        document.getElementById('rentalForm').reset();
-      }
+      if (!payload.contact_name) { errEl.textContent = 'Please enter your name.'; errEl.style.display='block'; return; }
+      if (!payload.contact_email) { errEl.textContent = 'Please enter your email.'; errEl.style.display='block'; return; }
+      if (!payload.event_date) { errEl.textContent = 'Please select an event date.'; errEl.style.display='block'; return; }
+      if (!payload.event_type) { errEl.textContent = 'Please select an event type.'; errEl.style.display='block'; return; }
+
+      const { error } = await window.supabase.from('hall_rental_inquiries').insert(payload);
+      if (error) { errEl.textContent = 'Error: ' + error.message; errEl.style.display='block'; return; }
+      sucEl.style.display = 'block';
+      document.getElementById('rentalForm').reset();
     });
+
+    function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
   </script>
 </body>
 </html>

@@ -12,7 +12,7 @@
     <div class="nav-inner">
       <div class="nav-brand">
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/American_Legion_emblem.svg/120px-American_Legion_emblem.svg.png" alt="American Legion" class="nav-logo" />
-        <span>American Legion Post 300<small>William J. Bordelon Post — San Antonio, TX</small></span>
+        <span>American Legion Post 300</span>
       </div>
       <div class="nav-links">
         <a href="../index.html">Home</a>
@@ -36,7 +36,7 @@
 
   <div class="page-hero">
     <h1>Join American Legion Post 300</h1>
-    <p>Membership · Sons of the American Legion · Auxiliary</p>
+    <p>Serving veterans and the San Antonio community since 1995</p>
   </div>
 
   <div class="section">
@@ -44,162 +44,168 @@
     <!-- MEMBERSHIP TYPES -->
     <div class="membership-info">
       <div class="mem-card">
-        <h3>American Legion Members</h3>
-        <p>Eligible wartime veterans with qualifying service. Serve your community and honor your service by joining Post 300.</p>
+        <h3>🎖️ American Legion</h3>
+        <p>For veterans who served during eligible wartime periods. Honor your service by joining your brothers and sisters.</p>
       </div>
       <div class="mem-card">
-        <h3>Sons of the American Legion</h3>
-        <p>Open to male descendants and stepchildren of members of the American Legion, living or deceased.</p>
+        <h3>⭐ Sons of The American Legion</h3>
+        <p>For male descendants of veterans who served in the U.S. Armed Forces. Carry the legacy forward.</p>
       </div>
       <div class="mem-card">
-        <h3>American Legion Auxiliary</h3>
-        <p>The world's largest women's patriotic service organization. Open to female relatives of eligible veterans.</p>
+        <h3>🌟 American Legion Auxiliary</h3>
+        <p>For spouses, children, and family members of veterans. Serve alongside the post community.</p>
       </div>
       <div class="mem-card">
-        <h3>Youth Programs</h3>
-        <p>Post 300 actively supports youth activities, scholarships, Americanism programs, and community service initiatives.</p>
+        <h3>🏅 Life Member</h3>
+        <p>Lifetime membership for qualifying veterans. A permanent commitment to Post 300 and its mission.</p>
       </div>
     </div>
 
-    <!-- MEMBERSHIP FORM -->
-    <h2 class="section-title">Membership Application</h2>
+    <!-- WHY JOIN -->
+    <div style="background:#0B1F3A;border:1px solid #1a2a4a;border-radius:8px;padding:1.5rem;margin-bottom:2rem;">
+      <h3 style="font-family:Oswald;color:#F5F5F5;margin-bottom:1rem;font-size:1.3rem;">Why Join Post 300?</h3>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:0.75rem;">
+        <div style="display:flex;gap:0.5rem;align-items:flex-start;"><span>🇺🇸</span><span style="color:#aaa;font-size:0.88rem;">Veteran assistance &amp; benefits support</span></div>
+        <div style="display:flex;gap:0.5rem;align-items:flex-start;"><span>🏘️</span><span style="color:#aaa;font-size:0.88rem;">Community service &amp; outreach programs</span></div>
+        <div style="display:flex;gap:0.5rem;align-items:flex-start;"><span>🎓</span><span style="color:#aaa;font-size:0.88rem;">Scholarships for youth &amp; families</span></div>
+        <div style="display:flex;gap:0.5rem;align-items:flex-start;"><span>🎉</span><span style="color:#aaa;font-size:0.88rem;">Social events, bingo nights &amp; more</span></div>
+        <div style="display:flex;gap:0.5rem;align-items:flex-start;"><span>🙏</span><span style="color:#aaa;font-size:0.88rem;">Memorial ceremonies &amp; Americanism</span></div>
+        <div style="display:flex;gap:0.5rem;align-items:flex-start;"><span>🤝</span><span style="color:#aaa;font-size:0.88rem;">Brotherhood &amp; veteran camaraderie</span></div>
+      </div>
+    </div>
+
+    <!-- APPLICATION FORM -->
     <div class="form-wrap">
-      <form id="membershipForm">
+      <h2 class="section-title">Membership Application</h2>
+      <div id="form-error" class="form-error"></div>
+      <div id="form-success" class="form-success">✅ Application submitted! We'll review and contact you shortly. Welcome to Post 300!</div>
+
+      <form id="memberForm">
         <div class="form-row">
           <div class="form-group">
-            <label>First Name *</label>
-            <input type="text" id="m_first_name" required />
+            <label>Full Name *</label>
+            <input type="text" id="full_name" required />
           </div>
-          <div class="form-group">
-            <label>Last Name *</label>
-            <input type="text" id="m_last_name" required />
-          </div>
-        </div>
-        <div class="form-row">
           <div class="form-group">
             <label>Email *</label>
-            <input type="email" id="m_email" required />
+            <input type="email" id="email" required />
           </div>
+        </div>
+        <div class="form-row">
           <div class="form-group">
             <label>Phone</label>
-            <input type="tel" id="m_phone" placeholder="(210) 000-0000" />
+            <input type="tel" id="phone" />
           </div>
-        </div>
-        <div class="form-row">
           <div class="form-group">
             <label>Date of Birth</label>
-            <input type="date" id="m_dob" />
+            <input type="date" id="date_of_birth" />
           </div>
+        </div>
+        <div class="form-row">
           <div class="form-group">
             <label>Membership Type *</label>
-            <select id="m_membership_type">
-              <option value="American Legion">American Legion Member</option>
-              <option value="Sons of the American Legion">Sons of the American Legion</option>
-              <option value="Auxiliary">American Legion Auxiliary</option>
-              <option value="Associate">Associate Member</option>
+            <select id="membership_type" required>
+              <option value="">Select...</option>
+              <option value="American Legion">American Legion</option>
+              <option value="Sons of The American Legion">Sons of The American Legion</option>
+              <option value="American Legion Auxiliary">American Legion Auxiliary</option>
+              <option value="Life">Life Member</option>
+              <option value="Honorary">Honorary</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Branch of Service</label>
+            <select id="branch_of_service">
+              <option value="">Select...</option>
+              <option>Army</option>
+              <option>Navy</option>
+              <option>Air Force</option>
+              <option>Marines</option>
+              <option>Coast Guard</option>
+              <option>Space Force</option>
+              <option>N/A (Auxiliary/SAL)</option>
             </select>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group">
-            <label>Branch of Service</label>
-            <select id="m_branch">
-              <option value="">Select Branch</option>
-              <option value="Army">Army</option>
-              <option value="Navy">Navy</option>
-              <option value="Marine Corps">Marine Corps</option>
-              <option value="Air Force">Air Force</option>
-              <option value="Space Force">Space Force</option>
-              <option value="Coast Guard">Coast Guard</option>
-              <option value="N/A">N/A (Auxiliary/SAL)</option>
-            </select>
+            <label>Years of Service</label>
+            <input type="number" id="years_of_service" min="0" max="50" />
           </div>
           <div class="form-group">
-            <label>Years of Service</label>
-            <input type="number" id="m_years_service" min="0" max="50" />
+            <label>City</label>
+            <input type="text" id="city" value="San Antonio" />
           </div>
         </div>
         <div class="form-group">
           <label>Address</label>
-          <input type="text" id="m_address" placeholder="Street address" />
-        </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label>City</label>
-            <input type="text" id="m_city" value="San Antonio" />
-          </div>
-          <div class="form-group">
-            <label>ZIP Code</label>
-            <input type="text" id="m_zip" />
-          </div>
+          <input type="text" id="address" />
         </div>
         <div class="form-group">
-          <label>Notes / Comments</label>
-          <textarea id="m_notes" placeholder="Additional information..."></textarea>
-        </div>
-        <div id="form-error" class="form-error"></div>
-        <div id="form-success" class="form-success">
-          ✅ Thank you for applying! A Post 300 representative will contact you shortly.
+          <label>Notes / Additional Info</label>
+          <textarea id="notes" rows="3" placeholder="Any additional information you'd like to share..."></textarea>
         </div>
         <button type="submit" class="btn-primary" style="width:100%;">Submit Application</button>
       </form>
+    </div>
+
+    <!-- CONTACT -->
+    <div style="text-align:center;margin-top:2rem;padding:1.5rem;background:#0B1F3A;border:1px solid #1a2a4a;border-radius:8px;">
+      <p style="color:#F5F5F5;font-weight:600;margin-bottom:0.5rem;">Questions about membership?</p>
+      <p style="color:#888;">📞 (210) 674-3364 &nbsp;|&nbsp; ✉️ alpost300@yahoo.com</p>
     </div>
   </div>
 
   <footer class="footer">
     <div class="footer-inner">
-      <div class="footer-col"><h4>Post 300</h4><p>William J. Bordelon Post</p><p>3290 Grosenbacher Rd, San Antonio, TX 78245</p></div>
-      <div class="footer-col"><h4>Contact</h4><a href="tel:2106743364">(210) 674-3364</a><a href="mailto:alpost300@yahoo.com">alpost300@yahoo.com</a></div>
+      <p><strong>American Legion Post 300</strong> — William J. Bordelon Post | San Antonio, TX</p>
+      <p>© 2026 All rights reserved.</p>
     </div>
-    <div class="footer-bottom">© 2026 American Legion Post 300 — William J. Bordelon Post</div>
   </footer>
 
   <script src="../js/supabase.js"></script>
   <script>
-    function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+    function toDate(v) { return (!v||v==='') ? null : v; }
+    function toStr(v) { return (!v||String(v).trim()==='') ? null : String(v).trim(); }
+    function toNum(v) { return (v===''||v===null||v===undefined||isNaN(Number(v))) ? null : Number(v); }
 
-    document.getElementById('membershipForm').addEventListener('submit', async function (e) {
-      e.preventDefault();
-      const errEl = document.getElementById('form-error');
-      const sucEl = document.getElementById('form-success');
-      errEl.style.display = 'none';
-      sucEl.style.display = 'none';
+    document.addEventListener('supabase:ready', () => {
+      document.getElementById('memberForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const errEl = document.getElementById('form-error');
+        const sucEl = document.getElementById('form-success');
+        errEl.style.display = 'none';
+        sucEl.style.display = 'none';
 
-      const first = toStr(document.getElementById('m_first_name').value);
-      const last = toStr(document.getElementById('m_last_name').value);
-      const email = toStr(document.getElementById('m_email').value);
+        const payload = {
+          full_name: toStr(document.getElementById('full_name').value),
+          email: toStr(document.getElementById('email').value),
+          phone: toStr(document.getElementById('phone').value),
+          date_of_birth: toDate(document.getElementById('date_of_birth').value),
+          membership_type: toStr(document.getElementById('membership_type').value) || 'American Legion',
+          branch_of_service: toStr(document.getElementById('branch_of_service').value),
+          years_of_service: toNum(document.getElementById('years_of_service').value),
+          address: toStr(document.getElementById('address').value),
+          city: toStr(document.getElementById('city').value) || 'San Antonio',
+          notes: toStr(document.getElementById('notes').value),
+          membership_status: 'pending',
+          role: 'member'
+        };
 
-      if (!first || !last || !email) {
-        errEl.textContent = 'Please fill in all required fields.';
-        errEl.style.display = 'block';
-        return;
-      }
+        if (!payload.full_name) { errEl.textContent = 'Please enter your full name.'; errEl.style.display='block'; return; }
+        if (!payload.email) { errEl.textContent = 'Please enter your email address.'; errEl.style.display='block'; return; }
+        if (!payload.membership_type) { errEl.textContent = 'Please select a membership type.'; errEl.style.display='block'; return; }
 
-      const payload = {
-        full_name: `${first} ${last}`,
-        email: email,
-        phone: toStr(document.getElementById('m_phone').value),
-        date_of_birth: toDate(document.getElementById('m_dob').value),
-        membership_type: toStr(document.getElementById('m_membership_type').value),
-        branch_of_service: toStr(document.getElementById('m_branch').value),
-        years_of_service: toNum(document.getElementById('m_years_service').value),
-        address: toStr(document.getElementById('m_address').value),
-        city: toStr(document.getElementById('m_city').value),
-        zip_code: toStr(document.getElementById('m_zip').value),
-        notes: toStr(document.getElementById('m_notes').value),
-        membership_status: 'pending',
-        role: 'member'
-      };
-
-      const { error } = await window.supabase.from('site_members').insert([payload]);
-      if (error) {
-        errEl.textContent = 'Submission failed: ' + error.message;
-        errEl.style.display = 'block';
-      } else {
+        const { error } = await window.supabase.from('site_members').insert(payload);
+        if (error) { errEl.textContent = 'Error submitting application: ' + error.message; errEl.style.display='block'; console.error(error); return; }
         sucEl.style.display = 'block';
-        document.getElementById('membershipForm').reset();
-      }
+        document.getElementById('memberForm').reset();
+        document.getElementById('city').value = 'San Antonio';
+        sucEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      });
     });
+
+    function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
   </script>
 </body>
 </html>

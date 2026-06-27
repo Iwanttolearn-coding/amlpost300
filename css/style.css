@@ -222,3 +222,25 @@ img { max-width: 100%; }
 /* ===== CHANGE PASS BOX ===== */
 .change-pass-box { background: #060e1a; border: 1px solid #1a2a4a; border-radius: 8px; padding: 1.5rem; max-width: 420px; margin-top: 1rem; }
 .change-pass-box h4 { font-family: 'Oswald', sans-serif; color: #F5F5F5; margin-bottom: 1rem; font-size: 1.1rem; }
+
+/* ===== POST 300 EXTRAS ===== */
+/* Hero badge */
+.hero-badge { display:inline-block;background:#B22234;color:#fff;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:4px 12px;border-radius:3px;margin-bottom:1rem; }
+/* Hero info strip */
+.hero-info-strip { display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem;margin-top:1.5rem;font-size:0.82rem;color:#888; }
+/* Mission grid */
+.mission-section { background:#060e1a;padding:3rem 1.5rem; }
+.mission-grid { display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1.5rem;max-width:1200px;margin:0 auto; }
+.mission-card { background:#0B1F3A;border:1px solid #1a2a4a;border-top:3px solid #B22234;border-radius:8px;padding:1.5rem;text-align:center; }
+.mission-icon { font-size:2rem;margin-bottom:0.75rem; }
+.mission-card h4 { font-family:'Oswald',sans-serif;color:#F5F5F5;font-size:1.1rem;margin-bottom:0.5rem; }
+.mission-card p { color:#888;font-size:0.88rem;line-height:1.5; }
+/* Responsive */
+@media (max-width:640px) {
+  .form-row { grid-template-columns:1fr; }
+  .hero-info-strip { flex-direction:column;gap:0.5rem; }
+  .nav-links { display:none; }
+  .hamburger { display:block; }
+  .cal-day { min-height:54px; }
+  .cal-day-header { font-size:0.65rem; }
+}
