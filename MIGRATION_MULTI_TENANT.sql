@@ -174,6 +174,54 @@ where post_id is null;
 -- ================================================================
 select post_slug, post_name, post_number, address from public.posts;
 
+
+-- ================================================================
+-- STEP 7: POST PLANS TABLE (feature flags + billing per post)
+-- ================================================================
+create extension if not exists pgcrypto;
+
+create table if not exists public.post_plans (
+  id uuid primary key default gen_random_uuid(),
+  post_id uuid references public.posts(id) on delete cascade,
+  plan_name text default 'standard',
+  billing_status text default 'active',
+  max_admins int default 5,
+  max_staff int default 100,
+  max_gallery_photos int default 500,
+  max_storage_mb int default 5000,
+  events_enabled boolean default true,
+  hall_rental_enabled boolean default true,
+  staff_enabled boolean default true,
+  inventory_enabled boolean default true,
+  bartender_schedule_enabled boolean default true,
+  bingo_enabled boolean default true,
+  donations_enabled boolean default true,
+  ai_assistant_enabled boolean default true,
+  created_at timestamptz default now(),
+  updated_at timestamptz default now()
+);
+
+-- Seed plan for Post 300
+insert into public.post_plans (post_id, plan_name, billing_status)
+select id, 'standard', 'active'
+from public.posts
+where post_slug = 'amlpost300'
+on conflict do nothing;
+
+-- Seed plan for Post 579
+insert into public.post_plans (post_id, plan_name, billing_status)
+select id, 'standard', 'active'
+from public.posts
+where post_slug = 'amlpost579'
+on conflict do nothing;
+
+-- ================================================================
+-- VERIFY post_plans
+-- ================================================================
+select p.post_slug, pp.plan_name, pp.billing_status, pp.ai_assistant_enabled
+from public.post_plans pp
+join public.posts p on p.id = pp.post_id;
+
 -- ================================================================
 -- DONE — Both posts are now tenants in the same database schema.
 -- Every query in the app must filter by post_id going forward.
