@@ -1,7 +1,7 @@
 // Supabase client — American Legion Post 300 (William J. Bordelon Post)
 (function () {
   const SUPABASE_URL = 'https://udohkokiatruhmavujql.supabase.co';
-  const SUPABASE_ANON_KEY = 'sb_publishable_B5qnXKbdOslZX-wrajaibw_gg8YE1VP';
+  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVkb2hrb2tpYXRydWhtYXZ1anFsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI1NzkxNjgsImV4cCI6MjA5ODE1NTE2OH0.Acr1BXmto-idobdm8RD6UAFq9HEqEpJIAcKcVJH5wbE';
 
   const script = document.createElement('script');
   script.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js';
