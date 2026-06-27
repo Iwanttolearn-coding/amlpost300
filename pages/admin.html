@@ -8,91 +8,92 @@
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     /* ── LOGIN ── */
-    .admin-login { max-width:420px;margin:4rem auto;background:#0B1F3A;border:1px solid #1a2a4a;border-top:4px solid #B22234;border-radius:10px;padding:2.5rem;text-align:center; }
-    .admin-login h2 { font-family:'Oswald',sans-serif;color:#F5F5F5;margin-bottom:0.5rem; }
-    .admin-login p { color:#888;font-size:0.85rem;margin-bottom:1.5rem; }
-    #adminContent { display:none; }
+    .admin-login{max-width:420px;margin:4rem auto;background:#0B1F3A;border:1px solid #1a2a4a;border-top:4px solid #B22234;border-radius:10px;padding:2.5rem;text-align:center}
+    .admin-login h2{font-family:'Oswald',sans-serif;color:#F5F5F5;margin-bottom:.5rem}
+    .admin-login p{color:#888;font-size:.85rem;margin-bottom:1.5rem}
+    #adminContent{display:none}
     /* ── TABS ── */
-    .tab-bar { display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:2rem;border-bottom:2px solid #1a2a4a;padding-bottom:0.75rem; }
-    .tab-btn { background:#0B1F3A;border:1px solid #1a2a4a;color:#aaa;padding:8px 14px;border-radius:6px;cursor:pointer;font-size:0.8rem;font-weight:600;transition:all 0.2s; }
-    .tab-btn.active,.tab-btn:hover { background:#B22234;color:#fff;border-color:#B22234; }
-    .tab-panel { display:none; }
-    .tab-panel.active { display:block; }
+    .tab-bar{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:2rem;border-bottom:2px solid #1a2a4a;padding-bottom:.75rem}
+    .tab-btn{background:#0B1F3A;border:1px solid #1a2a4a;color:#aaa;padding:7px 13px;border-radius:6px;cursor:pointer;font-size:.78rem;font-weight:600;transition:all .2s}
+    .tab-btn.active,.tab-btn:hover{background:#B22234;color:#fff;border-color:#B22234}
+    .tab-panel{display:none}.tab-panel.active{display:block}
     /* ── STATS ── */
-    .stat-grid { display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:1rem;margin-bottom:2rem; }
-    .stat-card { background:#0B1F3A;border:1px solid #1a2a4a;border-radius:8px;padding:1.2rem;text-align:center;border-top:3px solid #B22234; }
-    .stat-num { font-family:'Oswald',sans-serif;font-size:2rem;color:#F5F5F5; }
-    .stat-label { font-size:0.75rem;color:#888;text-transform:uppercase;letter-spacing:0.5px; }
+    .stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:1rem;margin-bottom:2rem}
+    .stat-card{background:#0B1F3A;border:1px solid #1a2a4a;border-radius:8px;padding:1.1rem;text-align:center;border-top:3px solid #B22234}
+    .stat-num{font-family:'Oswald',sans-serif;font-size:1.9rem;color:#F5F5F5}
+    .stat-label{font-size:.72rem;color:#888;text-transform:uppercase;letter-spacing:.5px;margin-top:.2rem}
+    /* ── PLAN BANNER ── */
+    .plan-banner{background:#0a2a0a;border:1px solid #27ae60;border-radius:8px;padding:.75rem 1.2rem;margin-bottom:1.5rem;display:flex;align-items:center;gap:.75rem;flex-wrap:wrap}
+    .plan-badge{background:#27ae60;color:#fff;font-size:.72rem;font-weight:700;padding:3px 10px;border-radius:12px;text-transform:uppercase}
+    .plan-info{color:#aaa;font-size:.82rem}
     /* ── RECORDS ── */
-    .record-card { background:#060e1a;border:1px solid #1a2a4a;border-radius:8px;padding:1rem;margin-bottom:0.75rem;display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap; }
-    .record-info { flex:1; }
-    .record-info strong { color:#F5F5F5;font-size:0.95rem; }
-    .record-info p { color:#888;font-size:0.82rem;margin:0.2rem 0 0; }
-    .record-actions { display:flex;gap:0.5rem;flex-shrink:0; }
-    .btn-sm { padding:5px 12px;font-size:0.78rem;border-radius:4px;border:none;cursor:pointer;font-weight:600; }
-    .btn-edit { background:#1a3a6a;color:#F5F5F5; }
-    .btn-delete { background:#4a0a0a;color:#F5F5F5; }
-    .btn-edit:hover { background:#2a4a8a; }
-    .btn-delete:hover { background:#7a1a1a; }
-    /* ── BADGE ── */
-    .badge { display:inline-block;padding:2px 8px;border-radius:12px;font-size:0.72rem;font-weight:700;text-transform:uppercase; }
-    .badge-pending { background:#3a2a00;color:#f0a500; }
-    .badge-confirmed,.badge-active,.badge-approved { background:#0a3a1a;color:#27ae60; }
-    .badge-cancelled,.badge-inactive,.badge-expired { background:#3a0a0a;color:#e74c3c; }
-    .badge-open { background:#1a2a4a;color:#5b9bd5; }
-    .badge-completed { background:#0a2a1a;color:#27ae60; }
-    .badge-high,.badge-urgent { background:#4a1a0a;color:#e74c3c; }
-    .badge-medium { background:#3a2a00;color:#f0a500; }
-    .badge-low { background:#0a2a3a;color:#5b9bd5; }
+    .record-card{background:#060e1a;border:1px solid #1a2a4a;border-radius:8px;padding:1rem;margin-bottom:.7rem;display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap}
+    .record-info{flex:1}
+    .record-info strong{color:#F5F5F5;font-size:.93rem}
+    .record-info p{color:#888;font-size:.8rem;margin:.2rem 0 0}
+    .record-actions{display:flex;gap:.4rem;flex-shrink:0;flex-wrap:wrap;align-items:center}
+    .btn-sm{padding:5px 11px;font-size:.76rem;border-radius:4px;border:none;cursor:pointer;font-weight:600}
+    .btn-edit{background:#1a3a6a;color:#F5F5F5}.btn-edit:hover{background:#2a4a8a}
+    .btn-delete{background:#4a0a0a;color:#F5F5F5}.btn-delete:hover{background:#7a1a1a}
+    .btn-approve{background:#0a3a1a;color:#27ae60}.btn-approve:hover{background:#0a5a2a}
+    /* ── BADGES ── */
+    .badge{display:inline-block;padding:2px 8px;border-radius:12px;font-size:.7rem;font-weight:700;text-transform:uppercase}
+    .badge-pending{background:#3a2a00;color:#f0a500}
+    .badge-active,.badge-confirmed,.badge-approved,.badge-completed{background:#0a3a1a;color:#27ae60}
+    .badge-cancelled,.badge-inactive,.badge-expired,.badge-rejected{background:#3a0a0a;color:#e74c3c}
+    .badge-open{background:#1a2a4a;color:#5b9bd5}
+    .badge-in-progress{background:#1a2a00;color:#f0a500}
+    .badge-high,.badge-urgent{background:#4a1a0a;color:#e74c3c}
+    .badge-medium{background:#3a2a00;color:#f0a500}
+    .badge-low{background:#0a2a3a;color:#5b9bd5}
+    .badge-scheduled{background:#1a2a4a;color:#5b9bd5}
     /* ── MODALS ── */
-    .modal-overlay { display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:1000;align-items:center;justify-content:center; }
-    .modal-overlay.open { display:flex; }
-    .modal { background:#0B1F3A;border:1px solid #1a2a4a;border-top:4px solid #B22234;border-radius:10px;padding:2rem;width:100%;max-width:560px;max-height:90vh;overflow-y:auto;position:relative; }
-    .modal h3 { font-family:'Oswald',sans-serif;color:#F5F5F5;margin-bottom:1.25rem; }
-    .modal-close { position:absolute;top:1rem;right:1rem;background:none;border:none;color:#aaa;font-size:1.2rem;cursor:pointer; }
-    .modal-close:hover { color:#B22234; }
-    /* ── GALLERY GRID ── */
-    .gallery-admin-grid { display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1rem; }
-    .gallery-admin-item { background:#060e1a;border:1px solid #1a2a4a;border-radius:8px;overflow:hidden; }
-    .gallery-admin-item img { width:100%;height:130px;object-fit:cover;display:block; }
-    .gallery-admin-item .item-actions { padding:0.5rem;display:flex;gap:0.5rem; }
+    .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:1000;align-items:center;justify-content:center;padding:1rem}
+    .modal-overlay.open{display:flex}
+    .modal{background:#0B1F3A;border:1px solid #1a2a4a;border-top:4px solid #B22234;border-radius:10px;padding:2rem;width:100%;max-width:580px;max-height:92vh;overflow-y:auto;position:relative}
+    .modal h3{font-family:'Oswald',sans-serif;color:#F5F5F5;margin-bottom:1.25rem}
+    .modal-close{position:absolute;top:1rem;right:1rem;background:none;border:none;color:#aaa;font-size:1.2rem;cursor:pointer}
+    .modal-close:hover{color:#B22234}
+    /* ── GALLERY ── */
+    .gallery-admin-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:1rem}
+    .gallery-admin-item{background:#060e1a;border:1px solid #1a2a4a;border-radius:8px;overflow:hidden}
+    .gallery-admin-item img{width:100%;height:125px;object-fit:cover;display:block}
+    .gallery-admin-item .item-actions{padding:.5rem;display:flex;gap:.4rem;align-items:center}
     /* ── AI ASSISTANT ── */
-    .ai-panel { background:#060e1a;border:1px solid #1a2a4a;border-radius:10px;padding:1.5rem;margin-bottom:2rem; }
-    .ai-panel h3 { font-family:'Oswald',sans-serif;color:#F5F5F5;margin-bottom:0.25rem;display:flex;align-items:center;gap:0.5rem; }
-    .ai-panel p { color:#888;font-size:0.83rem;margin-bottom:1rem; }
-    .ai-chat { background:#0B1F3A;border:1px solid #1a2a4a;border-radius:8px;padding:1rem;min-height:200px;max-height:380px;overflow-y:auto;margin-bottom:0.75rem; }
-    .ai-msg { margin-bottom:0.75rem;display:flex;gap:0.75rem; }
-    .ai-msg.user { flex-direction:row-reverse; }
-    .ai-bubble { padding:0.6rem 0.9rem;border-radius:10px;font-size:0.85rem;max-width:80%;line-height:1.5; }
-    .ai-msg.assistant .ai-bubble { background:#1a2a4a;color:#F5F5F5; }
-    .ai-msg.user .ai-bubble { background:#B22234;color:#fff; }
-    .ai-avatar { width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.9rem;flex-shrink:0; }
-    .ai-msg.assistant .ai-avatar { background:#1a2a4a; }
-    .ai-msg.user .ai-avatar { background:#B22234; }
-    .ai-input-row { display:flex;gap:0.5rem; }
-    .ai-input-row input { flex:1;background:#0B1F3A;border:1px solid #1a2a4a;color:#F5F5F5;padding:0.6rem 0.9rem;border-radius:6px;font-size:0.85rem; }
-    .ai-input-row input::placeholder { color:#555; }
-    .ai-thinking { color:#888;font-size:0.82rem;font-style:italic;padding:0.5rem; }
+    .ai-panel{background:#060e1a;border:1px solid #1a2a4a;border-radius:10px;padding:1.5rem;margin-bottom:2rem}
+    .ai-panel h3{font-family:'Oswald',sans-serif;color:#F5F5F5;margin-bottom:.25rem;display:flex;align-items:center;gap:.5rem}
+    .ai-panel p{color:#888;font-size:.82rem;margin-bottom:1rem}
+    .ai-chat{background:#0B1F3A;border:1px solid #1a2a4a;border-radius:8px;padding:1rem;min-height:180px;max-height:360px;overflow-y:auto;margin-bottom:.75rem}
+    .ai-msg{margin-bottom:.7rem;display:flex;gap:.65rem}
+    .ai-msg.user{flex-direction:row-reverse}
+    .ai-bubble{padding:.55rem .85rem;border-radius:10px;font-size:.83rem;max-width:82%;line-height:1.5}
+    .ai-msg.assistant .ai-bubble{background:#1a2a4a;color:#F5F5F5}
+    .ai-msg.user .ai-bubble{background:#B22234;color:#fff}
+    .ai-avatar{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0}
+    .ai-msg.assistant .ai-avatar{background:#1a2a4a}
+    .ai-msg.user .ai-avatar{background:#B22234}
+    .ai-input-row{display:flex;gap:.5rem}
+    .ai-input-row input{flex:1;background:#0B1F3A;border:1px solid #1a2a4a;color:#F5F5F5;padding:.6rem .9rem;border-radius:6px;font-size:.83rem}
+    .ai-input-row input::placeholder{color:#555}
     /* ── SETTINGS ── */
-    .change-pass-box { background:#060e1a;border:1px solid #1a2a4a;border-radius:8px;padding:1.5rem;max-width:420px;margin-top:1rem; }
-    .change-pass-box h4 { font-family:'Oswald',sans-serif;color:#F5F5F5;margin-bottom:1rem; }
-    /* ── IMG UPLOAD ── */
-    .img-upload-box { border:2px dashed #1a2a4a;border-radius:8px;padding:1.5rem;text-align:center;cursor:pointer;transition:border-color 0.2s; }
-    .img-upload-box:hover { border-color:#B22234; }
-    .img-preview { max-width:100%;max-height:160px;border-radius:6px;margin-top:0.75rem;object-fit:cover; }
-    /* ── BINGO ── */
-    .bingo-card { background:#060e1a;border:1px solid #1a2a4a;border-radius:8px;padding:1rem;margin-bottom:0.75rem; }
-    .bingo-grid { display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin-top:0.75rem; }
-    .bingo-cell { background:#0B1F3A;border:1px solid #1a2a4a;aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:0.85rem;font-weight:700;color:#F5F5F5;border-radius:4px; }
-    .bingo-cell.called { background:#B22234;border-color:#B22234; }
-    .bingo-cell.free { background:#1a3a6a;border-color:#1a3a6a;font-size:0.6rem; }
+    .change-pass-box{background:#060e1a;border:1px solid #1a2a4a;border-radius:8px;padding:1.5rem;max-width:420px;margin-top:1rem}
+    .change-pass-box h4{font-family:'Oswald',sans-serif;color:#F5F5F5;margin-bottom:1rem}
+    /* ── FILE UPLOAD ── */
+    .file-upload-row{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}
+    .file-upload-row input[type=file]{flex:1;background:#060e1a;border:1px dashed #1a2a4a;color:#aaa;padding:.5rem;border-radius:6px;font-size:.8rem}
+    .upload-preview{max-width:100%;max-height:120px;border-radius:6px;margin-top:.5rem;display:none}
+    /* ── DISABLED MODULE ── */
+    .module-disabled{text-align:center;padding:3rem;color:#555}
+    .module-disabled span{font-size:2.5rem;display:block;margin-bottom:.5rem}
+    /* ── SECTION DIVIDER ── */
+    .section-sub{font-family:'Oswald',sans-serif;color:#aaa;font-size:1rem;margin:1.5rem 0 .75rem;padding-bottom:.4rem;border-bottom:1px solid #1a2a4a;text-transform:uppercase;letter-spacing:.5px}
   </style>
 </head>
 <body>
   <nav class="navbar">
     <div class="nav-inner">
       <div class="nav-brand">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/American_Legion_emblem.svg/120px-American_Legion_emblem.svg.png" alt="American Legion" class="nav-logo" />
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/American_Legion_emblem.svg/120px-American_Legion_emblem.svg.png" alt="American Legion" class="nav-logo"/>
         <span>American Legion Post 300<small>Admin Panel</small></span>
       </div>
       <div class="nav-links">
@@ -112,74 +113,103 @@
     <p>American Legion Post 300 — William J. Bordelon Post</p>
     <div class="form-group">
       <label>Password</label>
-      <input type="password" id="adminPass" placeholder="Enter admin password" onkeydown="if(event.key==='Enter')checkLogin()" />
+      <input type="password" id="adminPass" placeholder="Enter admin password" onkeydown="if(event.key==='Enter')checkLogin()"/>
     </div>
-    <div id="loginError" style="color:#B22234;font-size:0.85rem;margin-bottom:0.75rem;display:none;"></div>
-    <button class="btn-primary" style="width:100%;margin-top:0.5rem;" onclick="checkLogin()">Login</button>
+    <div id="loginError" style="color:#B22234;font-size:.85rem;margin-bottom:.75rem;display:none;"></div>
+    <button class="btn-primary" style="width:100%;margin-top:.5rem" onclick="checkLogin()">Login</button>
   </div>
 
   <!-- ADMIN CONTENT -->
   <div id="adminContent" class="section">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem;">
-      <h1 style="font-family:Oswald;color:#F5F5F5;font-size:1.8rem;">⚙️ Post 300 Command Center</h1>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem">
+      <h1 style="font-family:Oswald;color:#F5F5F5;font-size:1.7rem">⚙️ Post 300 Command Center</h1>
       <button class="btn-secondary" onclick="logout()">Logout</button>
+    </div>
+
+    <!-- PLAN BANNER -->
+    <div class="plan-banner" id="planBanner" style="display:none">
+      <span class="plan-badge" id="planBadge">Standard</span>
+      <span class="plan-info" id="planInfo">Loading plan...</span>
     </div>
 
     <!-- STATS -->
     <div class="stat-grid" id="statsGrid"></div>
 
     <!-- AI ASSISTANT -->
-    <div class="ai-panel">
-      <h3>🤖 AI Admin Assistant</h3>
-      <p>Ask anything about Post 300 — members, events, rentals, maintenance, inventory, or get a status report.</p>
+    <div class="ai-panel" id="aiPanel">
+      <h3>🤖 AI Admin Assistant <span style="font-size:.75rem;color:#B22234;font-weight:400">(Post 300 only)</span></h3>
+      <p>Ask about Post 300 data only — members, events, rentals, maintenance, inventory, bingo, staff, or get a full status report.</p>
       <div class="ai-chat" id="aiChat">
         <div class="ai-msg assistant">
           <div class="ai-avatar">🤖</div>
-          <div class="ai-bubble">Welcome to Post 300 Command Center. I'm your AI Admin Assistant. Ask me anything — "How many pending rentals?", "Show me open maintenance tickets", "Who are our active staff?", or "Give me a full status report."</div>
+          <div class="ai-bubble">Welcome to Post 300 Command Center. I only see <strong>Post 300</strong> records. Ask me: "Status report", "Pending rentals", "Low inventory", "Open maintenance", or "Upcoming events".</div>
         </div>
       </div>
       <div class="ai-input-row">
-        <input type="text" id="aiInput" placeholder="Ask your AI assistant..." onkeydown="if(event.key==='Enter')sendAiMessage()" />
+        <input type="text" id="aiInput" placeholder="Ask about Post 300 data..." onkeydown="if(event.key==='Enter')sendAiMessage()"/>
         <button class="btn-primary" onclick="sendAiMessage()">Ask</button>
       </div>
     </div>
 
     <!-- TABS -->
     <div class="tab-bar">
-      <button class="tab-btn active" onclick="switchTab('rentals',this)">🏛️ Rentals</button>
+      <button class="tab-btn active" onclick="switchTab('home',this)">🏠 Home</button>
+      <button class="tab-btn" onclick="switchTab('rentals',this)">🏛️ Rentals</button>
       <button class="tab-btn" onclick="switchTab('members',this)">👥 Members</button>
       <button class="tab-btn" onclick="switchTab('events',this)">📅 Events</button>
       <button class="tab-btn" onclick="switchTab('officers',this)">🎖️ Officers</button>
       <button class="tab-btn" onclick="switchTab('gallery',this)">🖼️ Gallery</button>
+      <button class="tab-btn" onclick="switchTab('announcements',this)">📢 Announce</button>
       <button class="tab-btn" onclick="switchTab('bingo',this)">🎱 Bingo</button>
       <button class="tab-btn" onclick="switchTab('staff',this)">👔 Staff</button>
+      <button class="tab-btn" onclick="switchTab('schedule',this)">📋 Schedule</button>
       <button class="tab-btn" onclick="switchTab('inventory',this)">📦 Inventory</button>
       <button class="tab-btn" onclick="switchTab('maintenance',this)">🔧 Maintenance</button>
-      <button class="tab-btn" onclick="switchTab('announcements',this)">📢 Announcements</button>
+      <button class="tab-btn" onclick="switchTab('donations',this)">💵 Donations</button>
+      <button class="tab-btn" onclick="switchTab('documents',this)">📁 Documents</button>
+      <button class="tab-btn" onclick="switchTab('training',this)">🎓 Training</button>
       <button class="tab-btn" onclick="switchTab('settings',this)">⚙️ Settings</button>
     </div>
 
-    <!-- RENTALS TAB -->
-    <div class="tab-panel active" id="tab-rentals">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
-        <h2 class="section-title" style="margin-bottom:0;">Hall Rental Inquiries</h2>
+    <!-- HOME CONTENT TAB -->
+    <div class="tab-panel active" id="tab-home">
+      <h2 class="section-title">🏠 Home Page Content</h2>
+      <div id="home-content-form" class="form-wrap" style="max-width:100%">
+        <div class="form-group"><label>Hero Title</label><input type="text" id="hc_title"/></div>
+        <div class="form-group"><label>Hero Subtitle</label><input type="text" id="hc_subtitle"/></div>
+        <div class="form-group"><label>Mission Text</label><textarea id="hc_mission" rows="3"></textarea></div>
+        <div class="form-group"><label>About / History Text</label><textarea id="hc_about" rows="3"></textarea></div>
+        <div class="form-group"><label>Hours / Contact Notes</label><textarea id="hc_hours" rows="2"></textarea></div>
+        <div class="form-row">
+          <div class="form-group"><label>Show Events</label><select id="hc_show_events"><option value="true">Yes</option><option value="false">No</option></select></div>
+          <div class="form-group"><label>Show Rentals</label><select id="hc_show_rental"><option value="true">Yes</option><option value="false">No</option></select></div>
+          <div class="form-group"><label>Show Gallery</label><select id="hc_show_gallery"><option value="true">Yes</option><option value="false">No</option></select></div>
+          <div class="form-group"><label>Show Bingo</label><select id="hc_show_bingo"><option value="true">Yes</option><option value="false">No</option></select></div>
+        </div>
+        <div id="hc-msg" style="margin-bottom:.5rem;display:none;"></div>
+        <button class="btn-primary" onclick="saveHomeContent()">Save Home Content</button>
       </div>
+    </div>
+
+    <!-- RENTALS TAB -->
+    <div class="tab-panel" id="tab-rentals">
+      <h2 class="section-title">🏛️ Hall Rental Inquiries</h2>
       <div id="rentals-list" class="record-list"><p class="loading">Loading...</p></div>
     </div>
 
     <!-- MEMBERS TAB -->
     <div class="tab-panel" id="tab-members">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
-        <h2 class="section-title" style="margin-bottom:0;">Site Members</h2>
-        <button class="btn-primary" onclick="openMemberModal()">+ Add Member</button>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+        <h2 class="section-title" style="margin-bottom:0">👥 Site Members</h2>
+        <button class="btn-primary" onclick="openModal('memberModal')">+ Add Member</button>
       </div>
       <div id="members-list" class="record-list"><p class="loading">Loading...</p></div>
     </div>
 
     <!-- EVENTS TAB -->
     <div class="tab-panel" id="tab-events">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
-        <h2 class="section-title" style="margin-bottom:0;">Events</h2>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+        <h2 class="section-title" style="margin-bottom:0">📅 Events</h2>
         <button class="btn-primary" onclick="openEventModal()">+ Add Event</button>
       </div>
       <div id="events-admin-list" class="record-list"><p class="loading">Loading...</p></div>
@@ -187,8 +217,8 @@
 
     <!-- OFFICERS TAB -->
     <div class="tab-panel" id="tab-officers">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
-        <h2 class="section-title" style="margin-bottom:0;">Officers</h2>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+        <h2 class="section-title" style="margin-bottom:0">🎖️ Officers</h2>
         <button class="btn-primary" onclick="openOfficerModal()">+ Add Officer</button>
       </div>
       <div id="officers-admin-list" class="record-list"><p class="loading">Loading...</p></div>
@@ -196,843 +226,1082 @@
 
     <!-- GALLERY TAB -->
     <div class="tab-panel" id="tab-gallery">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
-        <h2 class="section-title" style="margin-bottom:0;">Photo Gallery</h2>
-        <button class="btn-primary" onclick="openGalleryModal()">+ Add Photo</button>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+        <h2 class="section-title" style="margin-bottom:0">🖼️ Gallery</h2>
+        <button class="btn-primary" onclick="openModal('galleryModal')">+ Add Photo</button>
       </div>
       <div id="gallery-admin-list" class="gallery-admin-grid"><p class="loading">Loading...</p></div>
     </div>
 
+    <!-- ANNOUNCEMENTS TAB -->
+    <div class="tab-panel" id="tab-announcements">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+        <h2 class="section-title" style="margin-bottom:0">📢 Announcements</h2>
+        <button class="btn-primary" onclick="openModal('announcementModal')">+ Add</button>
+      </div>
+      <div id="announcements-list" class="record-list"><p class="loading">Loading...</p></div>
+    </div>
+
     <!-- BINGO TAB -->
     <div class="tab-panel" id="tab-bingo">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
-        <h2 class="section-title" style="margin-bottom:0;">Bingo Events</h2>
-        <button class="btn-primary" onclick="openBingoModal()">+ New Bingo Event</button>
+      <h2 class="section-title">🎱 Bingo Management</h2>
+      <div class="section-sub">Events</div>
+      <div style="display:flex;justify-content:flex-end;margin-bottom:.75rem">
+        <button class="btn-primary" onclick="openModal('bingoModal')">+ New Event</button>
       </div>
       <div id="bingo-list" class="record-list"><p class="loading">Loading...</p></div>
+      <div class="section-sub">Players</div>
+      <div id="bingo-players-list" class="record-list"><p class="loading">Loading...</p></div>
+      <div class="section-sub">Games</div>
+      <div id="bingo-games-list" class="record-list"><p class="loading">Loading...</p></div>
+      <div class="section-sub">Calls Log</div>
+      <div id="bingo-calls-list" class="record-list"><p class="loading">Loading...</p></div>
+      <div class="section-sub">Winners</div>
+      <div id="bingo-winners-list" class="record-list"><p class="loading">Loading...</p></div>
     </div>
 
     <!-- STAFF TAB -->
     <div class="tab-panel" id="tab-staff">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
-        <h2 class="section-title" style="margin-bottom:0;">Staff Directory</h2>
-        <button class="btn-primary" onclick="openStaffModal()">+ Add Staff</button>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+        <h2 class="section-title" style="margin-bottom:0">👔 Staff / Volunteers</h2>
+        <button class="btn-primary" onclick="openModal('staffModal')">+ Add Staff</button>
       </div>
       <div id="staff-list" class="record-list"><p class="loading">Loading...</p></div>
     </div>
 
+    <!-- SCHEDULE TAB -->
+    <div class="tab-panel" id="tab-schedule">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+        <h2 class="section-title" style="margin-bottom:0">📋 Bartender Schedule</h2>
+        <button class="btn-primary" onclick="openModal('scheduleModal')">+ Add Shift</button>
+      </div>
+      <div id="schedule-list" class="record-list"><p class="loading">Loading...</p></div>
+    </div>
+
     <!-- INVENTORY TAB -->
     <div class="tab-panel" id="tab-inventory">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
-        <h2 class="section-title" style="margin-bottom:0;">Inventory</h2>
-        <button class="btn-primary" onclick="openInventoryModal()">+ Add Item</button>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+        <h2 class="section-title" style="margin-bottom:0">📦 Inventory</h2>
+        <button class="btn-primary" onclick="openModal('inventoryModal')">+ Add Item</button>
       </div>
       <div id="inventory-list" class="record-list"><p class="loading">Loading...</p></div>
     </div>
 
     <!-- MAINTENANCE TAB -->
     <div class="tab-panel" id="tab-maintenance">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
-        <h2 class="section-title" style="margin-bottom:0;">Building Maintenance</h2>
-        <button class="btn-primary" onclick="openMaintenanceModal()">+ Add Record</button>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+        <h2 class="section-title" style="margin-bottom:0">🔧 Building Maintenance</h2>
+        <button class="btn-primary" onclick="openModal('maintenanceModal')">+ Add Record</button>
       </div>
       <div id="maintenance-list" class="record-list"><p class="loading">Loading...</p></div>
     </div>
 
-    <!-- ANNOUNCEMENTS TAB -->
-    <div class="tab-panel" id="tab-announcements">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
-        <h2 class="section-title" style="margin-bottom:0;">Announcements</h2>
-        <button class="btn-primary" onclick="openAnnouncementModal()">+ Add Announcement</button>
+    <!-- DONATIONS TAB -->
+    <div class="tab-panel" id="tab-donations">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+        <h2 class="section-title" style="margin-bottom:0">💵 Donations / Payments</h2>
+        <button class="btn-primary" onclick="openModal('donationModal')">+ Record Donation</button>
       </div>
-      <div id="announcements-list" class="record-list"><p class="loading">Loading...</p></div>
+      <div id="donations-list" class="record-list"><p class="loading">Loading...</p></div>
+    </div>
+
+    <!-- DOCUMENTS TAB -->
+    <div class="tab-panel" id="tab-documents">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+        <h2 class="section-title" style="margin-bottom:0">📁 Documents / Uploads</h2>
+        <button class="btn-primary" onclick="openModal('documentModal')">+ Upload Doc</button>
+      </div>
+      <div id="documents-list" class="record-list"><p class="loading">Loading...</p></div>
+    </div>
+
+    <!-- TRAINING TAB -->
+    <div class="tab-panel" id="tab-training">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+        <h2 class="section-title" style="margin-bottom:0">🎓 Training / Certifications</h2>
+        <button class="btn-primary" onclick="openModal('trainingModal')">+ Add Training</button>
+      </div>
+      <div id="training-list" class="record-list"><p class="loading">Loading...</p></div>
     </div>
 
     <!-- SETTINGS TAB -->
     <div class="tab-panel" id="tab-settings">
-      <h2 class="section-title">Settings</h2>
+      <h2 class="section-title">⚙️ Settings</h2>
       <div class="change-pass-box">
         <h4>🔐 Change Admin Password</h4>
-        <div class="form-group"><label>Current Password</label><input type="password" id="curr_pass" /></div>
-        <div class="form-group"><label>New Password</label><input type="password" id="new_pass" /></div>
-        <div class="form-group"><label>Confirm New Password</label><input type="password" id="confirm_pass" /></div>
-        <div id="pass-error" style="color:#B22234;font-size:0.85rem;margin-bottom:0.75rem;display:none;"></div>
-        <div id="pass-success" style="color:#27ae60;font-size:0.85rem;margin-bottom:0.75rem;display:none;">✅ Password changed!</div>
-        <button class="btn-primary" style="width:100%;" onclick="changePassword()">Update Password</button>
+        <div class="form-group"><label>Current Password</label><input type="password" id="curr_pass"/></div>
+        <div class="form-group"><label>New Password</label><input type="password" id="new_pass"/></div>
+        <div class="form-group"><label>Confirm New Password</label><input type="password" id="confirm_pass"/></div>
+        <div id="pass-error" style="color:#B22234;font-size:.85rem;margin-bottom:.75rem;display:none"></div>
+        <div id="pass-success" style="color:#27ae60;font-size:.85rem;margin-bottom:.75rem;display:none">✅ Password changed!</div>
+        <button class="btn-primary" style="width:100%" onclick="changePassword()">Update Password</button>
+      </div>
+      <div style="margin-top:2rem;background:#060e1a;border:1px solid #1a2a4a;border-radius:8px;padding:1.5rem;max-width:500px">
+        <h4 style="font-family:Oswald;color:#F5F5F5;margin-bottom:1rem">📊 Post Plan Details</h4>
+        <div id="planDetails" style="color:#aaa;font-size:.85rem;line-height:2">Loading...</div>
       </div>
     </div>
   </div>
 
-  <!-- ═══ MODALS ═══ -->
+  <!-- ═══════════════════════════════════════════ MODALS ═══ -->
 
-  <!-- RENTAL STATUS MODAL -->
+  <!-- RENTAL MODAL -->
   <div class="modal-overlay" id="rentalModal">
-    <div class="modal">
-      <button class="modal-close" onclick="closeModal('rentalModal')">✕</button>
-      <h3>Update Rental Status</h3>
-      <input type="hidden" id="r_edit_id" />
+    <div class="modal"><button class="modal-close" onclick="closeModal('rentalModal')">✕</button>
+      <h3>Update Rental Inquiry</h3>
+      <input type="hidden" id="r_id"/>
       <div class="form-group"><label>Status</label>
-        <select id="r_status">
-          <option value="pending">Pending</option>
-          <option value="confirmed">Confirmed</option>
-          <option value="approved">Approved</option>
-          <option value="cancelled">Cancelled</option>
-        </select>
+        <select id="r_status"><option value="pending">Pending</option><option value="approved">Approved</option><option value="confirmed">Confirmed</option><option value="rejected">Rejected</option><option value="cancelled">Cancelled</option></select>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Deposit Paid</label><select id="r_deposit"><option value="false">No</option><option value="true">Yes</option></select></div>
+        <div class="form-group"><label>Total Amount ($)</label><input type="number" id="r_amount" step="0.01"/></div>
       </div>
       <div class="form-group"><label>Admin Notes</label><textarea id="r_notes"></textarea></div>
-      <button class="btn-primary" style="width:100%;" onclick="saveRental()">Save</button>
+      <div id="r-err" style="color:#B22234;font-size:.83rem;margin-bottom:.5rem;display:none"></div>
+      <button class="btn-primary" style="width:100%" onclick="saveRental()">Save</button>
     </div>
   </div>
 
   <!-- MEMBER MODAL -->
   <div class="modal-overlay" id="memberModal">
-    <div class="modal">
-      <button class="modal-close" onclick="closeModal('memberModal')">✕</button>
-      <h3 id="memberModalTitle">Add Member</h3>
-      <input type="hidden" id="mem_edit_id" />
+    <div class="modal"><button class="modal-close" onclick="closeModal('memberModal')">✕</button>
+      <h3 id="memTitle">Add Member</h3><input type="hidden" id="mem_id"/>
       <div class="form-row">
-        <div class="form-group"><label>Full Name *</label><input type="text" id="mem_name" /></div>
-        <div class="form-group"><label>Email</label><input type="email" id="mem_email" /></div>
+        <div class="form-group"><label>Full Name *</label><input type="text" id="mem_name"/></div>
+        <div class="form-group"><label>Email</label><input type="email" id="mem_email"/></div>
       </div>
       <div class="form-row">
-        <div class="form-group"><label>Phone</label><input type="text" id="mem_phone" /></div>
-        <div class="form-group"><label>Date of Birth</label><input type="date" id="mem_dob" /></div>
+        <div class="form-group"><label>Phone</label><input type="text" id="mem_phone"/></div>
+        <div class="form-group"><label>Date of Birth</label><input type="date" id="mem_dob"/></div>
       </div>
       <div class="form-row">
         <div class="form-group"><label>Branch of Service</label>
-          <select id="mem_branch">
-            <option value="">Select...</option>
-            <option>Army</option><option>Navy</option><option>Air Force</option>
-            <option>Marines</option><option>Coast Guard</option><option>Space Force</option>
-          </select>
+          <select id="mem_branch"><option value="">Select...</option><option>Army</option><option>Navy</option><option>Air Force</option><option>Marines</option><option>Coast Guard</option><option>Space Force</option></select>
         </div>
-        <div class="form-group"><label>Membership Status</label>
-          <select id="mem_status">
-            <option value="pending">Pending</option>
-            <option value="active">Active</option>
-            <option value="inactive">Inactive</option>
-            <option value="expired">Expired</option>
-          </select>
-        </div>
+        <div class="form-group"><label>Years of Service</label><input type="number" id="mem_years"/></div>
       </div>
       <div class="form-row">
-        <div class="form-group"><label>Role</label>
-          <select id="mem_role">
-            <option value="member">Member</option>
-            <option value="officer">Officer</option>
-            <option value="admin">Admin</option>
-          </select>
+        <div class="form-group"><label>Membership Status</label>
+          <select id="mem_status"><option value="pending">Pending</option><option value="active">Active</option><option value="inactive">Inactive</option><option value="expired">Expired</option></select>
         </div>
-        <div class="form-group"><label>Years of Service</label><input type="number" id="mem_years" /></div>
+        <div class="form-group"><label>Role</label>
+          <select id="mem_role"><option value="member">Member</option><option value="officer">Officer</option><option value="admin">Admin</option><option value="volunteer">Volunteer</option></select>
+        </div>
       </div>
       <div class="form-group"><label>Notes</label><textarea id="mem_notes"></textarea></div>
-      <div id="mem-error" style="color:#B22234;font-size:0.85rem;margin-bottom:0.5rem;display:none;"></div>
-      <button class="btn-primary" style="width:100%;" onclick="saveMember()">Save Member</button>
+      <div id="mem-err" style="color:#B22234;font-size:.83rem;margin-bottom:.5rem;display:none"></div>
+      <button class="btn-primary" style="width:100%" onclick="saveMember()">Save Member</button>
     </div>
   </div>
 
   <!-- EVENT MODAL -->
   <div class="modal-overlay" id="eventModal">
-    <div class="modal">
-      <button class="modal-close" onclick="closeModal('eventModal')">✕</button>
-      <h3 id="eventModalTitle">Add Event</h3>
-      <input type="hidden" id="ev_edit_id" />
-      <div class="form-group"><label>Title *</label><input type="text" id="ev_title" /></div>
+    <div class="modal"><button class="modal-close" onclick="closeModal('eventModal')">✕</button>
+      <h3 id="evTitle">Add Event</h3><input type="hidden" id="ev_id"/>
+      <div class="form-group"><label>Title *</label><input type="text" id="ev_title"/></div>
       <div class="form-row">
-        <div class="form-group"><label>Date *</label><input type="date" id="ev_date" /></div>
-        <div class="form-group"><label>Event Type</label>
-          <select id="ev_type">
-            <option>Social</option><option>Meeting</option><option>Fundraiser</option>
-            <option>Community</option><option>Ceremony</option><option>Bingo</option><option>Other</option>
-          </select>
+        <div class="form-group"><label>Date *</label><input type="date" id="ev_date"/></div>
+        <div class="form-group"><label>Type</label>
+          <select id="ev_type"><option>Social</option><option>Meeting</option><option>Fundraiser</option><option>Community</option><option>Ceremony</option><option>Bingo</option><option>Other</option></select>
         </div>
       </div>
       <div class="form-row">
-        <div class="form-group"><label>Start Time</label><input type="time" id="ev_start" /></div>
-        <div class="form-group"><label>End Time</label><input type="time" id="ev_end" /></div>
+        <div class="form-group"><label>Start Time</label><input type="time" id="ev_start"/></div>
+        <div class="form-group"><label>End Time</label><input type="time" id="ev_end"/></div>
       </div>
       <div class="form-group"><label>Description</label><textarea id="ev_desc"></textarea></div>
-      <div class="form-group"><label>Location</label><input type="text" id="ev_location" value="3290 Grosenbacher Rd, San Antonio, TX 78245" /></div>
-      <div id="ev-error" style="color:#B22234;font-size:0.85rem;margin-bottom:0.5rem;display:none;"></div>
-      <button class="btn-primary" style="width:100%;" onclick="saveEvent()">Save Event</button>
+      <div class="form-group"><label>Location</label><input type="text" id="ev_loc" value="3290 Grosenbacher Rd, San Antonio, TX 78245"/></div>
+      <div class="form-group"><label>Image URL</label><input type="url" id="ev_img"/></div>
+      <div id="ev-err" style="color:#B22234;font-size:.83rem;margin-bottom:.5rem;display:none"></div>
+      <button class="btn-primary" style="width:100%" onclick="saveEvent()">Save Event</button>
     </div>
   </div>
 
   <!-- OFFICER MODAL -->
   <div class="modal-overlay" id="officerModal">
-    <div class="modal">
-      <button class="modal-close" onclick="closeModal('officerModal')">✕</button>
-      <h3 id="officerModalTitle">Add Officer</h3>
-      <input type="hidden" id="off_edit_id" />
+    <div class="modal"><button class="modal-close" onclick="closeModal('officerModal')">✕</button>
+      <h3 id="offTitle">Add Officer</h3><input type="hidden" id="off_id"/>
       <div class="form-row">
-        <div class="form-group"><label>Name *</label><input type="text" id="off_name" /></div>
-        <div class="form-group"><label>Title *</label><input type="text" id="off_title" /></div>
+        <div class="form-group"><label>Name *</label><input type="text" id="off_name"/></div>
+        <div class="form-group"><label>Title *</label><input type="text" id="off_title"/></div>
       </div>
       <div class="form-row">
-        <div class="form-group"><label>Email</label><input type="email" id="off_email" /></div>
-        <div class="form-group"><label>Phone</label><input type="text" id="off_phone" /></div>
+        <div class="form-group"><label>Email</label><input type="email" id="off_email"/></div>
+        <div class="form-group"><label>Phone</label><input type="text" id="off_phone"/></div>
       </div>
-      <div class="form-group"><label>Photo URL</label><input type="url" id="off_photo" /></div>
+      <div class="form-group"><label>Photo URL</label><input type="url" id="off_photo"/></div>
       <div class="form-group"><label>Bio</label><textarea id="off_bio"></textarea></div>
-      <div class="form-group"><label>Sort Order</label><input type="number" id="off_sort" value="0" /></div>
-      <div id="off-error" style="color:#B22234;font-size:0.85rem;margin-bottom:0.5rem;display:none;"></div>
-      <button class="btn-primary" style="width:100%;" onclick="saveOfficer()">Save Officer</button>
+      <div class="form-group"><label>Sort Order</label><input type="number" id="off_sort" value="0"/></div>
+      <div id="off-err" style="color:#B22234;font-size:.83rem;margin-bottom:.5rem;display:none"></div>
+      <button class="btn-primary" style="width:100%" onclick="saveOfficer()">Save Officer</button>
     </div>
   </div>
 
   <!-- GALLERY MODAL -->
   <div class="modal-overlay" id="galleryModal">
-    <div class="modal">
-      <button class="modal-close" onclick="closeModal('galleryModal')">✕</button>
+    <div class="modal"><button class="modal-close" onclick="closeModal('galleryModal')">✕</button>
       <h3>Add Photo</h3>
-      <div class="form-group"><label>Image URL</label><input type="url" id="gal_url" placeholder="https://..." /></div>
-      <div class="form-group"><label>Caption</label><input type="text" id="gal_caption" /></div>
+      <div class="form-group"><label>Upload Image File</label>
+        <div class="file-upload-row">
+          <input type="file" id="gal_file" accept="image/*" onchange="previewFile('gal_file','gal_preview')"/>
+        </div>
+        <img id="gal_preview" class="upload-preview"/>
+      </div>
+      <div class="form-group"><label>— or — Image URL</label><input type="url" id="gal_url" placeholder="https://..."/></div>
+      <div class="form-group"><label>Caption</label><input type="text" id="gal_caption"/></div>
       <div class="form-group"><label>Category</label>
-        <select id="gal_category">
-          <option>General</option><option>Events</option><option>Members</option>
-          <option>Community</option><option>Ceremonies</option><option>Facilities</option>
-        </select>
+        <select id="gal_cat"><option>General</option><option>Events</option><option>Members</option><option>Community</option><option>Ceremonies</option><option>Facilities</option></select>
       </div>
-      <div id="gal-error" style="color:#B22234;font-size:0.85rem;margin-bottom:0.5rem;display:none;"></div>
-      <button class="btn-primary" style="width:100%;" onclick="saveGallery()">Add Photo</button>
-    </div>
-  </div>
-
-  <!-- BINGO MODAL -->
-  <div class="modal-overlay" id="bingoModal">
-    <div class="modal">
-      <button class="modal-close" onclick="closeModal('bingoModal')">✕</button>
-      <h3 id="bingoModalTitle">New Bingo Event</h3>
-      <input type="hidden" id="bg_edit_id" />
-      <div class="form-group"><label>Event Name *</label><input type="text" id="bg_name" /></div>
-      <div class="form-row">
-        <div class="form-group"><label>Date *</label><input type="date" id="bg_date" /></div>
-        <div class="form-group"><label>Start Time</label><input type="time" id="bg_time" /></div>
-      </div>
-      <div class="form-row">
-        <div class="form-group"><label>Max Players</label><input type="number" id="bg_max" value="100" /></div>
-        <div class="form-group"><label>Entry Fee ($)</label><input type="number" id="bg_fee" value="5.00" step="0.01" /></div>
-      </div>
-      <div class="form-group"><label>Status</label>
-        <select id="bg_status">
-          <option value="scheduled">Scheduled</option>
-          <option value="active">Active</option>
-          <option value="completed">Completed</option>
-          <option value="cancelled">Cancelled</option>
-        </select>
-      </div>
-      <div class="form-group"><label>Notes</label><textarea id="bg_notes"></textarea></div>
-      <div id="bg-error" style="color:#B22234;font-size:0.85rem;margin-bottom:0.5rem;display:none;"></div>
-      <button class="btn-primary" style="width:100%;" onclick="saveBingo()">Save Bingo Event</button>
-    </div>
-  </div>
-
-  <!-- STAFF MODAL -->
-  <div class="modal-overlay" id="staffModal">
-    <div class="modal">
-      <button class="modal-close" onclick="closeModal('staffModal')">✕</button>
-      <h3 id="staffModalTitle">Add Staff</h3>
-      <input type="hidden" id="st_edit_id" />
-      <div class="form-row">
-        <div class="form-group"><label>Full Name *</label><input type="text" id="st_name" /></div>
-        <div class="form-group"><label>Role *</label><input type="text" id="st_role" /></div>
-      </div>
-      <div class="form-row">
-        <div class="form-group"><label>Staff Type</label>
-          <select id="st_type">
-            <option value="employee">Employee</option>
-            <option value="volunteer">Volunteer</option>
-            <option value="contractor">Contractor</option>
-          </select>
-        </div>
-        <div class="form-group"><label>Department</label><input type="text" id="st_dept" /></div>
-      </div>
-      <div class="form-row">
-        <div class="form-group"><label>Email</label><input type="email" id="st_email" /></div>
-        <div class="form-group"><label>Phone</label><input type="text" id="st_phone" /></div>
-      </div>
-      <div class="form-group"><label>Start Date</label><input type="date" id="st_start" /></div>
-      <div class="form-group"><label>Bio / Notes</label><textarea id="st_bio"></textarea></div>
-      <div id="st-error" style="color:#B22234;font-size:0.85rem;margin-bottom:0.5rem;display:none;"></div>
-      <button class="btn-primary" style="width:100%;" onclick="saveStaff()">Save Staff</button>
-    </div>
-  </div>
-
-  <!-- INVENTORY MODAL -->
-  <div class="modal-overlay" id="inventoryModal">
-    <div class="modal">
-      <button class="modal-close" onclick="closeModal('inventoryModal')">✕</button>
-      <h3 id="invModalTitle">Add Inventory Item</h3>
-      <input type="hidden" id="inv_edit_id" />
-      <div class="form-row">
-        <div class="form-group"><label>Item Name *</label><input type="text" id="inv_name" /></div>
-        <div class="form-group"><label>Category</label>
-          <select id="inv_cat">
-            <option>General</option><option>Bar</option><option>Kitchen</option>
-            <option>Cleaning</option><option>Office</option><option>Equipment</option><option>Safety</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group"><label>Quantity</label><input type="number" id="inv_qty" value="0" /></div>
-        <div class="form-group"><label>Unit</label><input type="text" id="inv_unit" value="each" /></div>
-      </div>
-      <div class="form-row">
-        <div class="form-group"><label>Min Qty</label><input type="number" id="inv_min" value="0" /></div>
-        <div class="form-group"><label>Cost/Unit ($)</label><input type="number" id="inv_cost" step="0.01" /></div>
-      </div>
-      <div class="form-row">
-        <div class="form-group"><label>Location</label><input type="text" id="inv_loc" /></div>
-        <div class="form-group"><label>Supplier</label><input type="text" id="inv_supplier" /></div>
-      </div>
-      <div id="inv-error" style="color:#B22234;font-size:0.85rem;margin-bottom:0.5rem;display:none;"></div>
-      <button class="btn-primary" style="width:100%;" onclick="saveInventory()">Save Item</button>
-    </div>
-  </div>
-
-  <!-- MAINTENANCE MODAL -->
-  <div class="modal-overlay" id="maintenanceModal">
-    <div class="modal">
-      <button class="modal-close" onclick="closeModal('maintenanceModal')">✕</button>
-      <h3 id="mModalTitle">Add Maintenance Record</h3>
-      <input type="hidden" id="m_edit_id" />
-      <div class="form-group"><label>Title *</label><input type="text" id="m_title" /></div>
-      <div class="form-group"><label>Description</label><textarea id="m_description"></textarea></div>
-      <div class="form-row">
-        <div class="form-group"><label>Priority</label>
-          <select id="m_priority"><option>Medium</option><option>Low</option><option>High</option><option>Urgent</option></select>
-        </div>
-        <div class="form-group"><label>Status</label>
-          <select id="m_status">
-            <option value="Open">Open</option><option value="In Progress">In Progress</option>
-            <option value="Completed">Completed</option><option value="Cancelled">Cancelled</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group"><label>Location</label><input type="text" id="m_location" /></div>
-        <div class="form-group"><label>Due Date</label><input type="date" id="m_due_date" /></div>
-      </div>
-      <div id="m-modal-error" style="color:#B22234;font-size:0.85rem;margin-bottom:0.5rem;display:none;"></div>
-      <button class="btn-primary" style="width:100%;" onclick="saveMaintenance()">Save Record</button>
+      <div id="gal-err" style="color:#B22234;font-size:.83rem;margin-bottom:.5rem;display:none"></div>
+      <button class="btn-primary" style="width:100%" onclick="saveGallery()">Add Photo</button>
     </div>
   </div>
 
   <!-- ANNOUNCEMENT MODAL -->
   <div class="modal-overlay" id="announcementModal">
-    <div class="modal">
-      <button class="modal-close" onclick="closeModal('announcementModal')">✕</button>
-      <h3 id="annModalTitle">Add Announcement</h3>
-      <input type="hidden" id="ann_edit_id" />
-      <div class="form-group"><label>Title *</label><input type="text" id="ann_title" /></div>
+    <div class="modal"><button class="modal-close" onclick="closeModal('announcementModal')">✕</button>
+      <h3 id="annTitle">Add Announcement</h3><input type="hidden" id="ann_id"/>
+      <div class="form-group"><label>Title *</label><input type="text" id="ann_title"/></div>
       <div class="form-group"><label>Body</label><textarea id="ann_body" rows="4"></textarea></div>
       <div class="form-row">
         <div class="form-group"><label>Category</label>
-          <select id="ann_cat">
-            <option>General</option><option>Events</option><option>Members</option>
-            <option>Urgent</option><option>Community</option>
-          </select>
+          <select id="ann_cat"><option>General</option><option>Events</option><option>Members</option><option>Urgent</option><option>Community</option></select>
         </div>
         <div class="form-group"><label>Active</label>
           <select id="ann_active"><option value="true">Yes</option><option value="false">No</option></select>
         </div>
       </div>
-      <div id="ann-error" style="color:#B22234;font-size:0.85rem;margin-bottom:0.5rem;display:none;"></div>
-      <button class="btn-primary" style="width:100%;" onclick="saveAnnouncement()">Save Announcement</button>
+      <div class="form-group"><label>Expires On (optional)</label><input type="date" id="ann_expires"/></div>
+      <div id="ann-err" style="color:#B22234;font-size:.83rem;margin-bottom:.5rem;display:none"></div>
+      <button class="btn-primary" style="width:100%" onclick="saveAnnouncement()">Save</button>
+    </div>
+  </div>
+
+  <!-- BINGO MODAL -->
+  <div class="modal-overlay" id="bingoModal">
+    <div class="modal"><button class="modal-close" onclick="closeModal('bingoModal')">✕</button>
+      <h3 id="bgTitle">New Bingo Event</h3><input type="hidden" id="bg_id"/>
+      <div class="form-group"><label>Event Name *</label><input type="text" id="bg_name"/></div>
+      <div class="form-row">
+        <div class="form-group"><label>Date *</label><input type="date" id="bg_date"/></div>
+        <div class="form-group"><label>Start Time</label><input type="time" id="bg_time"/></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Max Players</label><input type="number" id="bg_max" value="100"/></div>
+        <div class="form-group"><label>Entry Fee ($)</label><input type="number" id="bg_fee" value="5.00" step="0.01"/></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Prize Pool ($)</label><input type="number" id="bg_prize" step="0.01"/></div>
+        <div class="form-group"><label>Status</label>
+          <select id="bg_status"><option value="scheduled">Scheduled</option><option value="active">Active</option><option value="completed">Completed</option><option value="cancelled">Cancelled</option></select>
+        </div>
+      </div>
+      <div class="form-group"><label>Notes</label><textarea id="bg_notes"></textarea></div>
+      <div id="bg-err" style="color:#B22234;font-size:.83rem;margin-bottom:.5rem;display:none"></div>
+      <button class="btn-primary" style="width:100%" onclick="saveBingo()">Save</button>
+    </div>
+  </div>
+
+  <!-- STAFF MODAL -->
+  <div class="modal-overlay" id="staffModal">
+    <div class="modal"><button class="modal-close" onclick="closeModal('staffModal')">✕</button>
+      <h3 id="stTitle">Add Staff</h3><input type="hidden" id="st_id"/>
+      <div class="form-row">
+        <div class="form-group"><label>Full Name *</label><input type="text" id="st_name"/></div>
+        <div class="form-group"><label>Role *</label><input type="text" id="st_role"/></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Staff Type</label>
+          <select id="st_type"><option value="employee">Employee</option><option value="volunteer">Volunteer</option><option value="bartender">Bartender</option><option value="manager">Manager</option><option value="maintenance">Maintenance</option><option value="contractor">Contractor</option></select>
+        </div>
+        <div class="form-group"><label>Department</label><input type="text" id="st_dept"/></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Email</label><input type="email" id="st_email"/></div>
+        <div class="form-group"><label>Phone</label><input type="text" id="st_phone"/></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Start Date</label><input type="date" id="st_start"/></div>
+        <div class="form-group"><label>Hourly Rate ($)</label><input type="number" id="st_rate" step="0.01"/></div>
+      </div>
+      <div class="form-group"><label>Bio / Notes</label><textarea id="st_bio"></textarea></div>
+      <div id="st-err" style="color:#B22234;font-size:.83rem;margin-bottom:.5rem;display:none"></div>
+      <button class="btn-primary" style="width:100%" onclick="saveStaff()">Save</button>
+    </div>
+  </div>
+
+  <!-- SCHEDULE MODAL -->
+  <div class="modal-overlay" id="scheduleModal">
+    <div class="modal"><button class="modal-close" onclick="closeModal('scheduleModal')">✕</button>
+      <h3 id="schTitle">Add Shift</h3><input type="hidden" id="sch_id"/>
+      <div class="form-group"><label>Staff Member</label>
+        <select id="sch_staff"><option value="">Select staff...</option></select>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Shift Date *</label><input type="date" id="sch_date"/></div>
+        <div class="form-group"><label>Role</label>
+          <select id="sch_role"><option>Bartender</option><option>Manager</option><option>Server</option><option>Security</option><option>Setup</option><option>Cleanup</option></select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Start Time</label><input type="time" id="sch_start"/></div>
+        <div class="form-group"><label>End Time</label><input type="time" id="sch_end"/></div>
+      </div>
+      <div class="form-group"><label>Status</label>
+        <select id="sch_status"><option value="scheduled">Scheduled</option><option value="confirmed">Confirmed</option><option value="completed">Completed</option><option value="cancelled">Cancelled</option><option value="no_show">No Show</option></select>
+      </div>
+      <div class="form-group"><label>Notes</label><textarea id="sch_notes"></textarea></div>
+      <div id="sch-err" style="color:#B22234;font-size:.83rem;margin-bottom:.5rem;display:none"></div>
+      <button class="btn-primary" style="width:100%" onclick="saveSchedule()">Save Shift</button>
+    </div>
+  </div>
+
+  <!-- INVENTORY MODAL -->
+  <div class="modal-overlay" id="inventoryModal">
+    <div class="modal"><button class="modal-close" onclick="closeModal('inventoryModal')">✕</button>
+      <h3 id="invTitle">Add Item</h3><input type="hidden" id="inv_id"/>
+      <div class="form-row">
+        <div class="form-group"><label>Item Name *</label><input type="text" id="inv_name"/></div>
+        <div class="form-group"><label>Category</label>
+          <select id="inv_cat"><option>General</option><option>Bar</option><option>Kitchen</option><option>Cleaning</option><option>Office</option><option>Equipment</option><option>Safety</option></select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Quantity</label><input type="number" id="inv_qty" value="0"/></div>
+        <div class="form-group"><label>Unit</label><input type="text" id="inv_unit" value="each"/></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Min Qty</label><input type="number" id="inv_min" value="0"/></div>
+        <div class="form-group"><label>Cost/Unit ($)</label><input type="number" id="inv_cost" step="0.01"/></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Location</label><input type="text" id="inv_loc"/></div>
+        <div class="form-group"><label>Supplier</label><input type="text" id="inv_sup"/></div>
+      </div>
+      <div id="inv-err" style="color:#B22234;font-size:.83rem;margin-bottom:.5rem;display:none"></div>
+      <button class="btn-primary" style="width:100%" onclick="saveInventory()">Save</button>
+    </div>
+  </div>
+
+  <!-- MAINTENANCE MODAL -->
+  <div class="modal-overlay" id="maintenanceModal">
+    <div class="modal"><button class="modal-close" onclick="closeModal('maintenanceModal')">✕</button>
+      <h3 id="mTitle">Add Maintenance Record</h3><input type="hidden" id="m_id"/>
+      <div class="form-group"><label>Title *</label><input type="text" id="m_title"/></div>
+      <div class="form-group"><label>Description</label><textarea id="m_desc"></textarea></div>
+      <div class="form-row">
+        <div class="form-group"><label>Priority</label>
+          <select id="m_priority"><option>Medium</option><option>Low</option><option>High</option><option>Urgent</option></select>
+        </div>
+        <div class="form-group"><label>Status</label>
+          <select id="m_status"><option value="Open">Open</option><option value="In Progress">In Progress</option><option value="Completed">Completed</option><option value="Cancelled">Cancelled</option><option value="On Hold">On Hold</option></select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Location</label><input type="text" id="m_loc"/></div>
+        <div class="form-group"><label>Assigned To</label><input type="text" id="m_assigned"/></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Due Date</label><input type="date" id="m_due"/></div>
+        <div class="form-group"><label>Est. Cost ($)</label><input type="number" id="m_cost" step="0.01"/></div>
+      </div>
+      <div id="m-err" style="color:#B22234;font-size:.83rem;margin-bottom:.5rem;display:none"></div>
+      <button class="btn-primary" style="width:100%" onclick="saveMaintenance()">Save</button>
+    </div>
+  </div>
+
+  <!-- DONATION MODAL -->
+  <div class="modal-overlay" id="donationModal">
+    <div class="modal"><button class="modal-close" onclick="closeModal('donationModal')">✕</button>
+      <h3 id="donTitle">Record Donation</h3><input type="hidden" id="don_id"/>
+      <div class="form-row">
+        <div class="form-group"><label>Donor Name</label><input type="text" id="don_name"/></div>
+        <div class="form-group"><label>Email</label><input type="email" id="don_email"/></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Amount ($) *</label><input type="number" id="don_amount" step="0.01"/></div>
+        <div class="form-group"><label>Payment Method</label>
+          <select id="don_method"><option value="cash">Cash</option><option value="check">Check</option><option value="card">Card</option><option value="online">Online</option><option value="other">Other</option></select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Purpose</label><input type="text" id="don_purpose"/></div>
+        <div class="form-group"><label>Status</label>
+          <select id="don_status"><option value="completed">Completed</option><option value="pending">Pending</option><option value="refunded">Refunded</option></select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Anonymous?</label><select id="don_anon"><option value="false">No</option><option value="true">Yes</option></select></div>
+        <div class="form-group"><label>Receipt #</label><input type="text" id="don_receipt"/></div>
+      </div>
+      <div class="form-group"><label>Notes</label><textarea id="don_notes"></textarea></div>
+      <div id="don-err" style="color:#B22234;font-size:.83rem;margin-bottom:.5rem;display:none"></div>
+      <button class="btn-primary" style="width:100%" onclick="saveDonation()">Save Donation</button>
+    </div>
+  </div>
+
+  <!-- DOCUMENT MODAL -->
+  <div class="modal-overlay" id="documentModal">
+    <div class="modal"><button class="modal-close" onclick="closeModal('documentModal')">✕</button>
+      <h3 id="docTitle">Upload Document</h3><input type="hidden" id="doc_id"/>
+      <div class="form-group"><label>Title *</label><input type="text" id="doc_title"/></div>
+      <div class="form-row">
+        <div class="form-group"><label>Document Type</label>
+          <select id="doc_type"><option>General</option><option>Contract</option><option>ID</option><option>Insurance</option><option>Policy</option><option>Report</option><option>Other</option></select>
+        </div>
+        <div class="form-group"><label>Linked Staff</label>
+          <select id="doc_staff"><option value="">None</option></select>
+        </div>
+      </div>
+      <div class="form-group"><label>Upload File</label>
+        <input type="file" id="doc_file" style="background:#060e1a;border:1px dashed #1a2a4a;color:#aaa;padding:.5rem;border-radius:6px;width:100%;font-size:.8rem"/>
+      </div>
+      <div class="form-group"><label>— or — File URL</label><input type="url" id="doc_url" placeholder="https://..."/></div>
+      <div class="form-row">
+        <div class="form-group"><label>Expires On</label><input type="date" id="doc_expires"/></div>
+      </div>
+      <div class="form-group"><label>Notes</label><textarea id="doc_notes"></textarea></div>
+      <div id="doc-err" style="color:#B22234;font-size:.83rem;margin-bottom:.5rem;display:none"></div>
+      <button class="btn-primary" style="width:100%" onclick="saveDocument()">Save Document</button>
+    </div>
+  </div>
+
+  <!-- TRAINING MODAL -->
+  <div class="modal-overlay" id="trainingModal">
+    <div class="modal"><button class="modal-close" onclick="closeModal('trainingModal')">✕</button>
+      <h3 id="trTitle">Add Training Record</h3><input type="hidden" id="tr_id"/>
+      <div class="form-row">
+        <div class="form-group"><label>Course Name *</label><input type="text" id="tr_course"/></div>
+        <div class="form-group"><label>Staff Member</label>
+          <select id="tr_staff"><option value="">None / General</option></select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Provider</label><input type="text" id="tr_provider"/></div>
+        <div class="form-group"><label>Status</label>
+          <select id="tr_status"><option value="active">Active</option><option value="in_progress">In Progress</option><option value="pending">Pending</option><option value="expired">Expired</option></select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Completion Date</label><input type="date" id="tr_complete"/></div>
+        <div class="form-group"><label>Expiration Date</label><input type="date" id="tr_expire"/></div>
+      </div>
+      <div class="form-group"><label>Certificate URL</label><input type="url" id="tr_cert"/></div>
+      <div class="form-group"><label>Notes</label><textarea id="tr_notes"></textarea></div>
+      <div id="tr-err" style="color:#B22234;font-size:.83rem;margin-bottom:.5rem;display:none"></div>
+      <button class="btn-primary" style="width:100%" onclick="saveTraining()">Save Training</button>
     </div>
   </div>
 
   <footer class="footer">
     <div class="footer-inner">
-      <p><strong>American Legion Post 300</strong> — William J. Bordelon Post | Admin Panel</p>
+      <p><strong>American Legion Post 300</strong> — William J. Bordelon Post | Admin</p>
     </div>
   </footer>
 
   <script src="../js/supabase.js"></script>
   <script>
-  // ═══════════════════════════════════════════════
-  //  AUTH
-  // ═══════════════════════════════════════════════
+  // ================================================================
+  // AUTH
+  // ================================================================
   const PASS_KEY = 'al300_admin_pass';
-  function getStoredPass() { return localStorage.getItem(PASS_KEY) || 'AML579PostCommander!'; }
-  function checkLogin() {
+  function getStoredPass(){ return localStorage.getItem(PASS_KEY) || 'Post300Admin!'; }
+  function checkLogin(){
     const p = document.getElementById('adminPass').value;
     const err = document.getElementById('loginError');
-    if (p === getStoredPass()) {
-      document.getElementById('adminLogin').style.display = 'none';
-      document.getElementById('adminContent').style.display = 'block';
-      loadAll();
-    } else {
-      err.textContent = 'Incorrect password.';
-      err.style.display = 'block';
-    }
+    if(p === getStoredPass()){
+      document.getElementById('adminLogin').style.display='none';
+      document.getElementById('adminContent').style.display='block';
+      initAdmin();
+    } else { err.textContent='Incorrect password.'; err.style.display='block'; }
   }
-  function logout() {
-    document.getElementById('adminContent').style.display = 'none';
-    document.getElementById('adminLogin').style.display = 'block';
-    document.getElementById('adminPass').value = '';
+  function logout(){
+    document.getElementById('adminContent').style.display='none';
+    document.getElementById('adminLogin').style.display='block';
+    document.getElementById('adminPass').value='';
   }
-  function changePassword() {
-    const curr = document.getElementById('curr_pass').value;
-    const nw = document.getElementById('new_pass').value;
-    const cf = document.getElementById('confirm_pass').value;
-    const err = document.getElementById('pass-error');
-    const ok = document.getElementById('pass-success');
-    err.style.display = 'none'; ok.style.display = 'none';
-    if (curr !== getStoredPass()) { err.textContent = 'Current password incorrect.'; err.style.display = 'block'; return; }
-    if (nw.length < 6) { err.textContent = 'New password must be 6+ characters.'; err.style.display = 'block'; return; }
-    if (nw !== cf) { err.textContent = 'Passwords do not match.'; err.style.display = 'block'; return; }
-    localStorage.setItem(PASS_KEY, nw);
-    ok.style.display = 'block';
-    document.getElementById('curr_pass').value = '';
-    document.getElementById('new_pass').value = '';
-    document.getElementById('confirm_pass').value = '';
+  function changePassword(){
+    const curr=document.getElementById('curr_pass').value;
+    const nw=document.getElementById('new_pass').value;
+    const cf=document.getElementById('confirm_pass').value;
+    const err=document.getElementById('pass-error');
+    const ok=document.getElementById('pass-success');
+    err.style.display='none'; ok.style.display='none';
+    if(curr!==getStoredPass()){err.textContent='Current password incorrect.';err.style.display='block';return;}
+    if(nw.length<6){err.textContent='New password must be 6+ characters.';err.style.display='block';return;}
+    if(nw!==cf){err.textContent='Passwords do not match.';err.style.display='block';return;}
+    localStorage.setItem(PASS_KEY,nw);
+    ok.style.display='block';
+    ['curr_pass','new_pass','confirm_pass'].forEach(id=>document.getElementById(id).value='');
   }
 
-  // ═══════════════════════════════════════════════
-  //  TABS
-  // ═══════════════════════════════════════════════
-  function switchTab(name, btn) {
-    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.getElementById('tab-' + name).classList.add('active');
+  // ================================================================
+  // TABS
+  // ================================================================
+  function switchTab(name,btn){
+    document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    document.getElementById('tab-'+name).classList.add('active');
     btn.classList.add('active');
-    if (name === 'rentals') loadRentals();
-    if (name === 'members') loadMembers();
-    if (name === 'events') loadEvents();
-    if (name === 'officers') loadOfficers();
-    if (name === 'gallery') loadGallery();
-    if (name === 'bingo') loadBingo();
-    if (name === 'staff') loadStaff();
-    if (name === 'inventory') loadInventory();
-    if (name === 'maintenance') loadMaintenance();
-    if (name === 'announcements') loadAnnouncements();
+    const loaders={
+      home:loadHomeContent, rentals:loadRentals, members:loadMembers,
+      events:loadEvents, officers:loadOfficers, gallery:loadGallery,
+      announcements:loadAnnouncements, bingo:loadBingo, staff:loadStaff,
+      schedule:loadSchedule, inventory:loadInventory, maintenance:loadMaintenance,
+      donations:loadDonations, documents:loadDocuments, training:loadTraining
+    };
+    if(loaders[name]) loaders[name]();
   }
 
-  // ═══════════════════════════════════════════════
-  //  LOAD ALL (stats + default tab)
-  // ═══════════════════════════════════════════════
-  let dbData = {};
-  async function loadAll() {
+  // ================================================================
+  // INIT
+  // ================================================================
+  let dbData={};
+  async function initAdmin(){
+    await waitReady();
+    loadPlanBanner();
     await Promise.all([
-      loadRentals(), loadMembers(), loadEvents(), loadOfficers(),
-      loadBingo(), loadStaff(), loadInventory(), loadMaintenance(), loadAnnouncements()
+      loadRentals(),loadMembers(),loadEvents(),loadOfficers(),
+      loadBingo(),loadStaff(),loadInventory(),loadMaintenance(),
+      loadAnnouncements(),loadDonations()
     ]);
     loadStats();
+    loadHomeContent();
+    populateStaffDropdowns();
   }
 
-  function loadStats() {
-    const stats = [
-      { label: 'Members', val: (dbData.members||[]).length },
-      { label: 'Events', val: (dbData.events||[]).length },
-      { label: 'Rentals', val: (dbData.rentals||[]).length },
-      { label: 'Pending Rentals', val: (dbData.rentals||[]).filter(r=>r.status==='pending').length },
-      { label: 'Open Tickets', val: (dbData.maintenance||[]).filter(m=>m.status==='Open'||m.status==='In Progress').length },
-      { label: 'Bingo Events', val: (dbData.bingo||[]).length },
-      { label: 'Staff', val: (dbData.staff||[]).filter(s=>s.is_active).length },
-      { label: 'Low Stock', val: (dbData.inventory||[]).filter(i=>i.quantity<=i.min_quantity).length },
+  function waitReady(){
+    return new Promise(res=>{
+      if(window.POST_ID) return res();
+      document.addEventListener('supabase:ready',res,{once:true});
+    });
+  }
+
+  function loadPlanBanner(){
+    const plan = window.POST_PLAN;
+    const banner = document.getElementById('planBanner');
+    const badge  = document.getElementById('planBadge');
+    const info   = document.getElementById('planInfo');
+    if(!plan){ return; }
+    banner.style.display='flex';
+    badge.textContent = plan.plan_name?.toUpperCase() || 'STANDARD';
+    info.textContent  = `Status: ${plan.billing_status} | Max Staff: ${plan.max_staff} | Max Gallery: ${plan.max_gallery_photos} photos | Storage: ${plan.max_storage_mb}MB`;
+
+    // AI feature gate
+    if(!featureEnabled('ai_assistant_enabled')){
+      document.getElementById('aiPanel').innerHTML='<div class="module-disabled"><span>🤖</span>AI Assistant not enabled on your current plan.</div>';
+    }
+
+    // Plan details in settings
+    const keys=['plan_name','billing_status','max_admins','max_staff','max_gallery_photos','max_storage_mb','events_enabled','hall_rental_enabled','staff_enabled','inventory_enabled','bartender_schedule_enabled','bingo_enabled','donations_enabled','ai_assistant_enabled','documents_enabled','training_enabled'];
+    document.getElementById('planDetails').innerHTML = keys.map(k=>`<div><span style="color:#555;min-width:200px;display:inline-block">${k}:</span> <strong style="color:${plan[k]===false?'#e74c3c':'#27ae60'}">${plan[k]}</strong></div>`).join('');
+  }
+
+  function loadStats(){
+    const d=dbData;
+    const stats=[
+      {label:'Members',   val:(d.members||[]).length},
+      {label:'Events',    val:(d.events||[]).length},
+      {label:'Rentals',   val:(d.rentals||[]).length},
+      {label:'Pending Rentals', val:(d.rentals||[]).filter(r=>r.status==='pending').length},
+      {label:'Open Tickets', val:(d.maintenance||[]).filter(m=>m.status==='Open'||m.status==='In Progress').length},
+      {label:'Bingo Events', val:(d.bingo||[]).length},
+      {label:'Active Staff', val:(d.staff||[]).filter(s=>s.is_active).length},
+      {label:'Low Stock',  val:(d.inventory||[]).filter(i=>i.quantity<=i.min_quantity).length},
+      {label:'Donations',  val:fmtCurrency((d.donations||[]).filter(d=>d.status==='completed').reduce((s,d)=>s+Number(d.amount||0),0))},
     ];
-    document.getElementById('statsGrid').innerHTML = stats.map(s =>
-      `<div class="stat-card"><div class="stat-num">${s.val}</div><div class="stat-label">${s.label}</div></div>`
-    ).join('');
+    document.getElementById('statsGrid').innerHTML=stats.map(s=>`
+      <div class="stat-card"><div class="stat-num">${s.val}</div><div class="stat-label">${s.label}</div></div>`).join('');
   }
 
-  // ═══════════════════════════════════════════════
-  //  HELPERS
-  // ═══════════════════════════════════════════════
-  function toDate(v) { return (!v||v==='') ? null : v; }
-  function toNum(v) { return (v===''||v===null||v===undefined||isNaN(Number(v))) ? null : Number(v); }
-  function toStr(v) { return (!v||String(v).trim()==='') ? null : String(v).trim(); }
-  function badge(val, map) {
-    const cls = map[val] || 'badge-pending';
+  // ================================================================
+  // HELPERS
+  // ================================================================
+  function badge(val,map){
+    const cls=map[String(val).toLowerCase()]||map[val]||'badge-pending';
     return `<span class="badge ${cls}">${val||'—'}</span>`;
   }
-  const statusMap = { pending:'badge-pending', confirmed:'badge-confirmed', approved:'badge-approved', cancelled:'badge-cancelled', active:'badge-active', inactive:'badge-inactive', expired:'badge-expired', Open:'badge-open', 'In Progress':'badge-medium', Completed:'badge-completed' };
-  const priorityMap = { Low:'badge-low', Medium:'badge-medium', High:'badge-high', Urgent:'badge-urgent' };
-  function fmtDate(d) { if(!d)return'—'; return new Date(d+'T00:00:00').toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}); }
-  function openModal(id) { document.getElementById(id).classList.add('open'); }
-  function closeModal(id) { document.getElementById(id).classList.remove('open'); }
-  function showErr(id, msg) { const el=document.getElementById(id); el.textContent=msg; el.style.display='block'; }
-  function hideErr(id) { const el=document.getElementById(id); if(el)el.style.display='none'; }
-
-  // ═══════════════════════════════════════════════
-  //  SUPABASE WRAPPER
-  // ═══════════════════════════════════════════════
-  // POST-AWARE Supabase wrapper — all GETs filter by post_id, all POSTs include post_id
-  async function sb(table, method='GET', data=null, id=null, filter=null) {
-    await new Promise(res => {
-      if(window.supabase) return res();
-      document.addEventListener('supabase:ready', res, {once:true});
-    });
-    let q = window.supabase.from(table);
-    if (method==='GET') {
-      q = q.select('*').order('created_at', {ascending:false});
-      // Filter by post_id if available
-      if (window.POST_ID) q = q.eq('post_id', window.POST_ID);
-      if (filter) Object.entries(filter).forEach(([k,v]) => q = q.eq(k,v));
-    } else if (method==='POST') {
-      // Auto-inject post_id on every insert
-      if (window.POST_ID && data) data.post_id = window.POST_ID;
-      q = q.insert(data).select();
-    }
-    else if (method==='PATCH') { q = q.update(data).eq('id',id).select(); }
-    else if (method==='DELETE') { q = q.delete().eq('id',id); }
-    const { data: res, error } = await q;
-    if (error) throw error;
-    return res;
+  const sMap={pending:'badge-pending',approved:'badge-active',confirmed:'badge-active',active:'badge-active',completed:'badge-active',cancelled:'badge-cancelled',rejected:'badge-cancelled',inactive:'badge-inactive',expired:'badge-cancelled','open':'badge-open','in progress':'badge-in-progress','on hold':'badge-medium',scheduled:'badge-scheduled'};
+  const pMap={low:'badge-low',medium:'badge-medium',high:'badge-high',urgent:'badge-urgent'};
+  function fmtD(d){if(!d)return'—';return new Date(d+'T00:00:00').toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});}
+  function openModal(id){document.getElementById(id).classList.add('open');}
+  function closeModal(id){document.getElementById(id).classList.remove('open');}
+  function showErr(id,msg){const el=document.getElementById(id);if(el){el.textContent=msg;el.style.display='block';}}
+  function hideErr(id){const el=document.getElementById(id);if(el)el.style.display='none';}
+  function clearForm(...ids){ids.forEach(id=>{const el=document.getElementById(id);if(el)el.value=''});}
+  function previewFile(fileId,previewId){
+    const file=document.getElementById(fileId).files[0];
+    if(!file)return;
+    const prev=document.getElementById(previewId);
+    prev.src=URL.createObjectURL(file);
+    prev.style.display='block';
   }
 
-  // ═══════════════════════════════════════════════
-  //  RENTALS
-  // ═══════════════════════════════════════════════
-  async function loadRentals() {
-    try {
-      const data = await sb('hall_rental_inquiries');
-      dbData.rentals = data;
-      const el = document.getElementById('rentals-list');
-      if (!data.length) { el.innerHTML = '<p style="color:#888;">No rental inquiries yet.</p>'; return; }
-      el.innerHTML = data.map(r => `
+  async function populateStaffDropdowns(){
+    const data=dbData.staff||[];
+    const opts=data.map(s=>`<option value="${s.id}">${s.full_name} (${s.role||s.staff_type})</option>`).join('');
+    ['sch_staff','doc_staff','tr_staff'].forEach(id=>{
+      const el=document.getElementById(id);
+      if(el) el.innerHTML=(id==='sch_staff'?'<option value="">Select staff...</option>':'<option value="">None</option>')+opts;
+    });
+  }
+
+  // ================================================================
+  // HOME CONTENT CRUD
+  // ================================================================
+  async function loadHomeContent(){
+    try{
+      const {data,error}=await window._sbClient.from('home_content').select('*').eq('post_id',window.POST_ID).single();
+      if(error||!data)return;
+      document.getElementById('hc_title').value=data.hero_title||'';
+      document.getElementById('hc_subtitle').value=data.hero_subtitle||'';
+      document.getElementById('hc_mission').value=data.mission_text||'';
+      document.getElementById('hc_about').value=data.about_text||'';
+      document.getElementById('hc_hours').value=data.hours_text||'';
+      document.getElementById('hc_show_events').value=String(data.show_events);
+      document.getElementById('hc_show_rental').value=String(data.show_rental);
+      document.getElementById('hc_show_gallery').value=String(data.show_gallery);
+      document.getElementById('hc_show_bingo').value=String(data.show_bingo);
+    }catch(e){}
+  }
+  async function saveHomeContent(){
+    const msg=document.getElementById('hc-msg');
+    const payload={
+      post_id:window.POST_ID,
+      hero_title:toStr(document.getElementById('hc_title').value),
+      hero_subtitle:toStr(document.getElementById('hc_subtitle').value),
+      mission_text:toStr(document.getElementById('hc_mission').value),
+      about_text:toStr(document.getElementById('hc_about').value),
+      hours_text:toStr(document.getElementById('hc_hours').value),
+      show_events:toBool(document.getElementById('hc_show_events').value),
+      show_rental:toBool(document.getElementById('hc_show_rental').value),
+      show_gallery:toBool(document.getElementById('hc_show_gallery').value),
+      show_bingo:toBool(document.getElementById('hc_show_bingo').value),
+      updated_at:new Date().toISOString()
+    };
+    const {error}=await window._sbClient.from('home_content').upsert(payload,{onConflict:'post_id'});
+    msg.style.display='block';
+    if(error){msg.style.color='#B22234';msg.textContent='Error: '+error.message;}
+    else{msg.style.color='#27ae60';msg.textContent='✅ Home content saved!';}
+    setTimeout(()=>msg.style.display='none',3000);
+  }
+
+  // ================================================================
+  // RENTALS CRUD
+  // ================================================================
+  async function loadRentals(){
+    try{
+      const {data,error}=await pq('hall_rental_inquiries').order('created_at',{ascending:false});
+      if(error)throw error;
+      dbData.rentals=data;
+      const el=document.getElementById('rentals-list');
+      if(!data.length){el.innerHTML='<p style="color:#888">No rental inquiries yet.</p>';return;}
+      el.innerHTML=data.map(r=>`
         <div class="record-card">
           <div class="record-info">
             <strong>${r.contact_name||'Unknown'}</strong>
-            <p>📅 ${fmtDate(r.event_date)} &nbsp;|&nbsp; 🎉 ${r.event_type||'—'} &nbsp;|&nbsp; 👥 ${r.guest_count||'?'} guests</p>
-            <p>📧 ${r.contact_email||'—'} &nbsp;|&nbsp; 📞 ${r.contact_phone||'—'}</p>
-            ${r.notes ? `<p style="color:#aaa;font-size:0.8rem;">${r.notes}</p>` : ''}
-            ${r.admin_notes ? `<p style="color:#5b9bd5;font-size:0.8rem;">📝 ${r.admin_notes}</p>` : ''}
+            <p>📅 ${fmtD(r.event_date)} &nbsp;|&nbsp; 🎉 ${r.event_type||'—'} &nbsp;|&nbsp; 👥 ${r.guest_count||'?'} guests</p>
+            <p>✉️ ${r.contact_email||'—'} &nbsp;|&nbsp; 📞 ${r.contact_phone||'—'}</p>
+            ${r.admin_notes?`<p style="color:#5b9bd5;font-size:.78rem">📝 ${r.admin_notes}</p>`:''}
+            ${r.total_amount?`<p style="color:#27ae60;font-size:.78rem">💲 ${fmtCurrency(r.total_amount)} ${r.deposit_paid?'✅ Deposit Paid':''}</p>`:''}
           </div>
           <div class="record-actions">
-            ${badge(r.status, statusMap)}
-            <button class="btn-sm btn-edit" onclick="editRental('${r.id}','${r.status}','${(r.admin_notes||'').replace(/'/g,"\\'")}')">Edit</button>
-            <button class="btn-sm btn-delete" onclick="deleteRecord('hall_rental_inquiries','${r.id}',loadRentals)">Delete</button>
+            ${badge(r.status,sMap)}
+            <button class="btn-sm btn-edit" onclick="editRental(${JSON.stringify(r).replace(/"/g,'&quot;')})">Edit</button>
+            <button class="btn-sm btn-delete" onclick="delRecord('hall_rental_inquiries','${r.id}',loadRentals)">Delete</button>
           </div>
         </div>`).join('');
-    } catch(e) { document.getElementById('rentals-list').innerHTML = `<p style="color:#B22234;">Error: ${e.message}</p>`; }
+    }catch(e){document.getElementById('rentals-list').innerHTML=`<p style="color:#B22234">Error: ${e.message}</p>`;}
   }
-  function editRental(id, status, notes) {
-    document.getElementById('r_edit_id').value = id;
-    document.getElementById('r_status').value = status;
-    document.getElementById('r_notes').value = notes;
-    openModal('rentalModal');
+  function editRental(r){
+    document.getElementById('r_id').value=r.id;
+    document.getElementById('r_status').value=r.status||'pending';
+    document.getElementById('r_deposit').value=String(r.deposit_paid);
+    document.getElementById('r_amount').value=r.total_amount||'';
+    document.getElementById('r_notes').value=r.admin_notes||'';
+    hideErr('r-err'); openModal('rentalModal');
   }
-  async function saveRental() {
-    const id = document.getElementById('r_edit_id').value;
-    await sb('hall_rental_inquiries','PATCH',{ status: document.getElementById('r_status').value, admin_notes: toStr(document.getElementById('r_notes').value), updated_at: new Date().toISOString() }, id);
-    closeModal('rentalModal');
-    loadRentals();
-    loadStats();
+  async function saveRental(){
+    const id=document.getElementById('r_id').value;
+    try{
+      await pu('hall_rental_inquiries',id,{
+        status:document.getElementById('r_status').value,
+        deposit_paid:toBool(document.getElementById('r_deposit').value),
+        total_amount:toNum(document.getElementById('r_amount').value),
+        admin_notes:toStr(document.getElementById('r_notes').value)
+      });
+      closeModal('rentalModal'); loadRentals(); loadStats();
+    }catch(e){showErr('r-err',e.message);}
   }
 
-  // ═══════════════════════════════════════════════
-  //  MEMBERS
-  // ═══════════════════════════════════════════════
-  async function loadMembers() {
-    try {
-      const data = await sb('site_members');
-      dbData.members = data;
-      const el = document.getElementById('members-list');
-      if (!data.length) { el.innerHTML = '<p style="color:#888;">No members yet.</p>'; return; }
-      el.innerHTML = data.map(m => `
+  // ================================================================
+  // MEMBERS CRUD
+  // ================================================================
+  async function loadMembers(){
+    try{
+      const {data,error}=await pq('site_members').order('created_at',{ascending:false});
+      if(error)throw error;
+      dbData.members=data;
+      const el=document.getElementById('members-list');
+      if(!data.length){el.innerHTML='<p style="color:#888">No members yet.</p>';return;}
+      el.innerHTML=data.map(m=>`
         <div class="record-card">
           <div class="record-info">
             <strong>${m.full_name}</strong>
             <p>✉️ ${m.email||'—'} &nbsp;|&nbsp; 📞 ${m.phone||'—'} &nbsp;|&nbsp; ⚔️ ${m.branch_of_service||'—'}</p>
-            <p>🗓️ Joined: ${fmtDate(m.created_at?.split('T')[0])}</p>
+            <p>📅 Joined: ${fmtD(m.created_at?.split('T')[0])}</p>
           </div>
           <div class="record-actions">
-            ${badge(m.membership_status, statusMap)}
-            ${badge(m.role, {member:'badge-open',officer:'badge-confirmed',admin:'badge-high'})}
+            ${badge(m.membership_status,sMap)}
+            ${badge(m.role,{member:'badge-open',officer:'badge-active',admin:'badge-urgent',volunteer:'badge-scheduled'})}
             <button class="btn-sm btn-edit" onclick="editMember(${JSON.stringify(m).replace(/"/g,'&quot;')})">Edit</button>
-            <button class="btn-sm btn-delete" onclick="deleteRecord('site_members','${m.id}',loadMembers)">Delete</button>
+            <button class="btn-sm btn-delete" onclick="delRecord('site_members','${m.id}',loadMembers)">Delete</button>
           </div>
         </div>`).join('');
-    } catch(e) { document.getElementById('members-list').innerHTML = `<p style="color:#B22234;">Error: ${e.message}</p>`; }
+    }catch(e){document.getElementById('members-list').innerHTML=`<p style="color:#B22234">Error: ${e.message}</p>`;}
   }
-  function openMemberModal() {
-    document.getElementById('memberModalTitle').textContent = 'Add Member';
-    document.getElementById('mem_edit_id').value = '';
-    ['mem_name','mem_email','mem_phone','mem_notes'].forEach(id => document.getElementById(id).value='');
-    document.getElementById('mem_dob').value='';
-    document.getElementById('mem_status').value='pending';
-    document.getElementById('mem_role').value='member';
-    hideErr('mem-error');
-    openModal('memberModal');
+  function editMember(m){
+    document.getElementById('memTitle').textContent='Edit Member';
+    document.getElementById('mem_id').value=m.id;
+    document.getElementById('mem_name').value=m.full_name||'';
+    document.getElementById('mem_email').value=m.email||'';
+    document.getElementById('mem_phone').value=m.phone||'';
+    document.getElementById('mem_dob').value=m.date_of_birth||'';
+    document.getElementById('mem_branch').value=m.branch_of_service||'';
+    document.getElementById('mem_years').value=m.years_of_service||'';
+    document.getElementById('mem_status').value=m.membership_status||'pending';
+    document.getElementById('mem_role').value=m.role||'member';
+    document.getElementById('mem_notes').value=m.notes||'';
+    hideErr('mem-err'); openModal('memberModal');
   }
-  function editMember(m) {
-    document.getElementById('memberModalTitle').textContent = 'Edit Member';
-    document.getElementById('mem_edit_id').value = m.id;
-    document.getElementById('mem_name').value = m.full_name||'';
-    document.getElementById('mem_email').value = m.email||'';
-    document.getElementById('mem_phone').value = m.phone||'';
-    document.getElementById('mem_dob').value = m.date_of_birth||'';
-    document.getElementById('mem_branch').value = m.branch_of_service||'';
-    document.getElementById('mem_status').value = m.membership_status||'pending';
-    document.getElementById('mem_role').value = m.role||'member';
-    document.getElementById('mem_years').value = m.years_of_service||'';
-    document.getElementById('mem_notes').value = m.notes||'';
-    hideErr('mem-error');
-    openModal('memberModal');
-  }
-  async function saveMember() {
-    const name = toStr(document.getElementById('mem_name').value);
-    if (!name) { showErr('mem-error','Name is required.'); return; }
-    const id = document.getElementById('mem_edit_id').value;
-    const payload = {
-      full_name: name, email: toStr(document.getElementById('mem_email').value),
-      phone: toStr(document.getElementById('mem_phone').value),
-      date_of_birth: toDate(document.getElementById('mem_dob').value),
-      branch_of_service: toStr(document.getElementById('mem_branch').value),
-      membership_status: document.getElementById('mem_status').value,
-      role: document.getElementById('mem_role').value,
-      years_of_service: toNum(document.getElementById('mem_years').value),
-      notes: toStr(document.getElementById('mem_notes').value),
-      updated_at: new Date().toISOString()
-    };
-    try {
-      if (id) await sb('site_members','PATCH',payload,id);
-      else await sb('site_members','POST',payload);
-      closeModal('memberModal'); loadMembers(); loadStats();
-    } catch(e) { showErr('mem-error', e.message); }
+  async function saveMember(){
+    const name=toStr(document.getElementById('mem_name').value);
+    if(!name){showErr('mem-err','Name is required.');return;}
+    const id=document.getElementById('mem_id').value;
+    const p={full_name:name,email:toStr(document.getElementById('mem_email').value),phone:toStr(document.getElementById('mem_phone').value),date_of_birth:toDate(document.getElementById('mem_dob').value),branch_of_service:toStr(document.getElementById('mem_branch').value),years_of_service:toNum(document.getElementById('mem_years').value),membership_status:document.getElementById('mem_status').value,role:document.getElementById('mem_role').value,notes:toStr(document.getElementById('mem_notes').value)};
+    try{
+      if(id) await pu('site_members',id,p);
+      else await pi('site_members',p);
+      closeModal('memberModal'); document.getElementById('mem_id').value=''; document.getElementById('memTitle').textContent='Add Member';
+      loadMembers(); loadStats();
+    }catch(e){showErr('mem-err',e.message);}
   }
 
-  // ═══════════════════════════════════════════════
-  //  EVENTS
-  // ═══════════════════════════════════════════════
-  async function loadEvents() {
-    try {
-      const data = await sb('events');
-      dbData.events = data;
-      const el = document.getElementById('events-admin-list');
-      if (!data.length) { el.innerHTML = '<p style="color:#888;">No events yet.</p>'; return; }
-      el.innerHTML = data.map(e => `
+  // ================================================================
+  // EVENTS CRUD
+  // ================================================================
+  async function loadEvents(){
+    try{
+      const {data,error}=await pq('events').order('event_date',{ascending:false});
+      if(error)throw error;
+      dbData.events=data;
+      const el=document.getElementById('events-admin-list');
+      if(!data.length){el.innerHTML='<p style="color:#888">No events yet.</p>';return;}
+      el.innerHTML=data.map(e=>`
         <div class="record-card">
           <div class="record-info">
             <strong>${e.title}</strong>
-            <p>📅 ${fmtDate(e.event_date)} &nbsp;|&nbsp; ⏰ ${e.start_time||'—'} – ${e.end_time||'—'} &nbsp;|&nbsp; 🏷️ ${e.event_type||'—'}</p>
-            ${e.description ? `<p style="color:#aaa;font-size:0.8rem;">${e.description}</p>` : ''}
+            <p>📅 ${fmtD(e.event_date)} &nbsp;|&nbsp; ⏰ ${e.start_time||'—'}–${e.end_time||'—'} &nbsp;|&nbsp; 🏷️ ${e.event_type||'—'}</p>
+            ${e.description?`<p style="color:#aaa;font-size:.78rem">${e.description.substring(0,100)}</p>`:''}
           </div>
           <div class="record-actions">
             <button class="btn-sm btn-edit" onclick="editEvent(${JSON.stringify(e).replace(/"/g,'&quot;')})">Edit</button>
-            <button class="btn-sm btn-delete" onclick="deleteRecord('events','${e.id}',loadEvents)">Delete</button>
+            <button class="btn-sm btn-delete" onclick="delRecord('events','${e.id}',loadEvents)">Delete</button>
           </div>
         </div>`).join('');
-    } catch(e) { document.getElementById('events-admin-list').innerHTML = `<p style="color:#B22234;">Error: ${e.message}</p>`; }
+    }catch(e){document.getElementById('events-admin-list').innerHTML=`<p style="color:#B22234">Error: ${e.message}</p>`;}
   }
-  function openEventModal() {
-    document.getElementById('eventModalTitle').textContent = 'Add Event';
-    document.getElementById('ev_edit_id').value='';
-    ['ev_title','ev_desc'].forEach(id=>document.getElementById(id).value='');
+  function openEventModal(){
+    document.getElementById('evTitle').textContent='Add Event';
+    document.getElementById('ev_id').value='';
+    clearForm('ev_title','ev_desc','ev_loc','ev_img');
     document.getElementById('ev_date').value='';
     document.getElementById('ev_start').value='';
     document.getElementById('ev_end').value='';
-    document.getElementById('ev_location').value='3290 Grosenbacher Rd, San Antonio, TX 78245';
-    hideErr('ev-error'); openModal('eventModal');
+    document.getElementById('ev_loc').value='3290 Grosenbacher Rd, San Antonio, TX 78245';
+    hideErr('ev-err'); openModal('eventModal');
   }
-  function editEvent(e) {
-    document.getElementById('eventModalTitle').textContent = 'Edit Event';
-    document.getElementById('ev_edit_id').value=e.id;
+  function editEvent(e){
+    document.getElementById('evTitle').textContent='Edit Event';
+    document.getElementById('ev_id').value=e.id;
     document.getElementById('ev_title').value=e.title||'';
     document.getElementById('ev_date').value=e.event_date||'';
     document.getElementById('ev_type').value=e.event_type||'Social';
     document.getElementById('ev_start').value=e.start_time||'';
     document.getElementById('ev_end').value=e.end_time||'';
     document.getElementById('ev_desc').value=e.description||'';
-    document.getElementById('ev_location').value=e.location||'';
-    hideErr('ev-error'); openModal('eventModal');
+    document.getElementById('ev_loc').value=e.location||'';
+    document.getElementById('ev_img').value=e.image_url||'';
+    hideErr('ev-err'); openModal('eventModal');
   }
-  async function saveEvent() {
-    const title = toStr(document.getElementById('ev_title').value);
-    const date = toDate(document.getElementById('ev_date').value);
-    if (!title||!date) { showErr('ev-error','Title and date are required.'); return; }
-    const id = document.getElementById('ev_edit_id').value;
-    const payload = {
-      title, event_date: date,
-      event_type: document.getElementById('ev_type').value,
-      start_time: toStr(document.getElementById('ev_start').value),
-      end_time: toStr(document.getElementById('ev_end').value),
-      description: toStr(document.getElementById('ev_desc').value),
-      location: toStr(document.getElementById('ev_location').value),
-      updated_at: new Date().toISOString()
-    };
-    try {
-      if (id) await sb('events','PATCH',payload,id);
-      else await sb('events','POST',payload);
+  async function saveEvent(){
+    const title=toStr(document.getElementById('ev_title').value);
+    const date=toDate(document.getElementById('ev_date').value);
+    if(!title||!date){showErr('ev-err','Title and date are required.');return;}
+    const id=document.getElementById('ev_id').value;
+    const p={title,event_date:date,event_type:document.getElementById('ev_type').value,start_time:toStr(document.getElementById('ev_start').value),end_time:toStr(document.getElementById('ev_end').value),description:toStr(document.getElementById('ev_desc').value),location:toStr(document.getElementById('ev_loc').value),image_url:toStr(document.getElementById('ev_img').value)};
+    try{
+      if(id) await pu('events',id,p); else await pi('events',p);
       closeModal('eventModal'); loadEvents(); loadStats();
-    } catch(e) { showErr('ev-error',e.message); }
+    }catch(e){showErr('ev-err',e.message);}
   }
 
-  // ═══════════════════════════════════════════════
-  //  OFFICERS
-  // ═══════════════════════════════════════════════
-  async function loadOfficers() {
-    try {
-      const data = await sb('officers');
-      dbData.officers = data;
-      const el = document.getElementById('officers-admin-list');
-      if (!data.length) { el.innerHTML = '<p style="color:#888;">No officers yet.</p>'; return; }
-      el.innerHTML = data.sort((a,b)=>a.sort_order-b.sort_order).map(o => `
+  // ================================================================
+  // OFFICERS CRUD
+  // ================================================================
+  async function loadOfficers(){
+    try{
+      const {data,error}=await pq('officers').eq('is_active',true).order('sort_order');
+      if(error)throw error;
+      dbData.officers=data;
+      const el=document.getElementById('officers-admin-list');
+      if(!data.length){el.innerHTML='<p style="color:#888">No officers yet.</p>';return;}
+      el.innerHTML=data.map(o=>`
         <div class="record-card">
           <div class="record-info">
-            ${o.photo_url ? `<img src="${o.photo_url}" style="width:48px;height:48px;border-radius:50%;object-fit:cover;float:left;margin-right:0.75rem;" />` : ''}
-            <strong>${o.name}</strong>
-            <p>🎖️ ${o.title} &nbsp;|&nbsp; ✉️ ${o.email||'—'} &nbsp;|&nbsp; 📞 ${o.phone||'—'}</p>
-            ${o.bio ? `<p style="color:#aaa;font-size:0.8rem;">${o.bio.substring(0,100)}${o.bio.length>100?'...':''}</p>` : ''}
+            ${o.photo_url?`<img src="${o.photo_url}" style="width:40px;height:40px;border-radius:50%;object-fit:cover;float:left;margin-right:.65rem" onerror="this.style.display='none'"/>`:''}
+            <strong>${o.name||o.full_name}</strong> — <span style="color:#B22234;font-size:.82rem">${o.title}</span>
+            <p>✉️ ${o.email||'—'} &nbsp;|&nbsp; 📞 ${o.phone||'—'}</p>
           </div>
           <div class="record-actions">
             <button class="btn-sm btn-edit" onclick="editOfficer(${JSON.stringify(o).replace(/"/g,'&quot;')})">Edit</button>
-            <button class="btn-sm btn-delete" onclick="deleteRecord('officers','${o.id}',loadOfficers)">Delete</button>
+            <button class="btn-sm btn-delete" onclick="delRecord('officers','${o.id}',loadOfficers)">Delete</button>
           </div>
         </div>`).join('');
-    } catch(e) { document.getElementById('officers-admin-list').innerHTML = `<p style="color:#B22234;">Error: ${e.message}</p>`; }
+    }catch(e){document.getElementById('officers-admin-list').innerHTML=`<p style="color:#B22234">Error: ${e.message}</p>`;}
   }
-  function openOfficerModal() {
-    document.getElementById('officerModalTitle').textContent='Add Officer';
-    document.getElementById('off_edit_id').value='';
-    ['off_name','off_title','off_email','off_phone','off_photo','off_bio'].forEach(id=>document.getElementById(id).value='');
+  function openOfficerModal(){
+    document.getElementById('offTitle').textContent='Add Officer';
+    document.getElementById('off_id').value='';
+    clearForm('off_name','off_title','off_email','off_phone','off_photo','off_bio');
     document.getElementById('off_sort').value='0';
-    hideErr('off-error'); openModal('officerModal');
+    hideErr('off-err'); openModal('officerModal');
   }
-  function editOfficer(o) {
-    document.getElementById('officerModalTitle').textContent='Edit Officer';
-    document.getElementById('off_edit_id').value=o.id;
-    document.getElementById('off_name').value=o.name||'';
+  function editOfficer(o){
+    document.getElementById('offTitle').textContent='Edit Officer';
+    document.getElementById('off_id').value=o.id;
+    document.getElementById('off_name').value=o.name||o.full_name||'';
     document.getElementById('off_title').value=o.title||'';
     document.getElementById('off_email').value=o.email||'';
     document.getElementById('off_phone').value=o.phone||'';
     document.getElementById('off_photo').value=o.photo_url||'';
     document.getElementById('off_bio').value=o.bio||'';
     document.getElementById('off_sort').value=o.sort_order||0;
-    hideErr('off-error'); openModal('officerModal');
+    hideErr('off-err'); openModal('officerModal');
   }
-  async function saveOfficer() {
+  async function saveOfficer(){
     const name=toStr(document.getElementById('off_name').value);
     const title=toStr(document.getElementById('off_title').value);
-    if(!name||!title){showErr('off-error','Name and title are required.');return;}
-    const id=document.getElementById('off_edit_id').value;
-    const payload={name,full_name:name,title,position:title,email:toStr(document.getElementById('off_email').value),phone:toStr(document.getElementById('off_phone').value),photo_url:toStr(document.getElementById('off_photo').value),bio:toStr(document.getElementById('off_bio').value),sort_order:toNum(document.getElementById('off_sort').value)||0,updated_at:new Date().toISOString()};
-    try{if(id)await sb('officers','PATCH',payload,id);else await sb('officers','POST',payload);closeModal('officerModal');loadOfficers();}
-    catch(e){showErr('off-error',e.message);}
+    if(!name||!title){showErr('off-err','Name and title required.');return;}
+    const id=document.getElementById('off_id').value;
+    const p={name,full_name:name,title,position:title,email:toStr(document.getElementById('off_email').value),phone:toStr(document.getElementById('off_phone').value),photo_url:toStr(document.getElementById('off_photo').value),bio:toStr(document.getElementById('off_bio').value),sort_order:toNum(document.getElementById('off_sort').value)||0,is_active:true};
+    try{
+      if(id) await pu('officers',id,p); else await pi('officers',p);
+      closeModal('officerModal'); loadOfficers();
+    }catch(e){showErr('off-err',e.message);}
   }
 
-  // ═══════════════════════════════════════════════
-  //  GALLERY
-  // ═══════════════════════════════════════════════
-  async function loadGallery() {
-    try {
-      const data = await sb('gallery');
-      dbData.gallery = data;
-      const el = document.getElementById('gallery-admin-list');
-      if (!data.length) { el.innerHTML = '<p style="color:#888;">No photos yet.</p>'; return; }
-      el.innerHTML = data.map(g => `
+  // ================================================================
+  // GALLERY CRUD
+  // ================================================================
+  async function loadGallery(){
+    try{
+      const {data,error}=await pq('gallery').order('created_at',{ascending:false});
+      if(error)throw error;
+      dbData.gallery=data;
+      const el=document.getElementById('gallery-admin-list');
+      if(!data.length){el.innerHTML='<p style="color:#888">No photos yet.</p>';return;}
+      el.innerHTML=data.map(g=>`
         <div class="gallery-admin-item">
-          <img src="${g.photo_url||g.image_url||'https://via.placeholder.com/300x200?text=No+Image'}" alt="${g.caption||'Photo'}" onerror="this.src='https://via.placeholder.com/300x200?text=Error'" />
+          <img src="${g.photo_url||g.image_url||'https://via.placeholder.com/300x200?text=No+Image'}" alt="${g.caption||'Photo'}" onerror="this.src='https://via.placeholder.com/300x200?text=Error'"/>
           <div class="item-actions">
-            <span style="flex:1;font-size:0.75rem;color:#aaa;">${g.caption||'No caption'}</span>
-            <button class="btn-sm btn-delete" onclick="deleteRecord('gallery','${g.id}',loadGallery)">✕</button>
+            <span style="flex:1;font-size:.72rem;color:#aaa;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${g.caption||g.category||'Photo'}</span>
+            <button class="btn-sm btn-delete" onclick="delRecord('gallery','${g.id}',loadGallery)">✕</button>
           </div>
         </div>`).join('');
-    } catch(e) { document.getElementById('gallery-admin-list').innerHTML = `<p style="color:#B22234;">Error: ${e.message}</p>`; }
+    }catch(e){document.getElementById('gallery-admin-list').innerHTML=`<p style="color:#B22234">Error: ${e.message}</p>`;}
   }
-  function openGalleryModal() { ['gal_url','gal_caption'].forEach(id=>document.getElementById(id).value=''); hideErr('gal-error'); openModal('galleryModal'); }
-  async function saveGallery() {
-    const url=toStr(document.getElementById('gal_url').value);
-    if(!url){showErr('gal-error','Image URL is required.');return;}
-    try{await sb('gallery','POST',{photo_url:url,image_url:url,caption:toStr(document.getElementById('gal_caption').value),category:document.getElementById('gal_category').value,is_active:true});closeModal('galleryModal');loadGallery();}
-    catch(e){showErr('gal-error',e.message);}
+  async function saveGallery(){
+    const file=document.getElementById('gal_file').files[0];
+    const urlInput=toStr(document.getElementById('gal_url').value);
+    let photoUrl=urlInput, storagePath=null;
+    if(file){
+      try{
+        const up=await uploadFile(file,'gallery');
+        photoUrl=up.url; storagePath=up.path;
+      }catch(e){showErr('gal-err','Upload failed: '+e.message);return;}
+    }
+    if(!photoUrl){showErr('gal-err','Provide an image file or URL.');return;}
+    try{
+      await pi('gallery',{photo_url:photoUrl,image_url:photoUrl,storage_path:storagePath,caption:toStr(document.getElementById('gal_caption').value),category:document.getElementById('gal_cat').value,is_active:true});
+      closeModal('galleryModal');
+      document.getElementById('gal_file').value='';
+      document.getElementById('gal_url').value='';
+      document.getElementById('gal_caption').value='';
+      document.getElementById('gal_preview').style.display='none';
+      loadGallery();
+    }catch(e){showErr('gal-err',e.message);}
   }
 
-  // ═══════════════════════════════════════════════
-  //  BINGO
-  // ═══════════════════════════════════════════════
-  async function loadBingo() {
-    try {
-      const data = await sb('bingo_events');
-      dbData.bingo = data;
-      const el = document.getElementById('bingo-list');
-      if (!data.length) { el.innerHTML = '<p style="color:#888;">No bingo events yet.</p>'; return; }
-      el.innerHTML = data.map(b => `
+  // ================================================================
+  // ANNOUNCEMENTS CRUD
+  // ================================================================
+  async function loadAnnouncements(){
+    try{
+      const {data,error}=await pq('announcements').order('created_at',{ascending:false});
+      if(error)throw error;
+      dbData.announcements=data;
+      const el=document.getElementById('announcements-list');
+      if(!data.length){el.innerHTML='<p style="color:#888">No announcements yet.</p>';return;}
+      el.innerHTML=data.map(a=>`
         <div class="record-card">
           <div class="record-info">
-            <strong>🎱 ${b.event_name}</strong>
-            <p>📅 ${fmtDate(b.event_date)} &nbsp;|&nbsp; ⏰ ${b.start_time||'—'} &nbsp;|&nbsp; 👥 Max: ${b.max_players||'—'} &nbsp;|&nbsp; 💵 $${b.entry_fee||0}</p>
-            ${b.notes?`<p style="color:#aaa;font-size:0.8rem;">${b.notes}</p>`:''}
+            <strong>${a.title}</strong>
+            <p>🏷️ ${a.category||'—'} &nbsp;|&nbsp; 📅 ${fmtD(a.created_at?.split('T')[0])} ${a.expires_at?`&nbsp;|&nbsp; ⏳ Expires: ${fmtD(a.expires_at)}`:''}</p>
+            ${a.body?`<p style="color:#aaa;font-size:.78rem">${a.body.substring(0,100)}${a.body.length>100?'...':''}</p>`:''}
           </div>
           <div class="record-actions">
-            ${badge(b.status,statusMap)}
-            <button class="btn-sm btn-edit" onclick="editBingo(${JSON.stringify(b).replace(/"/g,'&quot;')})">Edit</button>
-            <button class="btn-sm btn-delete" onclick="deleteRecord('bingo_events','${b.id}',loadBingo)">Delete</button>
+            ${badge(a.is_active?'active':'inactive',sMap)}
+            <button class="btn-sm btn-edit" onclick="editAnn(${JSON.stringify(a).replace(/"/g,'&quot;')})">Edit</button>
+            <button class="btn-sm btn-delete" onclick="delRecord('announcements','${a.id}',loadAnnouncements)">Delete</button>
           </div>
         </div>`).join('');
-    } catch(e) { document.getElementById('bingo-list').innerHTML = `<p style="color:#B22234;">Error: ${e.message}</p>`; }
+    }catch(e){document.getElementById('announcements-list').innerHTML=`<p style="color:#B22234">Error: ${e.message}</p>`;}
   }
-  function openBingoModal() {
-    document.getElementById('bingoModalTitle').textContent='New Bingo Event';
-    document.getElementById('bg_edit_id').value='';
-    document.getElementById('bg_name').value='';
-    document.getElementById('bg_date').value='';
-    document.getElementById('bg_time').value='';
-    document.getElementById('bg_max').value='100';
-    document.getElementById('bg_fee').value='5.00';
-    document.getElementById('bg_status').value='scheduled';
-    document.getElementById('bg_notes').value='';
-    hideErr('bg-error'); openModal('bingoModal');
+  function editAnn(a){
+    document.getElementById('annTitle').textContent='Edit Announcement';
+    document.getElementById('ann_id').value=a.id;
+    document.getElementById('ann_title').value=a.title||'';
+    document.getElementById('ann_body').value=a.body||'';
+    document.getElementById('ann_cat').value=a.category||'General';
+    document.getElementById('ann_active').value=String(a.is_active);
+    document.getElementById('ann_expires').value=a.expires_at||'';
+    hideErr('ann-err'); openModal('announcementModal');
   }
-  function editBingo(b) {
-    document.getElementById('bingoModalTitle').textContent='Edit Bingo Event';
-    document.getElementById('bg_edit_id').value=b.id;
+  async function saveAnnouncement(){
+    const title=toStr(document.getElementById('ann_title').value);
+    if(!title){showErr('ann-err','Title required.');return;}
+    const id=document.getElementById('ann_id').value;
+    const p={title,body:toStr(document.getElementById('ann_body').value),category:document.getElementById('ann_cat').value,is_active:toBool(document.getElementById('ann_active').value),expires_at:toDate(document.getElementById('ann_expires').value)};
+    try{
+      if(id) await pu('announcements',id,p); else await pi('announcements',p);
+      closeModal('announcementModal'); document.getElementById('ann_id').value=''; document.getElementById('annTitle').textContent='Add Announcement';
+      loadAnnouncements();
+    }catch(e){showErr('ann-err',e.message);}
+  }
+
+  // ================================================================
+  // BINGO CRUD
+  // ================================================================
+  async function loadBingo(){
+    try{
+      const [evts,players,games,calls,winners]=await Promise.all([
+        pq('bingo_events').order('event_date',{ascending:false}),
+        pq('bingo_players').order('created_at',{ascending:false}).limit(20),
+        pq('bingo_games').order('created_at',{ascending:false}).limit(20),
+        pq('bingo_calls').order('call_order',{ascending:false}).limit(20),
+        pq('bingo_winners').order('created_at',{ascending:false}).limit(20)
+      ]);
+      dbData.bingo=evts.data||[];
+      renderList('bingo-list',evts.data,r=>`
+        <div class="record-card">
+          <div class="record-info">
+            <strong>🎱 ${r.event_name}</strong>
+            <p>📅 ${fmtD(r.event_date)} &nbsp;|&nbsp; ⏰ ${r.start_time||'—'} &nbsp;|&nbsp; 👥 Max ${r.max_players||'—'} &nbsp;|&nbsp; 💲 $${r.entry_fee||0} entry</p>
+            ${r.prize_pool?`<p style="color:#27ae60;font-size:.78rem">🏆 Prize Pool: ${fmtCurrency(r.prize_pool)}</p>`:''}
+          </div>
+          <div class="record-actions">
+            ${badge(r.status,sMap)}
+            <button class="btn-sm btn-edit" onclick="editBingo(${JSON.stringify(r).replace(/"/g,'&quot;')})">Edit</button>
+            <button class="btn-sm btn-delete" onclick="delRecord('bingo_events','${r.id}',loadBingo)">Delete</button>
+          </div>
+        </div>`);
+      renderList('bingo-players-list',players.data,r=>`
+        <div class="record-card"><div class="record-info">
+          <strong>${r.player_name}</strong>
+          <p>📞 ${r.phone||'—'} &nbsp;|&nbsp; 🃏 ${r.cards_purchased||1} card(s) &nbsp;|&nbsp; 💲 ${fmtCurrency(r.amount_paid)} ${r.checked_in?'✅ Checked In':''}</p>
+        </div>
+        <div class="record-actions"><button class="btn-sm btn-delete" onclick="delRecord('bingo_players','${r.id}',loadBingo)">Delete</button></div></div>`);
+      renderList('bingo-games-list',games.data,r=>`
+        <div class="record-card"><div class="record-info">
+          <strong>Game #${r.game_number} — ${r.pattern||'Any Line'}</strong>
+          <p>💲 Prize: ${fmtCurrency(r.prize_amount)} ${r.winner_name?`&nbsp;|&nbsp; 🏆 Winner: ${r.winner_name}`:''}</p>
+        </div>
+        <div class="record-actions">${badge(r.status,sMap)}<button class="btn-sm btn-delete" onclick="delRecord('bingo_games','${r.id}',loadBingo)">Delete</button></div></div>`);
+      renderList('bingo-calls-list',calls.data,r=>`
+        <div class="record-card" style="padding:.6rem 1rem"><div class="record-info">
+          <strong style="font-size:1.1rem">🎯 ${r.call_value}</strong>
+          <p style="font-size:.75rem">Call #${r.call_order||'—'}</p>
+        </div></div>`);
+      renderList('bingo-winners-list',winners.data,r=>`
+        <div class="record-card"><div class="record-info">
+          <strong>🏆 ${r.winner_name}</strong>
+          <p>💲 ${fmtCurrency(r.prize_amount)} &nbsp;|&nbsp; Pattern: ${r.pattern_won||'—'} ${r.verified?'&nbsp;|&nbsp; ✅ Verified':''}</p>
+        </div>
+        <div class="record-actions"><button class="btn-sm btn-delete" onclick="delRecord('bingo_winners','${r.id}',loadBingo)">Delete</button></div></div>`);
+    }catch(e){console.error('Bingo load error:',e);}
+  }
+  function renderList(elId,data,render){
+    const el=document.getElementById(elId);
+    if(!el)return;
+    if(!data||!data.length){el.innerHTML='<p style="color:#888;font-size:.82rem">No records.</p>';return;}
+    el.innerHTML=data.map(render).join('');
+  }
+  function editBingo(b){
+    document.getElementById('bgTitle').textContent='Edit Bingo Event';
+    document.getElementById('bg_id').value=b.id;
     document.getElementById('bg_name').value=b.event_name||'';
     document.getElementById('bg_date').value=b.event_date||'';
     document.getElementById('bg_time').value=b.start_time||'';
     document.getElementById('bg_max').value=b.max_players||100;
     document.getElementById('bg_fee').value=b.entry_fee||5;
+    document.getElementById('bg_prize').value=b.prize_pool||'';
     document.getElementById('bg_status').value=b.status||'scheduled';
     document.getElementById('bg_notes').value=b.notes||'';
-    hideErr('bg-error'); openModal('bingoModal');
+    hideErr('bg-err'); openModal('bingoModal');
   }
-  async function saveBingo() {
+  async function saveBingo(){
     const name=toStr(document.getElementById('bg_name').value);
     const date=toDate(document.getElementById('bg_date').value);
-    if(!name||!date){showErr('bg-error','Name and date are required.');return;}
-    const id=document.getElementById('bg_edit_id').value;
-    const payload={event_name:name,event_date:date,start_time:toStr(document.getElementById('bg_time').value),max_players:toNum(document.getElementById('bg_max').value),entry_fee:toNum(document.getElementById('bg_fee').value),status:document.getElementById('bg_status').value,notes:toStr(document.getElementById('bg_notes').value),updated_at:new Date().toISOString()};
-    try{if(id)await sb('bingo_events','PATCH',payload,id);else await sb('bingo_events','POST',payload);closeModal('bingoModal');loadBingo();loadStats();}
-    catch(e){showErr('bg-error',e.message);}
+    if(!name||!date){showErr('bg-err','Name and date required.');return;}
+    const id=document.getElementById('bg_id').value;
+    const p={event_name:name,event_date:date,start_time:toStr(document.getElementById('bg_time').value),max_players:toNum(document.getElementById('bg_max').value),entry_fee:toNum(document.getElementById('bg_fee').value),prize_pool:toNum(document.getElementById('bg_prize').value),status:document.getElementById('bg_status').value,notes:toStr(document.getElementById('bg_notes').value)};
+    try{
+      if(id) await pu('bingo_events',id,p); else await pi('bingo_events',p);
+      closeModal('bingoModal'); document.getElementById('bg_id').value=''; document.getElementById('bgTitle').textContent='New Bingo Event';
+      loadBingo(); loadStats();
+    }catch(e){showErr('bg-err',e.message);}
   }
 
-  // ═══════════════════════════════════════════════
-  //  STAFF
-  // ═══════════════════════════════════════════════
-  async function loadStaff() {
-    try {
-      const data = await sb('staff');
-      dbData.staff = data;
-      const el = document.getElementById('staff-list');
-      if (!data.length) { el.innerHTML = '<p style="color:#888;">No staff yet.</p>'; return; }
-      el.innerHTML = data.map(s => `
+  // ================================================================
+  // STAFF CRUD
+  // ================================================================
+  async function loadStaff(){
+    try{
+      const {data,error}=await pq('staff').order('full_name');
+      if(error)throw error;
+      dbData.staff=data;
+      const el=document.getElementById('staff-list');
+      if(!data.length){el.innerHTML='<p style="color:#888">No staff yet.</p>';return;}
+      el.innerHTML=data.map(s=>`
         <div class="record-card">
           <div class="record-info">
             <strong>${s.full_name}</strong>
-            <p>💼 ${s.role||'—'} &nbsp;|&nbsp; 🏢 ${s.department||'—'} &nbsp;|&nbsp; 🏷️ ${s.staff_type||'—'}</p>
-            <p>✉️ ${s.email||'—'} &nbsp;|&nbsp; 📞 ${s.phone||'—'}</p>
+            <p>💼 ${s.role||'—'} &nbsp;|&nbsp; 🏷️ ${s.staff_type||'—'} &nbsp;|&nbsp; 🏢 ${s.department||'—'}</p>
+            <p>✉️ ${s.email||'—'} &nbsp;|&nbsp; 📞 ${s.phone||'—'} ${s.hourly_rate?`&nbsp;|&nbsp; 💲$${s.hourly_rate}/hr`:''}</p>
           </div>
           <div class="record-actions">
-            ${badge(s.is_active?'active':'inactive',statusMap)}
+            ${badge(s.is_active?'active':'inactive',sMap)}
             <button class="btn-sm btn-edit" onclick="editStaff(${JSON.stringify(s).replace(/"/g,'&quot;')})">Edit</button>
-            <button class="btn-sm btn-delete" onclick="deleteRecord('staff','${s.id}',loadStaff)">Delete</button>
+            <button class="btn-sm btn-delete" onclick="delRecord('staff','${s.id}',loadStaff)">Delete</button>
           </div>
         </div>`).join('');
-    } catch(e) { document.getElementById('staff-list').innerHTML = `<p style="color:#B22234;">Error: ${e.message}</p>`; }
+      populateStaffDropdowns();
+    }catch(e){document.getElementById('staff-list').innerHTML=`<p style="color:#B22234">Error: ${e.message}</p>`;}
   }
-  function openStaffModal() {
-    document.getElementById('staffModalTitle').textContent='Add Staff';
-    document.getElementById('st_edit_id').value='';
-    ['st_name','st_role','st_dept','st_email','st_phone','st_bio'].forEach(id=>document.getElementById(id).value='');
-    document.getElementById('st_start').value='';
-    document.getElementById('st_type').value='employee';
-    hideErr('st-error'); openModal('staffModal');
-  }
-  function editStaff(s) {
-    document.getElementById('staffModalTitle').textContent='Edit Staff';
-    document.getElementById('st_edit_id').value=s.id;
+  function editStaff(s){
+    document.getElementById('stTitle').textContent='Edit Staff';
+    document.getElementById('st_id').value=s.id;
     document.getElementById('st_name').value=s.full_name||'';
     document.getElementById('st_role').value=s.role||'';
     document.getElementById('st_type').value=s.staff_type||'employee';
@@ -1040,58 +1309,104 @@
     document.getElementById('st_email').value=s.email||'';
     document.getElementById('st_phone').value=s.phone||'';
     document.getElementById('st_start').value=s.start_date||'';
+    document.getElementById('st_rate').value=s.hourly_rate||'';
     document.getElementById('st_bio').value=s.bio||'';
-    hideErr('st-error'); openModal('staffModal');
+    hideErr('st-err'); openModal('staffModal');
   }
-  async function saveStaff() {
+  async function saveStaff(){
     const name=toStr(document.getElementById('st_name').value);
     const role=toStr(document.getElementById('st_role').value);
-    if(!name||!role){showErr('st-error','Name and role are required.');return;}
-    const id=document.getElementById('st_edit_id').value;
-    const payload={full_name:name,role,staff_type:document.getElementById('st_type').value,department:toStr(document.getElementById('st_dept').value),email:toStr(document.getElementById('st_email').value),phone:toStr(document.getElementById('st_phone').value),start_date:toDate(document.getElementById('st_start').value),bio:toStr(document.getElementById('st_bio').value),is_active:true,updated_at:new Date().toISOString()};
-    try{if(id)await sb('staff','PATCH',payload,id);else await sb('staff','POST',payload);closeModal('staffModal');loadStaff();loadStats();}
-    catch(e){showErr('st-error',e.message);}
+    if(!name||!role){showErr('st-err','Name and role required.');return;}
+    const id=document.getElementById('st_id').value;
+    const p={full_name:name,role,staff_type:document.getElementById('st_type').value,department:toStr(document.getElementById('st_dept').value),email:toStr(document.getElementById('st_email').value),phone:toStr(document.getElementById('st_phone').value),start_date:toDate(document.getElementById('st_start').value),hourly_rate:toNum(document.getElementById('st_rate').value),bio:toStr(document.getElementById('st_bio').value),is_active:true};
+    try{
+      if(id) await pu('staff',id,p); else await pi('staff',p);
+      closeModal('staffModal'); document.getElementById('st_id').value=''; document.getElementById('stTitle').textContent='Add Staff';
+      loadStaff(); loadStats();
+    }catch(e){showErr('st-err',e.message);}
   }
 
-  // ═══════════════════════════════════════════════
-  //  INVENTORY
-  // ═══════════════════════════════════════════════
-  async function loadInventory() {
-    try {
-      const data = await sb('inventory');
-      dbData.inventory = data;
-      const el = document.getElementById('inventory-list');
-      if (!data.length) { el.innerHTML = '<p style="color:#888;">No inventory items yet.</p>'; return; }
-      el.innerHTML = data.map(i => {
-        const low = i.quantity <= i.min_quantity;
-        return `<div class="record-card" style="${low?'border-left:3px solid #B22234;':''}">
+  // ================================================================
+  // SCHEDULE CRUD
+  // ================================================================
+  async function loadSchedule(){
+    try{
+      const {data,error}=await pq('bartender_schedule').order('shift_date',{ascending:false});
+      if(error)throw error;
+      dbData.schedule=data;
+      const el=document.getElementById('schedule-list');
+      if(!data.length){el.innerHTML='<p style="color:#888">No shifts scheduled yet.</p>';return;}
+      const staffMap={};
+      (dbData.staff||[]).forEach(s=>staffMap[s.id]=s.full_name);
+      el.innerHTML=data.map(s=>`
+        <div class="record-card">
           <div class="record-info">
-            <strong>${i.item_name} ${low?'⚠️ LOW STOCK':''}</strong>
-            <p>📦 Qty: <strong style="color:${low?'#B22234':'#27ae60'}">${i.quantity}</strong> ${i.unit||'each'} &nbsp;|&nbsp; 🏷️ ${i.category||'—'} &nbsp;|&nbsp; 📍 ${i.location||'—'}</p>
-            <p>🏪 Supplier: ${i.supplier||'—'} &nbsp;|&nbsp; 💲 $${i.cost_per_unit||0}/unit &nbsp;|&nbsp; Min: ${i.min_quantity||0}</p>
+            <strong>${staffMap[s.staff_id]||'Unassigned'} — ${s.role||'Bartender'}</strong>
+            <p>📅 ${fmtD(s.shift_date)} &nbsp;|&nbsp; ⏰ ${s.start_time||'—'}–${s.end_time||'—'}</p>
+            ${s.notes?`<p style="color:#aaa;font-size:.78rem">${s.notes}</p>`:''}
+          </div>
+          <div class="record-actions">
+            ${badge(s.status,sMap)}
+            <button class="btn-sm btn-edit" onclick="editSchedule(${JSON.stringify(s).replace(/"/g,'&quot;')})">Edit</button>
+            <button class="btn-sm btn-delete" onclick="delRecord('bartender_schedule','${s.id}',loadSchedule)">Delete</button>
+          </div>
+        </div>`).join('');
+    }catch(e){document.getElementById('schedule-list').innerHTML=`<p style="color:#B22234">Error: ${e.message}</p>`;}
+  }
+  function editSchedule(s){
+    document.getElementById('schTitle').textContent='Edit Shift';
+    document.getElementById('sch_id').value=s.id;
+    document.getElementById('sch_staff').value=s.staff_id||'';
+    document.getElementById('sch_date').value=s.shift_date||'';
+    document.getElementById('sch_role').value=s.role||'Bartender';
+    document.getElementById('sch_start').value=s.start_time||'';
+    document.getElementById('sch_end').value=s.end_time||'';
+    document.getElementById('sch_status').value=s.status||'scheduled';
+    document.getElementById('sch_notes').value=s.notes||'';
+    hideErr('sch-err'); openModal('scheduleModal');
+  }
+  async function saveSchedule(){
+    const date=toDate(document.getElementById('sch_date').value);
+    if(!date){showErr('sch-err','Shift date required.');return;}
+    const id=document.getElementById('sch_id').value;
+    const staffId=toStr(document.getElementById('sch_staff').value);
+    const p={staff_id:staffId||null,shift_date:date,role:document.getElementById('sch_role').value,start_time:toStr(document.getElementById('sch_start').value),end_time:toStr(document.getElementById('sch_end').value),status:document.getElementById('sch_status').value,notes:toStr(document.getElementById('sch_notes').value)};
+    try{
+      if(id) await pu('bartender_schedule',id,p); else await pi('bartender_schedule',p);
+      closeModal('scheduleModal'); document.getElementById('sch_id').value=''; document.getElementById('schTitle').textContent='Add Shift';
+      loadSchedule();
+    }catch(e){showErr('sch-err',e.message);}
+  }
+
+  // ================================================================
+  // INVENTORY CRUD
+  // ================================================================
+  async function loadInventory(){
+    try{
+      const {data,error}=await pq('inventory').order('item_name');
+      if(error)throw error;
+      dbData.inventory=data;
+      const el=document.getElementById('inventory-list');
+      if(!data.length){el.innerHTML='<p style="color:#888">No inventory items yet.</p>';return;}
+      el.innerHTML=data.map(i=>{
+        const low=i.quantity<=i.min_quantity;
+        return`<div class="record-card" style="${low?'border-left:3px solid #B22234':''}">
+          <div class="record-info">
+            <strong>${i.item_name} ${low?'⚠️ LOW':''}</strong>
+            <p>📦 <strong style="color:${low?'#B22234':'#27ae60'}">${i.quantity}</strong> ${i.unit||'each'} &nbsp;|&nbsp; 🏷️ ${i.category||'—'} &nbsp;|&nbsp; 📍 ${i.location||'—'}</p>
+            <p>🏪 ${i.supplier||'—'} &nbsp;|&nbsp; 💲 ${fmtCurrency(i.cost_per_unit)}/unit &nbsp;|&nbsp; Min: ${i.min_quantity||0}</p>
           </div>
           <div class="record-actions">
             <button class="btn-sm btn-edit" onclick="editInventory(${JSON.stringify(i).replace(/"/g,'&quot;')})">Edit</button>
-            <button class="btn-sm btn-delete" onclick="deleteRecord('inventory','${i.id}',loadInventory)">Delete</button>
+            <button class="btn-sm btn-delete" onclick="delRecord('inventory','${i.id}',loadInventory)">Delete</button>
           </div>
         </div>`;
       }).join('');
-    } catch(e) { document.getElementById('inventory-list').innerHTML = `<p style="color:#B22234;">Error: ${e.message}</p>`; }
+    }catch(e){document.getElementById('inventory-list').innerHTML=`<p style="color:#B22234">Error: ${e.message}</p>`;}
   }
-  function openInventoryModal() {
-    document.getElementById('invModalTitle').textContent='Add Inventory Item';
-    document.getElementById('inv_edit_id').value='';
-    ['inv_name','inv_loc','inv_supplier'].forEach(id=>document.getElementById(id).value='');
-    document.getElementById('inv_qty').value='0';
-    document.getElementById('inv_min').value='0';
-    document.getElementById('inv_cost').value='';
-    document.getElementById('inv_unit').value='each';
-    document.getElementById('inv_cat').value='General';
-    hideErr('inv-error'); openModal('inventoryModal');
-  }
-  function editInventory(i) {
-    document.getElementById('invModalTitle').textContent='Edit Item';
-    document.getElementById('inv_edit_id').value=i.id;
+  function editInventory(i){
+    document.getElementById('invTitle').textContent='Edit Item';
+    document.getElementById('inv_id').value=i.id;
     document.getElementById('inv_name').value=i.item_name||'';
     document.getElementById('inv_cat').value=i.category||'General';
     document.getElementById('inv_qty').value=i.quantity||0;
@@ -1099,282 +1414,354 @@
     document.getElementById('inv_min').value=i.min_quantity||0;
     document.getElementById('inv_cost').value=i.cost_per_unit||'';
     document.getElementById('inv_loc').value=i.location||'';
-    document.getElementById('inv_supplier').value=i.supplier||'';
-    hideErr('inv-error'); openModal('inventoryModal');
+    document.getElementById('inv_sup').value=i.supplier||'';
+    hideErr('inv-err'); openModal('inventoryModal');
   }
-  async function saveInventory() {
+  async function saveInventory(){
     const name=toStr(document.getElementById('inv_name').value);
-    if(!name){showErr('inv-error','Item name is required.');return;}
-    const id=document.getElementById('inv_edit_id').value;
-    const payload={item_name:name,category:document.getElementById('inv_cat').value,quantity:toNum(document.getElementById('inv_qty').value)||0,unit:toStr(document.getElementById('inv_unit').value)||'each',min_quantity:toNum(document.getElementById('inv_min').value)||0,cost_per_unit:toNum(document.getElementById('inv_cost').value),location:toStr(document.getElementById('inv_loc').value),supplier:toStr(document.getElementById('inv_supplier').value),is_active:true,updated_at:new Date().toISOString()};
-    try{if(id)await sb('inventory','PATCH',payload,id);else await sb('inventory','POST',payload);closeModal('inventoryModal');loadInventory();loadStats();}
-    catch(e){showErr('inv-error',e.message);}
+    if(!name){showErr('inv-err','Item name required.');return;}
+    const id=document.getElementById('inv_id').value;
+    const p={item_name:name,category:document.getElementById('inv_cat').value,quantity:toNum(document.getElementById('inv_qty').value)||0,unit:toStr(document.getElementById('inv_unit').value)||'each',min_quantity:toNum(document.getElementById('inv_min').value)||0,cost_per_unit:toNum(document.getElementById('inv_cost').value),location:toStr(document.getElementById('inv_loc').value),supplier:toStr(document.getElementById('inv_sup').value),is_active:true};
+    try{
+      if(id) await pu('inventory',id,p); else await pi('inventory',p);
+      closeModal('inventoryModal'); document.getElementById('inv_id').value=''; document.getElementById('invTitle').textContent='Add Item';
+      loadInventory(); loadStats();
+    }catch(e){showErr('inv-err',e.message);}
   }
 
-  // ═══════════════════════════════════════════════
-  //  MAINTENANCE
-  // ═══════════════════════════════════════════════
-  async function loadMaintenance() {
-    try {
-      const data = await sb('building_maintenance');
-      dbData.maintenance = data;
-      const el = document.getElementById('maintenance-list');
-      if (!data.length) { el.innerHTML = '<p style="color:#888;">No maintenance records yet.</p>'; return; }
-      el.innerHTML = data.map(m => `
+  // ================================================================
+  // MAINTENANCE CRUD
+  // ================================================================
+  async function loadMaintenance(){
+    try{
+      const {data,error}=await pq('building_maintenance').order('created_at',{ascending:false});
+      if(error)throw error;
+      dbData.maintenance=data;
+      const el=document.getElementById('maintenance-list');
+      if(!data.length){el.innerHTML='<p style="color:#888">No maintenance records yet.</p>';return;}
+      el.innerHTML=data.map(m=>`
         <div class="record-card">
           <div class="record-info">
             <strong>${m.title}</strong>
-            <p>📍 ${m.location||'—'} &nbsp;|&nbsp; 📅 Due: ${fmtDate(m.due_date)}</p>
-            ${m.description?`<p style="color:#aaa;font-size:0.8rem;">${m.description}</p>`:''}
+            <p>📍 ${m.location||'—'} &nbsp;|&nbsp; 👤 ${m.assigned_to||'Unassigned'} &nbsp;|&nbsp; 📅 Due: ${fmtD(m.due_date)}</p>
+            ${m.description?`<p style="color:#aaa;font-size:.78rem">${m.description.substring(0,100)}</p>`:''}
+            ${m.estimated_cost?`<p style="color:#aaa;font-size:.78rem">Est: ${fmtCurrency(m.estimated_cost)} ${m.actual_cost?`| Actual: ${fmtCurrency(m.actual_cost)}`:''}</p>`:''}
           </div>
           <div class="record-actions">
-            ${badge(m.priority||'Medium',priorityMap)}
-            ${badge(m.status||'Open',statusMap)}
+            ${badge((m.priority||'Medium').toLowerCase(),pMap)}
+            ${badge(m.status||'Open',sMap)}
             <button class="btn-sm btn-edit" onclick="editMaintenance(${JSON.stringify(m).replace(/"/g,'&quot;')})">Edit</button>
-            <button class="btn-sm btn-delete" onclick="deleteRecord('building_maintenance','${m.id}',loadMaintenance)">Delete</button>
+            <button class="btn-sm btn-delete" onclick="delRecord('building_maintenance','${m.id}',loadMaintenance)">Delete</button>
           </div>
         </div>`).join('');
-    } catch(e) { document.getElementById('maintenance-list').innerHTML = `<p style="color:#B22234;">Error: ${e.message}</p>`; }
+    }catch(e){document.getElementById('maintenance-list').innerHTML=`<p style="color:#B22234">Error: ${e.message}</p>`;}
   }
-  function openMaintenanceModal() {
-    document.getElementById('mModalTitle').textContent='Add Maintenance Record';
-    document.getElementById('m_edit_id').value='';
-    ['m_title','m_description','m_location'].forEach(id=>document.getElementById(id).value='');
-    document.getElementById('m_due_date').value='';
-    document.getElementById('m_priority').value='Medium';
-    document.getElementById('m_status').value='Open';
-    hideErr('m-modal-error'); openModal('maintenanceModal');
-  }
-  function editMaintenance(m) {
-    document.getElementById('mModalTitle').textContent='Edit Maintenance Record';
-    document.getElementById('m_edit_id').value=m.id;
+  function editMaintenance(m){
+    document.getElementById('mTitle').textContent='Edit Record';
+    document.getElementById('m_id').value=m.id;
     document.getElementById('m_title').value=m.title||'';
-    document.getElementById('m_description').value=m.description||'';
+    document.getElementById('m_desc').value=m.description||'';
     document.getElementById('m_priority').value=m.priority||'Medium';
     document.getElementById('m_status').value=m.status||'Open';
-    document.getElementById('m_location').value=m.location||'';
-    document.getElementById('m_due_date').value=m.due_date||'';
-    hideErr('m-modal-error'); openModal('maintenanceModal');
+    document.getElementById('m_loc').value=m.location||'';
+    document.getElementById('m_assigned').value=m.assigned_to||'';
+    document.getElementById('m_due').value=m.due_date||'';
+    document.getElementById('m_cost').value=m.estimated_cost||'';
+    hideErr('m-err'); openModal('maintenanceModal');
   }
-  async function saveMaintenance() {
+  async function saveMaintenance(){
     const title=toStr(document.getElementById('m_title').value);
-    if(!title){showErr('m-modal-error','Title is required.');return;}
-    const id=document.getElementById('m_edit_id').value;
-    const payload={title,description:toStr(document.getElementById('m_description').value),priority:document.getElementById('m_priority').value,status:document.getElementById('m_status').value,location:toStr(document.getElementById('m_location').value),due_date:toDate(document.getElementById('m_due_date').value),updated_at:new Date().toISOString()};
-    try{if(id)await sb('building_maintenance','PATCH',payload,id);else await sb('building_maintenance','POST',payload);closeModal('maintenanceModal');loadMaintenance();loadStats();}
-    catch(e){showErr('m-modal-error',e.message);}
+    if(!title){showErr('m-err','Title required.');return;}
+    const id=document.getElementById('m_id').value;
+    const p={title,description:toStr(document.getElementById('m_desc').value),priority:document.getElementById('m_priority').value,status:document.getElementById('m_status').value,location:toStr(document.getElementById('m_loc').value),assigned_to:toStr(document.getElementById('m_assigned').value),due_date:toDate(document.getElementById('m_due').value),estimated_cost:toNum(document.getElementById('m_cost').value)};
+    try{
+      if(id) await pu('building_maintenance',id,p); else await pi('building_maintenance',p);
+      closeModal('maintenanceModal'); document.getElementById('m_id').value=''; document.getElementById('mTitle').textContent='Add Maintenance Record';
+      loadMaintenance(); loadStats();
+    }catch(e){showErr('m-err',e.message);}
   }
 
-  // ═══════════════════════════════════════════════
-  //  ANNOUNCEMENTS
-  // ═══════════════════════════════════════════════
-  async function loadAnnouncements() {
-    try {
-      const data = await sb('announcements');
-      dbData.announcements = data;
-      const el = document.getElementById('announcements-list');
-      if (!data.length) { el.innerHTML = '<p style="color:#888;">No announcements yet.</p>'; return; }
-      el.innerHTML = data.map(a => `
+  // ================================================================
+  // DONATIONS CRUD
+  // ================================================================
+  async function loadDonations(){
+    try{
+      const {data,error}=await pq('donations').order('created_at',{ascending:false});
+      if(error)throw error;
+      dbData.donations=data;
+      const el=document.getElementById('donations-list');
+      if(!data.length){el.innerHTML='<p style="color:#888">No donations yet.</p>';return;}
+      const total=data.filter(d=>d.status==='completed').reduce((s,d)=>s+Number(d.amount||0),0);
+      el.innerHTML=`<div style="background:#0a3a1a;border:1px solid #27ae60;border-radius:6px;padding:.75rem 1rem;margin-bottom:1rem;font-size:.9rem;color:#27ae60">💰 Total Received: <strong>${fmtCurrency(total)}</strong></div>`+
+      data.map(d=>`
         <div class="record-card">
           <div class="record-info">
-            <strong>${a.title}</strong>
-            <p>🏷️ ${a.category||'General'} &nbsp;|&nbsp; ${fmtDate(a.created_at?.split('T')[0])}</p>
-            ${a.body?`<p style="color:#aaa;font-size:0.82rem;">${a.body.substring(0,150)}${a.body.length>150?'...':''}</p>`:''}
+            <strong>${d.is_anonymous?'Anonymous Donor':(d.donor_name||'—')}</strong>
+            <p>💲 ${fmtCurrency(d.amount)} &nbsp;|&nbsp; 💳 ${d.payment_method||'—'} &nbsp;|&nbsp; 🎯 ${d.purpose||'General'}</p>
+            <p>📅 ${fmtD(d.created_at?.split('T')[0])} ${d.receipt_number?`&nbsp;|&nbsp; Receipt: ${d.receipt_number}`:''}</p>
           </div>
           <div class="record-actions">
-            ${badge(a.is_active?'active':'inactive',statusMap)}
-            <button class="btn-sm btn-edit" onclick="editAnnouncement(${JSON.stringify(a).replace(/"/g,'&quot;')})">Edit</button>
-            <button class="btn-sm btn-delete" onclick="deleteRecord('announcements','${a.id}',loadAnnouncements)">Delete</button>
+            ${badge(d.status,sMap)}
+            <button class="btn-sm btn-edit" onclick="editDonation(${JSON.stringify(d).replace(/"/g,'&quot;')})">Edit</button>
+            <button class="btn-sm btn-delete" onclick="delRecord('donations','${d.id}',loadDonations)">Delete</button>
           </div>
         </div>`).join('');
-    } catch(e) { document.getElementById('announcements-list').innerHTML = `<p style="color:#B22234;">Error: ${e.message}</p>`; }
+    }catch(e){document.getElementById('donations-list').innerHTML=`<p style="color:#B22234">Error: ${e.message}</p>`;}
   }
-  function openAnnouncementModal() {
-    document.getElementById('annModalTitle').textContent='Add Announcement';
-    document.getElementById('ann_edit_id').value='';
-    ['ann_title','ann_body'].forEach(id=>document.getElementById(id).value='');
-    document.getElementById('ann_cat').value='General';
-    document.getElementById('ann_active').value='true';
-    hideErr('ann-error'); openModal('announcementModal');
+  function editDonation(d){
+    document.getElementById('donTitle').textContent='Edit Donation';
+    document.getElementById('don_id').value=d.id;
+    document.getElementById('don_name').value=d.donor_name||'';
+    document.getElementById('don_email').value=d.donor_email||'';
+    document.getElementById('don_amount').value=d.amount||'';
+    document.getElementById('don_method').value=d.payment_method||'cash';
+    document.getElementById('don_purpose').value=d.purpose||'';
+    document.getElementById('don_status').value=d.status||'completed';
+    document.getElementById('don_anon').value=String(d.is_anonymous);
+    document.getElementById('don_receipt').value=d.receipt_number||'';
+    document.getElementById('don_notes').value=d.notes||'';
+    hideErr('don-err'); openModal('donationModal');
   }
-  function editAnnouncement(a) {
-    document.getElementById('annModalTitle').textContent='Edit Announcement';
-    document.getElementById('ann_edit_id').value=a.id;
-    document.getElementById('ann_title').value=a.title||'';
-    document.getElementById('ann_body').value=a.body||'';
-    document.getElementById('ann_cat').value=a.category||'General';
-    document.getElementById('ann_active').value=String(a.is_active);
-    hideErr('ann-error'); openModal('announcementModal');
-  }
-  async function saveAnnouncement() {
-    const title=toStr(document.getElementById('ann_title').value);
-    if(!title){showErr('ann-error','Title is required.');return;}
-    const id=document.getElementById('ann_edit_id').value;
-    const payload={title,body:toStr(document.getElementById('ann_body').value),category:document.getElementById('ann_cat').value,is_active:document.getElementById('ann_active').value==='true',updated_at:new Date().toISOString()};
-    try{if(id)await sb('announcements','PATCH',payload,id);else await sb('announcements','POST',payload);closeModal('announcementModal');loadAnnouncements();}
-    catch(e){showErr('ann-error',e.message);}
-  }
-
-  // ═══════════════════════════════════════════════
-  //  DELETE (universal)
-  // ═══════════════════════════════════════════════
-  async function deleteRecord(table, id, reload) {
-    if (!confirm('Delete this record? This cannot be undone.')) return;
-    try { await sb(table,'DELETE',null,id); reload(); loadStats(); }
-    catch(e) { alert('Delete failed: ' + e.message); }
+  async function saveDonation(){
+    const amount=toNum(document.getElementById('don_amount').value);
+    if(!amount){showErr('don-err','Amount required.');return;}
+    const id=document.getElementById('don_id').value;
+    const p={donor_name:toStr(document.getElementById('don_name').value),donor_email:toStr(document.getElementById('don_email').value),amount,payment_method:document.getElementById('don_method').value,purpose:toStr(document.getElementById('don_purpose').value),status:document.getElementById('don_status').value,is_anonymous:toBool(document.getElementById('don_anon').value),receipt_number:toStr(document.getElementById('don_receipt').value),notes:toStr(document.getElementById('don_notes').value)};
+    try{
+      if(id) await pu('donations',id,p); else await pi('donations',p);
+      closeModal('donationModal'); document.getElementById('don_id').value=''; document.getElementById('donTitle').textContent='Record Donation';
+      loadDonations(); loadStats();
+    }catch(e){showErr('don-err',e.message);}
   }
 
-  // ═══════════════════════════════════════════════
-  //  AI ASSISTANT
-  // ═══════════════════════════════════════════════
-  function appendAiMsg(role, text) {
-    const chat = document.getElementById('aiChat');
-    const div = document.createElement('div');
-    div.className = `ai-msg ${role}`;
-    div.innerHTML = `<div class="ai-avatar">${role==='assistant'?'🤖':'👤'}</div><div class="ai-bubble">${text}</div>`;
+  // ================================================================
+  // DOCUMENTS CRUD
+  // ================================================================
+  async function loadDocuments(){
+    try{
+      const {data,error}=await pq('documents').order('created_at',{ascending:false});
+      if(error)throw error;
+      dbData.documents=data;
+      const el=document.getElementById('documents-list');
+      if(!data.length){el.innerHTML='<p style="color:#888">No documents yet.</p>';return;}
+      const staffMap={};
+      (dbData.staff||[]).forEach(s=>staffMap[s.id]=s.full_name);
+      el.innerHTML=data.map(d=>`
+        <div class="record-card">
+          <div class="record-info">
+            <strong>📄 ${d.title}</strong>
+            <p>🏷️ ${d.doc_type||'—'} ${d.staff_id?`&nbsp;|&nbsp; 👤 ${staffMap[d.staff_id]||d.staff_id}`:''} ${d.expires_at?`&nbsp;|&nbsp; ⏳ Exp: ${fmtD(d.expires_at)}`:''}</p>
+            ${d.notes?`<p style="color:#aaa;font-size:.78rem">${d.notes}</p>`:''}
+          </div>
+          <div class="record-actions">
+            ${d.file_url?`<a href="${d.file_url}" target="_blank" class="btn-sm btn-approve">View</a>`:''}
+            <button class="btn-sm btn-edit" onclick="editDocument(${JSON.stringify(d).replace(/"/g,'&quot;')})">Edit</button>
+            <button class="btn-sm btn-delete" onclick="delRecord('documents','${d.id}',loadDocuments)">Delete</button>
+          </div>
+        </div>`).join('');
+    }catch(e){document.getElementById('documents-list').innerHTML=`<p style="color:#B22234">Error: ${e.message}</p>`;}
+  }
+  function editDocument(d){
+    document.getElementById('docTitle').textContent='Edit Document';
+    document.getElementById('doc_id').value=d.id;
+    document.getElementById('doc_title').value=d.title||'';
+    document.getElementById('doc_type').value=d.doc_type||'General';
+    document.getElementById('doc_staff').value=d.staff_id||'';
+    document.getElementById('doc_url').value=d.file_url||'';
+    document.getElementById('doc_expires').value=d.expires_at||'';
+    document.getElementById('doc_notes').value=d.notes||'';
+    hideErr('doc-err'); openModal('documentModal');
+  }
+  async function saveDocument(){
+    const title=toStr(document.getElementById('doc_title').value);
+    if(!title){showErr('doc-err','Title required.');return;}
+    const file=document.getElementById('doc_file').files[0];
+    const urlInput=toStr(document.getElementById('doc_url').value);
+    let fileUrl=urlInput, storagePath=null;
+    if(file){
+      try{
+        const up=await uploadFile(file,'documents');
+        fileUrl=up.url; storagePath=up.path;
+      }catch(e){showErr('doc-err','Upload failed: '+e.message);return;}
+    }
+    const id=document.getElementById('doc_id').value;
+    const staffVal=toStr(document.getElementById('doc_staff').value);
+    const p={title,doc_type:document.getElementById('doc_type').value,staff_id:staffVal||null,file_url:fileUrl,storage_path:storagePath,expires_at:toDate(document.getElementById('doc_expires').value),notes:toStr(document.getElementById('doc_notes').value),is_active:true};
+    try{
+      if(id) await pu('documents',id,p); else await pi('documents',p);
+      closeModal('documentModal'); document.getElementById('doc_id').value=''; document.getElementById('docTitle').textContent='Upload Document';
+      loadDocuments();
+    }catch(e){showErr('doc-err',e.message);}
+  }
+
+  // ================================================================
+  // TRAINING CRUD
+  // ================================================================
+  async function loadTraining(){
+    try{
+      const {data,error}=await pq('staff_training').order('created_at',{ascending:false});
+      if(error)throw error;
+      dbData.training=data;
+      const el=document.getElementById('training-list');
+      if(!data.length){el.innerHTML='<p style="color:#888">No training records yet.</p>';return;}
+      const staffMap={};
+      (dbData.staff||[]).forEach(s=>staffMap[s.id]=s.full_name);
+      const today_str=today();
+      el.innerHTML=data.map(t=>{
+        const expired=t.expiration_date&&t.expiration_date<today_str;
+        return`<div class="record-card" style="${expired?'border-left:3px solid #B22234':''}">
+          <div class="record-info">
+            <strong>🎓 ${t.course_name} ${expired?'⚠️ EXPIRED':''}</strong>
+            <p>${t.staff_id?`👤 ${staffMap[t.staff_id]||'—'} &nbsp;|&nbsp;`:''}📅 Completed: ${fmtD(t.completion_date)} ${t.expiration_date?`&nbsp;|&nbsp; ⏳ Exp: ${fmtD(t.expiration_date)}`:''}</p>
+            <p>🏢 Provider: ${t.provider||'—'}</p>
+          </div>
+          <div class="record-actions">
+            ${badge(expired?'expired':t.status,sMap)}
+            ${t.certificate_url?`<a href="${t.certificate_url}" target="_blank" class="btn-sm btn-approve">Cert</a>`:''}
+            <button class="btn-sm btn-edit" onclick="editTraining(${JSON.stringify(t).replace(/"/g,'&quot;')})">Edit</button>
+            <button class="btn-sm btn-delete" onclick="delRecord('staff_training','${t.id}',loadTraining)">Delete</button>
+          </div>
+        </div>`;
+      }).join('');
+    }catch(e){document.getElementById('training-list').innerHTML=`<p style="color:#B22234">Error: ${e.message}</p>`;}
+  }
+  function editTraining(t){
+    document.getElementById('trTitle').textContent='Edit Training';
+    document.getElementById('tr_id').value=t.id;
+    document.getElementById('tr_course').value=t.course_name||'';
+    document.getElementById('tr_staff').value=t.staff_id||'';
+    document.getElementById('tr_provider').value=t.provider||'';
+    document.getElementById('tr_status').value=t.status||'active';
+    document.getElementById('tr_complete').value=t.completion_date||'';
+    document.getElementById('tr_expire').value=t.expiration_date||'';
+    document.getElementById('tr_cert').value=t.certificate_url||'';
+    document.getElementById('tr_notes').value=t.notes||'';
+    hideErr('tr-err'); openModal('trainingModal');
+  }
+  async function saveTraining(){
+    const course=toStr(document.getElementById('tr_course').value);
+    if(!course){showErr('tr-err','Course name required.');return;}
+    const id=document.getElementById('tr_id').value;
+    const staffVal=toStr(document.getElementById('tr_staff').value);
+    const p={course_name:course,staff_id:staffVal||null,provider:toStr(document.getElementById('tr_provider').value),status:document.getElementById('tr_status').value,completion_date:toDate(document.getElementById('tr_complete').value),expiration_date:toDate(document.getElementById('tr_expire').value),certificate_url:toStr(document.getElementById('tr_cert').value),notes:toStr(document.getElementById('tr_notes').value)};
+    try{
+      if(id) await pu('staff_training',id,p); else await pi('staff_training',p);
+      closeModal('trainingModal'); document.getElementById('tr_id').value=''; document.getElementById('trTitle').textContent='Add Training Record';
+      loadTraining();
+    }catch(e){showErr('tr-err',e.message);}
+  }
+
+  // ================================================================
+  // UNIVERSAL DELETE (post_id enforced by pu/pd helpers)
+  // ================================================================
+  async function delRecord(table,id,reload){
+    if(!confirm('Delete this record permanently?'))return;
+    try{ await pd(table,id); reload(); loadStats(); }
+    catch(e){ alert('Delete failed: '+e.message); }
+  }
+
+  // ================================================================
+  // AI ASSISTANT (Post 300 data only — uses dbData already filtered)
+  // ================================================================
+  function appendMsg(role,text){
+    const chat=document.getElementById('aiChat');
+    const div=document.createElement('div');
+    div.className=`ai-msg ${role}`;
+    div.innerHTML=`<div class="ai-avatar">${role==='assistant'?'🤖':'👤'}</div><div class="ai-bubble">${text}</div>`;
     chat.appendChild(div);
-    chat.scrollTop = chat.scrollHeight;
+    chat.scrollTop=chat.scrollHeight;
   }
-
-  async function sendAiMessage() {
-    const input = document.getElementById('aiInput');
-    const q = input.value.trim();
-    if (!q) return;
-    input.value = '';
-    appendAiMsg('user', q);
-    appendAiMsg('assistant', '<span class="ai-thinking">Thinking...</span>');
-
-    const reply = await generateAiReply(q.toLowerCase());
-    const chat = document.getElementById('aiChat');
-    const last = chat.querySelectorAll('.ai-msg.assistant');
-    last[last.length-1].querySelector('.ai-bubble').innerHTML = reply;
-    chat.scrollTop = chat.scrollHeight;
+  async function sendAiMessage(){
+    const input=document.getElementById('aiInput');
+    const q=input.value.trim();
+    if(!q)return;
+    input.value='';
+    appendMsg('user',q);
+    const last_idx=document.getElementById('aiChat').querySelectorAll('.ai-msg').length;
+    appendMsg('assistant','<span style="color:#888;font-style:italic">Thinking...</span>');
+    const reply=await aiReply(q.toLowerCase());
+    const msgs=document.getElementById('aiChat').querySelectorAll('.ai-msg.assistant');
+    msgs[msgs.length-1].querySelector('.ai-bubble').innerHTML=reply;
+    document.getElementById('aiChat').scrollTop=99999;
   }
+  async function aiReply(q){
+    const d=dbData;
+    const m=d.members||[], r=d.rentals||[], e=d.events||[], mx=d.maintenance||[];
+    const inv=d.inventory||[], st=d.staff||[], bg=d.bingo||[], don=d.donations||[];
+    const ann=d.announcements||[], tr=d.training||[];
 
-  async function generateAiReply(q) {
-    const d = dbData;
-    const members = d.members||[];
-    const rentals = d.rentals||[];
-    const events = d.events||[];
-    const maintenance = d.maintenance||[];
-    const inventory = d.inventory||[];
-    const staff = d.staff||[];
-    const bingo = d.bingo||[];
-    const announcements = d.announcements||[];
-
-    // STATUS REPORT
-    if (q.includes('status') || q.includes('report') || q.includes('summary') || q.includes('overview')) {
-      const lowStock = inventory.filter(i=>i.quantity<=i.min_quantity);
-      const openTickets = maintenance.filter(m=>m.status==='Open'||m.status==='In Progress');
-      const pendingRentals = rentals.filter(r=>r.status==='pending');
-      const upcomingEvents = events.filter(e=>e.event_date>=new Date().toISOString().split('T')[0]).slice(0,3);
-      return `📊 <strong>Post 300 Status Report</strong><br><br>
-        👥 <strong>Members:</strong> ${members.length} total (${members.filter(m=>m.membership_status==='active').length} active)<br>
-        🏛️ <strong>Hall Rentals:</strong> ${rentals.length} total — ${pendingRentals.length} pending review<br>
-        📅 <strong>Events:</strong> ${events.length} total — ${upcomingEvents.length} upcoming<br>
-        🔧 <strong>Maintenance:</strong> ${openTickets.length} open tickets<br>
-        📦 <strong>Low Stock Items:</strong> ${lowStock.length}<br>
-        👔 <strong>Active Staff:</strong> ${staff.filter(s=>s.is_active).length}<br>
-        🎱 <strong>Bingo Events:</strong> ${bingo.length}<br>
-        📢 <strong>Announcements:</strong> ${announcements.filter(a=>a.is_active).length} active<br><br>
-        ${openTickets.length>0?`⚠️ You have ${openTickets.length} open maintenance ticket(s) needing attention.`:'✅ All maintenance tickets resolved.'}
-        ${pendingRentals.length>0?`<br>⚠️ ${pendingRentals.length} rental inquiry(ies) awaiting response.`:''}
-        ${lowStock.length>0?`<br>⚠️ ${lowStock.length} inventory item(s) below minimum stock.`:''}`;
+    if(q.includes('status')||q.includes('report')||q.includes('overview')||q.includes('summary')){
+      const low=inv.filter(i=>i.quantity<=i.min_quantity);
+      const open=mx.filter(m=>m.status==='Open'||m.status==='In Progress');
+      const pend=r.filter(x=>x.status==='pending');
+      const todayStr=today();
+      const upcoming=e.filter(x=>x.event_date>=todayStr).slice(0,3);
+      const total_don=don.filter(d=>d.status==='completed').reduce((s,d)=>s+Number(d.amount||0),0);
+      const exp_tr=tr.filter(t=>t.expiration_date&&t.expiration_date<todayStr);
+      return`<strong>📊 Post 300 Status Report</strong><br><br>
+        👥 Members: ${m.length} (${m.filter(x=>x.membership_status==='active').length} active)<br>
+        🏛️ Rentals: ${r.length} total — <strong style="color:${pend.length?'#f0a500':'#27ae60'}">${pend.length} pending</strong><br>
+        📅 Events: ${e.length} total — ${upcoming.length} upcoming<br>
+        🔧 Maintenance: <strong style="color:${open.length?'#f0a500':'#27ae60'}">${open.length} open</strong><br>
+        📦 Low Stock: <strong style="color:${low.length?'#B22234':'#27ae60'}">${low.length} items</strong><br>
+        👔 Active Staff: ${st.filter(s=>s.is_active).length}<br>
+        🎱 Bingo Events: ${bg.length}<br>
+        💰 Total Donations: <strong style="color:#27ae60">${fmtCurrency(total_don)}</strong><br>
+        🎓 Expired Certs: <strong style="color:${exp_tr.length?'#B22234':'#27ae60'}">${exp_tr.length}</strong><br><br>
+        ${pend.length?`⚠️ ${pend.length} rental(s) need your attention.<br>`:''}
+        ${open.length?`⚠️ ${open.length} maintenance ticket(s) open.<br>`:''}
+        ${low.length?`⚠️ ${low.length} inventory item(s) below minimum.<br>`:''}
+        ${exp_tr.length?`⚠️ ${exp_tr.length} staff certification(s) expired.<br>`:''}
+        ${!pend.length&&!open.length&&!low.length?'✅ No urgent issues.':''}`;
     }
-
-    // MEMBERS
-    if (q.includes('member')) {
-      const active = members.filter(m=>m.membership_status==='active');
-      const pending = members.filter(m=>m.membership_status==='pending');
-      if (q.includes('active')) return `✅ You have <strong>${active.length} active members</strong>. ${active.slice(0,5).map(m=>m.full_name).join(', ')}${active.length>5?'...':''}`;
-      if (q.includes('pending')) return `⏳ <strong>${pending.length} pending members</strong>: ${pending.map(m=>m.full_name).join(', ')||'None'}`;
-      const branches = {};
-      members.forEach(m=>{if(m.branch_of_service){branches[m.branch_of_service]=(branches[m.branch_of_service]||0)+1;}});
-      return `👥 <strong>Member Summary</strong><br>Total: ${members.length} | Active: ${active.length} | Pending: ${pending.length}<br>
-        Branches: ${Object.entries(branches).map(([b,c])=>`${b}: ${c}`).join(', ')||'Not recorded'}`;
+    if(q.includes('rental')){
+      const pend=r.filter(x=>x.status==='pending');
+      if(pend.length) return`⏳ <strong>${pend.length} pending rental(s):</strong><br>${pend.map(x=>`• ${x.contact_name} — ${x.event_date||'no date'} (${x.event_type||'?'})`).join('<br>')}`;
+      return`🏛️ Rentals: ${r.length} total | Pending: ${r.filter(x=>x.status==='pending').length} | Confirmed: ${r.filter(x=>x.status==='confirmed'||x.status==='approved').length}`;
     }
-
-    // RENTALS
-    if (q.includes('rental')) {
-      const pending = rentals.filter(r=>r.status==='pending');
-      const confirmed = rentals.filter(r=>r.status==='confirmed'||r.status==='approved');
-      if (q.includes('pending')) return `⏳ <strong>${pending.length} pending rental inquiries:</strong><br>${pending.map(r=>`• ${r.contact_name} — ${r.event_date||'No date'} (${r.event_type||'unknown'})`).join('<br>')||'None'}`;
-      return `🏛️ <strong>Hall Rentals:</strong> ${rentals.length} total<br>Pending: ${pending.length} | Confirmed: ${confirmed.length} | Cancelled: ${rentals.filter(r=>r.status==='cancelled').length}`;
+    if(q.includes('member')){
+      const active=m.filter(x=>x.membership_status==='active');
+      return`👥 Members: ${m.length} total | Active: ${active.length} | Pending: ${m.filter(x=>x.membership_status==='pending').length}`;
     }
-
-    // EVENTS
-    if (q.includes('event')) {
-      const today = new Date().toISOString().split('T')[0];
-      const upcoming = events.filter(e=>e.event_date>=today).sort((a,b)=>a.event_date.localeCompare(b.event_date)).slice(0,5);
-      if (q.includes('upcoming') || q.includes('next')) return `📅 <strong>Next ${upcoming.length} upcoming events:</strong><br>${upcoming.map(e=>`• ${e.title} — ${e.event_date} ${e.start_time?'@ '+e.start_time:''}`).join('<br>')||'No upcoming events'}`;
-      return `📅 <strong>Events:</strong> ${events.length} total<br>Upcoming: ${upcoming.length}<br>Types: ${[...new Set(events.map(e=>e.event_type).filter(Boolean))].join(', ')||'—'}`;
+    if(q.includes('event')||q.includes('upcoming')){
+      const todayStr=today();
+      const up=e.filter(x=>x.event_date>=todayStr).sort((a,b)=>a.event_date.localeCompare(b.event_date)).slice(0,5);
+      return`📅 <strong>Next ${up.length} events:</strong><br>${up.map(x=>`• ${x.title} — ${x.event_date} ${x.start_time?'@ '+x.start_time:''}`).join('<br>')||'No upcoming events'}`;
     }
-
-    // MAINTENANCE
-    if (q.includes('maintenance') || q.includes('ticket') || q.includes('repair')) {
-      const open = maintenance.filter(m=>m.status==='Open');
-      const inProgress = maintenance.filter(m=>m.status==='In Progress');
-      const urgent = maintenance.filter(m=>m.priority==='Urgent'||m.priority==='High');
-      return `🔧 <strong>Maintenance Summary:</strong><br>
-        Open: ${open.length} | In Progress: ${inProgress.length} | Urgent/High: ${urgent.length}<br>
-        ${urgent.length>0?`⚠️ Urgent tickets:<br>${urgent.slice(0,3).map(m=>`• ${m.title} (${m.priority})`).join('<br>')}`:'✅ No urgent tickets.'}`;
+    if(q.includes('maintenance')||q.includes('ticket')||q.includes('repair')){
+      const open=mx.filter(m=>m.status==='Open');
+      const urg=mx.filter(m=>m.priority==='Urgent'||m.priority==='High');
+      return`🔧 Maintenance: ${mx.length} total | Open: ${open.length} | Urgent/High: ${urg.length}<br>${urg.slice(0,3).map(x=>`⚠️ ${x.title} (${x.priority})`).join('<br>')||'No urgent tickets'}`;
     }
-
-    // INVENTORY
-    if (q.includes('inventory') || q.includes('stock') || q.includes('supply')) {
-      const low = inventory.filter(i=>i.quantity<=i.min_quantity);
-      return `📦 <strong>Inventory:</strong> ${inventory.length} items tracked<br>
-        Low/Out of Stock: ${low.length}<br>
-        ${low.length>0?`⚠️ Restock needed:<br>${low.map(i=>`• ${i.item_name}: ${i.quantity} ${i.unit||'units'} (min: ${i.min_quantity})`).join('<br>')}`:' ✅ All items sufficiently stocked.'}`;
+    if(q.includes('inventory')||q.includes('stock')){
+      const low=inv.filter(i=>i.quantity<=i.min_quantity);
+      return`📦 ${inv.length} items tracked | Low/Out: ${low.length}<br>${low.slice(0,5).map(x=>`⚠️ ${x.item_name}: ${x.quantity} ${x.unit||'units'} (min ${x.min_quantity})`).join('<br>')||'✅ All sufficiently stocked'}`;
     }
-
-    // STAFF
-    if (q.includes('staff') || q.includes('employee') || q.includes('volunteer')) {
-      const active = staff.filter(s=>s.is_active);
-      const vols = active.filter(s=>s.staff_type==='volunteer');
-      const emps = active.filter(s=>s.staff_type==='employee');
-      return `👔 <strong>Staff Summary:</strong><br>
-        Total Active: ${active.length} (${emps.length} employees, ${vols.length} volunteers)<br>
-        ${active.slice(0,5).map(s=>`• ${s.full_name} — ${s.role}`).join('<br>')||'No staff records'}`;
+    if(q.includes('staff')||q.includes('employee')||q.includes('volunteer')){
+      const active=st.filter(s=>s.is_active);
+      return`👔 Staff: ${active.length} active<br>${active.slice(0,6).map(s=>`• ${s.full_name} — ${s.role} (${s.staff_type})`).join('<br>')||'No staff on file'}`;
     }
-
-    // BINGO
-    if (q.includes('bingo')) {
-      const scheduled = bingo.filter(b=>b.status==='scheduled');
-      const active = bingo.filter(b=>b.status==='active');
-      return `🎱 <strong>Bingo Summary:</strong><br>
-        Total events: ${bingo.length} | Scheduled: ${scheduled.length} | Active: ${active.length}<br>
-        ${scheduled.slice(0,3).map(b=>`• ${b.event_name} — ${b.event_date}`).join('<br>')||'No upcoming bingo events'}`;
+    if(q.includes('bingo')){
+      const sched=bg.filter(b=>b.status==='scheduled');
+      return`🎱 Bingo: ${bg.length} events | Scheduled: ${sched.length}<br>${sched.slice(0,3).map(b=>`• ${b.event_name} — ${b.event_date}`).join('<br>')||'None upcoming'}`;
     }
-
-    // OFFICERS
-    if (q.includes('officer') || q.includes('commander') || q.includes('leadership')) {
-      const offs = d.officers||[];
-      return `🎖️ <strong>Post 300 Officers (${offs.length}):</strong><br>${offs.sort((a,b)=>a.sort_order-b.sort_order).slice(0,8).map(o=>`• ${o.name} — ${o.title}`).join('<br>')||'No officers on file'}`;
+    if(q.includes('donation')||q.includes('money')||q.includes('fund')){
+      const total=don.filter(d=>d.status==='completed').reduce((s,d)=>s+Number(d.amount||0),0);
+      return`💰 Donations: ${don.length} records | Total: <strong>${fmtCurrency(total)}</strong><br>Pending: ${don.filter(d=>d.status==='pending').length} | Refunded: ${don.filter(d=>d.status==='refunded').length}`;
     }
-
-    // ANNOUNCEMENTS
-    if (q.includes('announcement')) {
-      const active = announcements.filter(a=>a.is_active);
-      return `📢 <strong>Announcements:</strong> ${announcements.length} total, ${active.length} active<br>${active.slice(0,3).map(a=>`• ${a.title}`).join('<br>')||'None'}`;
+    if(q.includes('training')||q.includes('cert')){
+      const todayStr=today();
+      const exp=tr.filter(t=>t.expiration_date&&t.expiration_date<todayStr);
+      return`🎓 Training: ${tr.length} records | Expired: ${exp.length}<br>${exp.slice(0,3).map(t=>`⚠️ ${t.course_name} expired ${t.expiration_date}`).join('<br>')||'✅ No expired certifications'}`;
     }
-
-    // HELP
-    if (q.includes('help') || q.includes('what can') || q.includes('commands')) {
-      return `🤖 <strong>I can help you with:</strong><br>
-        • "Give me a full status report"<br>
-        • "How many pending rentals?"<br>
-        • "Show upcoming events"<br>
-        • "List open maintenance tickets"<br>
-        • "What inventory is low?"<br>
-        • "How many active members?"<br>
-        • "Show active staff"<br>
-        • "List bingo events"<br>
-        • "Who are our officers?"`;
+    if(q.includes('officer')||q.includes('commander')||q.includes('leadership')){
+      const offs=d.officers||[];
+      return`🎖️ Officers (${offs.length}):<br>${offs.slice(0,8).map(o=>`• ${o.name||o.full_name} — ${o.title}`).join('<br>')||'No officers on file'}`;
     }
-
-    // DEFAULT
-    return `I'm not sure about that. Try asking:<br>• "Status report" for a full overview<br>• "Pending rentals" for hall inquiries<br>• "Open maintenance tickets"<br>• "Low stock inventory"<br>Or type "help" to see all commands.`;
+    if(q.includes('help')||q.includes('what can')){
+      return`🤖 I can help with:<br>• "Status report" — full overview<br>• "Pending rentals" — hall inquiries<br>• "Upcoming events"<br>• "Open maintenance tickets"<br>• "Low stock inventory"<br>• "Active staff"<br>• "Bingo events"<br>• "Total donations"<br>• "Expired certifications"<br>All data shown is <strong>Post 300 only</strong>.`;
+    }
+    return`I'm not sure about that. Try "status report" for a full overview, or type "help" to see all commands. All results are scoped to <strong>Post 300</strong> only.`;
   }
   </script>
 </body>
