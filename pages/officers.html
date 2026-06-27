@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Officers — American Legion Post 300</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-inner">
+      <div class="nav-brand">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/American_Legion_emblem.svg/120px-American_Legion_emblem.svg.png" alt="American Legion" class="nav-logo" />
+        <span>American Legion Post 300<small>William J. Bordelon Post — San Antonio, TX</small></span>
+      </div>
+      <div class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="events.html">Events</a>
+        <a href="hall-rental.html">Hall Rental</a>
+        <a href="officers.html">Officers</a>
+        <a href="membership.html">Join Us</a>
+        <a href="admin.html" class="btn-admin">Admin</a>
+      </div>
+      <button class="hamburger" onclick="toggleMenu()">☰</button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="../index.html">Home</a>
+      <a href="events.html">Events</a>
+      <a href="hall-rental.html">Hall Rental</a>
+      <a href="officers.html">Officers</a>
+      <a href="membership.html">Join Us</a>
+      <a href="admin.html">Admin</a>
+    </div>
+  </nav>
+
+  <div class="page-hero">
+    <h1>Post 300 Officers</h1>
+    <p>Leadership Team — William J. Bordelon Post · San Antonio, TX</p>
+  </div>
+
+  <div class="section">
+    <div id="officers-list" class="officers-grid">
+      <!-- Default officers preloaded from public data; DB will override -->
+    </div>
+  </div>
+
+  <!-- STATIC FALLBACK OFFICERS (from public data) -->
+  <div class="section" id="static-officers" style="display:none;">
+    <h2 class="section-title">Current Officers</h2>
+    <div class="officers-grid">
+      <div class="officer-card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/American_Legion_emblem.svg/120px-American_Legion_emblem.svg.png" alt="Commander" class="officer-photo" />
+        <div class="officer-name">Jack Caniglia</div>
+        <div class="officer-title">Commander</div>
+      </div>
+      <div class="officer-card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/American_Legion_emblem.svg/120px-American_Legion_emblem.svg.png" alt="1st Vice Commander" class="officer-photo" />
+        <div class="officer-name">Malcolm Wright</div>
+        <div class="officer-title">1st Vice Commander</div>
+      </div>
+      <div class="officer-card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/American_Legion_emblem.svg/120px-American_Legion_emblem.svg.png" alt="Adjutant" class="officer-photo" />
+        <div class="officer-name">Scottie Clark</div>
+        <div class="officer-title">Adjutant</div>
+      </div>
+      <div class="officer-card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/American_Legion_emblem.svg/120px-American_Legion_emblem.svg.png" alt="Judge Advocate" class="officer-photo" />
+        <div class="officer-name">Michael Veile</div>
+        <div class="officer-title">Judge Advocate</div>
+      </div>
+      <div class="officer-card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/American_Legion_emblem.svg/120px-American_Legion_emblem.svg.png" alt="Finance Officer" class="officer-photo" />
+        <div class="officer-name">Karl Hammerle</div>
+        <div class="officer-title">Finance Officer</div>
+      </div>
+      <div class="officer-card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/American_Legion_emblem.svg/120px-American_Legion_emblem.svg.png" alt="Chaplain" class="officer-photo" />
+        <div class="officer-name">James Burleigh</div>
+        <div class="officer-title">Chaplain / Sgt-at-Arms</div>
+      </div>
+      <div class="officer-card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/American_Legion_emblem.svg/120px-American_Legion_emblem.svg.png" alt="Historian" class="officer-photo" />
+        <div class="officer-name">John Grunalt</div>
+        <div class="officer-title">Historian</div>
+      </div>
+      <div class="officer-card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/American_Legion_emblem.svg/120px-American_Legion_emblem.svg.png" alt="Service Officer" class="officer-photo" />
+        <div class="officer-name">Amanda Acebo</div>
+        <div class="officer-title">Service Officer</div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-col"><h4>Post 300</h4><p>William J. Bordelon Post</p><p>3290 Grosenbacher Rd</p><p>San Antonio, TX 78245</p></div>
+      <div class="footer-col"><h4>Contact</h4><a href="tel:2106743364">(210) 674-3364</a><a href="mailto:alpost300@yahoo.com">alpost300@yahoo.com</a></div>
+    </div>
+    <div class="footer-bottom">© 2026 American Legion Post 300 — William J. Bordelon Post · San Antonio, TX</div>
+  </footer>
+
+  <script src="../js/supabase.js"></script>
+  <script>
+    function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+
+    const FALLBACK_OFFICERS = [
+      { name: 'Jack Caniglia', title: 'Commander' },
+      { name: 'Malcolm Wright', title: '1st Vice Commander' },
+      { name: 'Scottie Clark', title: 'Adjutant' },
+      { name: 'Michael Veile', title: 'Judge Advocate' },
+      { name: 'Karl Hammerle', title: 'Finance Officer' },
+      { name: 'James Burleigh', title: 'Chaplain / Sgt-at-Arms' },
+      { name: 'John Grunalt', title: 'Historian' },
+      { name: 'Amanda Acebo', title: 'Service Officer' }
+    ];
+
+    const DEFAULT_PHOTO = 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/American_Legion_emblem.svg/120px-American_Legion_emblem.svg.png';
+
+    document.addEventListener('supabase:ready', async function () {
+      const { data: officers } = await window.supabase
+        .from('officers')
+        .select('*')
+        .eq('is_active', true)
+        .order('sort_order');
+
+      const el = document.getElementById('officers-list');
+      const list = (officers && officers.length) ? officers : FALLBACK_OFFICERS;
+
+      el.innerHTML = list.map(o => `
+        <div class="officer-card">
+          <img src="${o.photo_url || DEFAULT_PHOTO}" alt="${o.name || o.full_name}" class="officer-photo" onerror="this.src='${DEFAULT_PHOTO}'" />
+          <div class="officer-name">${o.name || o.full_name}</div>
+          <div class="officer-title">${o.title || o.position || ''}</div>
+          ${o.email ? `<div class="officer-contact">${o.email}</div>` : ''}
+          ${o.phone ? `<div class="officer-contact">${o.phone}</div>` : ''}
+        </div>
+      `).join('');
+    });
+  </script>
+</body>
+</html>

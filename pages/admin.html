@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin — American Legion Post 300</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    .admin-login { max-width: 420px; margin: 4rem auto; background: #0B1F3A; border: 1px solid #1a2a4a; border-top: 4px solid #B22234; border-radius: 10px; padding: 2.5rem; text-align: center; }
+    .admin-login h2 { font-family: 'Oswald', sans-serif; color: #F5F5F5; margin-bottom: 0.5rem; }
+    .admin-login p { color: #888; font-size: 0.85rem; margin-bottom: 1.5rem; }
+    #adminContent { display: none; }
+    .img-upload-box { border: 2px dashed #1a2a4a; border-radius: 8px; padding: 1.5rem; text-align: center; cursor: pointer; transition: border-color 0.2s; }
+    .img-upload-box:hover { border-color: #B22234; }
+    .img-preview { max-width: 100%; max-height: 160px; border-radius: 6px; margin-top: 0.75rem; object-fit: cover; }
+    .gallery-admin-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1rem; }
+    .gallery-admin-item { background: #060e1a; border: 1px solid #1a2a4a; border-radius: 8px; overflow: hidden; }
+    .gallery-admin-item img { width: 100%; height: 130px; object-fit: cover; display: block; }
+    .gallery-admin-item .item-actions { padding: 0.5rem; display: flex; gap: 0.5rem; }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-inner">
+      <div class="nav-brand">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/American_Legion_emblem.svg/120px-American_Legion_emblem.svg.png" alt="American Legion" class="nav-logo" />
+        <span>American Legion Post 300<small>Admin Panel</small></span>
+      </div>
+      <div class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="events.html">Events</a>
+        <a href="hall-rental.html">Hall Rental</a>
+        <a href="officers.html">Officers</a>
+        <a href="membership.html">Join Us</a>
+        <a href="admin.html" class="btn-admin">Admin</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- LOGIN -->
+  <div id="adminLogin" class="admin-login">
+    <h2>Admin Login</h2>
+    <p>American Legion Post 300 — William J. Bordelon Post</p>
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" id="adminPass" placeholder="Enter admin password" onkeydown="if(event.key==='Enter')checkLogin()" />
+    </div>
+    <div id="loginError" style="color:#B22234;font-size:0.85rem;margin-bottom:0.75rem;display:none;"></div>
+    <button class="btn-primary" style="width:100%;margin-top:0.5rem;" onclick="checkLogin()">Login</button>
+  </div>
+
+  <!-- ADMIN CONTENT -->
+  <div id="adminContent" class="section">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem;">
+      <h1 style="font-family:Oswald;color:#F5F5F5;font-size:1.8rem;">Post 300 Admin Dashboard</h1>
+      <button class="btn-secondary" onclick="logout()">Logout</button>
+    </div>
+
+    <!-- STATS -->
+    <div class="stat-grid" id="statsGrid"></div>
+
+    <!-- TABS -->
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="switchTab('rentals',this)">Hall Rentals</button>
+      <button class="tab-btn" onclick="switchTab('members',this)">Members</button>
+      <button class="tab-btn" onclick="switchTab('events',this)">Events</button>
+      <button class="tab-btn" onclick="switchTab('officers',this)">Officers</button>
+      <button class="tab-btn" onclick="switchTab('gallery',this)">Gallery</button>
+      <button class="tab-btn" onclick="switchTab('maintenance',this)">Maintenance</button>
+      <button class="tab-btn" onclick="switchTab('staff',this)">Staff</button>
+      <button class="tab-btn" onclick="switchTab('inventory',this)">Inventory</button>
+      <button class="tab-btn" onclick="switchTab('settings',this)">⚙️ Settings</button>
+    </div>
+
+    <!-- RENTALS TAB -->
+    <div class="tab-panel active" id="tab-rentals">
+      <h2 class="section-title">Hall Rental Inquiries</h2>
+      <div id="rentals-list" class="record-list"><p class="loading">Loading...</p></div>
+    </div>
+
+    <!-- MEMBERS TAB -->
+    <div class="tab-panel" id="tab-members">
+      <h2 class="section-title">Site Members</h2>
+      <div id="members-list" class="record-list"><p class="loading">Loading...</p></div>
+    </div>
+
+    <!-- EVENTS TAB -->
+    <div class="tab-panel" id="tab-events">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
+        <h2 class="section-title" style="margin-bottom:0;">Events</h2>
+        <button class="btn-primary" onclick="openEventModal()">+ Add Event</button>
+      </div>
+      <div id="events-admin-list" class="record-list"><p class="loading">Loading...</p></div>
+    </div>
+
+    <!-- OFFICERS TAB -->
+    <div class="tab-panel" id="tab-officers">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
+        <h2 class="section-title" style="margin-bottom:0;">Officers</h2>
+        <button class="btn-primary" onclick="openOfficerModal()">+ Add Officer</button>
+      </div>
+      <div id="officers-admin-list" class="record-list"><p class="loading">Loading...</p></div>
+    </div>
+
+    <!-- GALLERY TAB -->
+    <div class="tab-panel" id="tab-gallery">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
+        <h2 class="section-title" style="margin-bottom:0;">Photo Gallery</h2>
+        <button class="btn-primary" onclick="openGalleryModal()">+ Add Photo</button>
+      </div>
+      <div id="gallery-admin-list" class="gallery-admin-grid"><p class="loading">Loading...</p></div>
+    </div>
+
+    <!-- MAINTENANCE TAB -->
+    <div class="tab-panel" id="tab-maintenance">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
+        <h2 class="section-title" style="margin-bottom:0;">Building Maintenance</h2>
+        <button class="btn-primary" onclick="openMaintenanceModal()">+ Add Record</button>
+      </div>
+      <div id="maintenance-list" class="record-list"><p class="loading">Loading...</p></div>
+    </div>
+
+    <!-- STAFF TAB -->
+    <div class="tab-panel" id="tab-staff">
+      <h2 class="section-title">Staff Directory</h2>
+      <div id="staff-list" class="record-list"><p class="loading">Loading...</p></div>
+    </div>
+
+    <!-- INVENTORY TAB -->
+    <div class="tab-panel" id="tab-inventory">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
+        <h2 class="section-title" style="margin-bottom:0;">Inventory</h2>
+        <button class="btn-primary" onclick="openInventoryModal()">+ Add Item</button>
+      </div>
+      <div id="inventory-list" class="record-list"><p class="loading">Loading...</p></div>
+    </div>
+
+    <!-- SETTINGS TAB -->
+    <div class="tab-panel" id="tab-settings">
+      <h2 class="section-title">Settings</h2>
+      <div class="change-pass-box">
+        <h4>🔐 Change Admin Password</h4>
+        <div class="form-group"><label>Current Password</label><input type="password" id="curr_pass" /></div>
+        <div class="form-group"><label>New Password</label><input type="password" id="new_pass" /></div>
+        <div class="form-group"><label>Confirm New Password</label><input type="password" id="confirm_pass" /></div>
+        <div id="pass-error" style="color:#B22234;font-size:0.85rem;margin-bottom:0.75rem;display:none;"></div>
+        <div id="pass-success" style="color:#27ae60;font-size:0.85rem;margin-bottom:0.75rem;display:none;">✅ Password changed successfully!</div>
+        <button class="btn-primary" style="width:100%;" onclick="changePassword()">Update Password</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAINTENANCE MODAL -->
+  <div class="modal-overlay" id="maintenanceModal">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal('maintenanceModal')">✕</button>
+      <h3 id="mModalTitle">Add Maintenance Record</h3>
+      <input type="hidden" id="m_edit_id" />
+      <div class="form-group"><label>Title *</label><input type="text" id="m_title" /></div>
+      <div class="form-group"><label>Description</label><textarea id="m_description"></textarea></div>
+      <div class="form-row">
+        <div class="form-group"><label>Priority</label>
+          <select id="m_priority"><option>Medium</option><option>Low</option><option>High</option><option>Urgent</option></select>
+        </div>
+        <div class="form-group"><label>Status</label>
+          <select id="m_status"><option value="Open">Open</option><option value="In Progress">In Progress</option><option value="Completed">Completed</option><option value="Cancelled">Cancelled</option></select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Location</label><input type="text" id="m_location" /></div>
+        <div class="form-group"><label>Due Date</label><input type="date" id="m_due_date" /></div>
+      </div>
+      <div id="m-modal-error" style="color:#B22234;font-size:0.85rem;margin-bottom:0.5rem;display:none;"></div>
+      <button class="btn-primary" style="width:100%;" onclick="saveMaintenance()">Save Record</button>
+    </div>
+  </div>
+
+  <!-- EVENT MODAL -->
+  <div class="modal-overlay" id="eventModal">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal('eventModal')">✕</button>
+      <h3>Add / Edit Event</h3>
+      <input type="hidden" id="ev_edit_id" />
+      <div class="form-group"><label>Title *</label><input type="text" id="ev_title" /></div>
+      <div class="form-row">
+        <div class="form-group"><label>Event Date *</label><input type="date" id="ev_date" /></div>
+        <div class="form-group"><label>Event Type</label>
+          <select id="ev_type">
+            <option>Social</option><option>Bingo</option><option>Meeting</option><option>Fundraiser</option>
+            <option>Memorial</option><option>Holiday</option><option>Community</option><option>Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Start Time</label><input type="time" id="ev_start" /></div>
+        <div class="form-group"><label>End Time</label><input type="time" id="ev_end" /></div>
+      </div>
+      <div class="form-group"><label>Description</label><textarea id="ev_desc"></textarea></div>
+      <div id="ev-modal-error" style="color:#B22234;font-size:0.85rem;margin-bottom:0.5rem;display:none;"></div>
+      <button class="btn-primary" style="width:100%;" onclick="saveEvent()">Save Event</button>
+    </div>
+  </div>
+
+  <!-- GALLERY MODAL -->
+  <div class="modal-overlay" id="galleryModal">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal('galleryModal')">✕</button>
+      <h3>Add Gallery Photo</h3>
+      <div class="form-group"><label>Photo URL *</label><input type="url" id="g_url" placeholder="https://..." /></div>
+      <div class="form-group"><label>Caption</label><input type="text" id="g_caption" /></div>
+      <div class="form-group"><label>Category</label>
+        <select id="g_category">
+          <option>General</option><option>Events</option><option>Community</option><option>Veterans</option><option>Facility</option>
+        </select>
+      </div>
+      <div id="g-modal-error" style="color:#B22234;font-size:0.85rem;margin-bottom:0.5rem;display:none;"></div>
+      <button class="btn-primary" style="width:100%;" onclick="saveGallery()">Add Photo</button>
+    </div>
+  </div>
+
+  <!-- OFFICER MODAL -->
+  <div class="modal-overlay" id="officerModal">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal('officerModal')">✕</button>
+      <h3>Add / Edit Officer</h3>
+      <input type="hidden" id="o_edit_id" />
+      <div class="form-row">
+        <div class="form-group"><label>Full Name *</label><input type="text" id="o_name" /></div>
+        <div class="form-group"><label>Title / Position *</label><input type="text" id="o_title" /></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Email</label><input type="email" id="o_email" /></div>
+        <div class="form-group"><label>Phone</label><input type="tel" id="o_phone" /></div>
+      </div>
+      <div class="form-group"><label>Photo URL</label><input type="url" id="o_photo" placeholder="https://..." /></div>
+      <div class="form-group"><label>Sort Order</label><input type="number" id="o_sort" value="0" /></div>
+      <div id="o-modal-error" style="color:#B22234;font-size:0.85rem;margin-bottom:0.5rem;display:none;"></div>
+      <button class="btn-primary" style="width:100%;" onclick="saveOfficer()">Save Officer</button>
+    </div>
+  </div>
+
+  <!-- INVENTORY MODAL -->
+  <div class="modal-overlay" id="inventoryModal">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal('inventoryModal')">✕</button>
+      <h3>Add / Edit Inventory Item</h3>
+      <input type="hidden" id="inv_edit_id" />
+      <div class="form-row">
+        <div class="form-group"><label>Item Name *</label><input type="text" id="inv_name" /></div>
+        <div class="form-group"><label>Category</label><input type="text" id="inv_category" value="General" /></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Quantity</label><input type="number" id="inv_qty" value="0" /></div>
+        <div class="form-group"><label>Unit</label><input type="text" id="inv_unit" value="each" /></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Min Quantity</label><input type="number" id="inv_min" value="0" /></div>
+        <div class="form-group"><label>Cost Per Unit ($)</label><input type="number" id="inv_cost" step="0.01" value="0" /></div>
+      </div>
+      <div class="form-group"><label>Supplier</label><input type="text" id="inv_supplier" /></div>
+      <div class="form-group"><label>Location</label><input type="text" id="inv_location" /></div>
+      <div id="inv-modal-error" style="color:#B22234;font-size:0.85rem;margin-bottom:0.5rem;display:none;"></div>
+      <button class="btn-primary" style="width:100%;" onclick="saveInventory()">Save Item</button>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-col"><h4>Post 300</h4><p>William J. Bordelon Post</p><p>3290 Grosenbacher Rd, San Antonio, TX 78245</p></div>
+    </div>
+    <div class="footer-bottom">© 2026 American Legion Post 300 — Admin Panel</div>
+  </footer>
+
+  <script src="../js/supabase.js"></script>
+  <script>
+    const PASS_KEY = 'al300_admin_pass';
+    function getStoredPass() { return localStorage.getItem(PASS_KEY) || 'post300admin'; }
+
+    function checkLogin() {
+      const pass = document.getElementById('adminPass').value;
+      if (pass === getStoredPass()) {
+        document.getElementById('adminLogin').style.display = 'none';
+        document.getElementById('adminContent').style.display = 'block';
+        loadAll();
+      } else {
+        const err = document.getElementById('loginError');
+        err.textContent = 'Incorrect password. Try: post300admin';
+        err.style.display = 'block';
+      }
+    }
+
+    function logout() {
+      document.getElementById('adminLogin').style.display = 'block';
+      document.getElementById('adminContent').style.display = 'none';
+      document.getElementById('adminPass').value = '';
+    }
+
+    function switchTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    function openModal(id) { document.getElementById(id).classList.add('open'); }
+    function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+
+    async function loadAll() {
+      await Promise.all([loadStats(), loadRentals(), loadMembers(), loadMaintenance(), loadStaff(), loadInventory(), loadEvents(), loadOfficers(), loadGallery()]);
+    }
+
+    async function loadStats() {
+      const [r, m, e, s] = await Promise.all([
+        window.supabase.from('hall_rental_inquiries').select('id', { count: 'exact', head: true }),
+        window.supabase.from('site_members').select('id', { count: 'exact', head: true }),
+        window.supabase.from('events').select('id', { count: 'exact', head: true }),
+        window.supabase.from('staff').select('id', { count: 'exact', head: true }),
+      ]);
+      document.getElementById('statsGrid').innerHTML = [
+        { label: 'Rentals', num: r.count || 0 },
+        { label: 'Members', num: m.count || 0 },
+        { label: 'Events', num: e.count || 0 },
+        { label: 'Staff', num: s.count || 0 }
+      ].map(s => `<div class="stat-card"><div class="stat-num">${s.num}</div><div class="stat-label">${s.label}</div></div>`).join('');
+    }
+
+    async function loadRentals() {
+      const { data } = await window.supabase.from('hall_rental_inquiries').select('*').order('event_date', { ascending: true });
+      const el = document.getElementById('rentals-list');
+      if (!data || !data.length) { el.innerHTML = '<p class="loading">No rental inquiries yet.</p>'; return; }
+      el.innerHTML = data.map(r => `
+        <div class="record-item">
+          <strong>${r.contact_name}</strong> &nbsp; <span class="badge badge-${(r.status||'pending').toLowerCase()}">${r.status || 'Pending'}</span>
+          <br/><small>${r.event_date ? formatDate(r.event_date) : 'No date'} · ${r.event_type || ''} · ${r.contact_email || ''} · ${r.contact_phone || ''}</small>
+          ${r.notes ? `<br/><small style="color:#666;">${r.notes}</small>` : ''}
+          <div class="record-actions">
+            <button class="btn-gold" style="font-size:0.75rem;padding:4px 10px;" onclick="updateRentalStatus('${r.id}','confirmed')">Confirm</button>
+            <button class="btn-secondary" style="font-size:0.75rem;padding:4px 10px;" onclick="updateRentalStatus('${r.id}','cancelled')">Cancel</button>
+            <button class="btn-danger" style="font-size:0.75rem;padding:4px 10px;" onclick="deleteRecord('hall_rental_inquiries','${r.id}',loadRentals)">Delete</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    async function updateRentalStatus(id, status) {
+      await window.supabase.from('hall_rental_inquiries').update({ status }).eq('id', id);
+      loadRentals(); loadStats();
+    }
+
+    async function loadMembers() {
+      const { data } = await window.supabase.from('site_members').select('*').order('created_at', { ascending: false });
+      const el = document.getElementById('members-list');
+      if (!data || !data.length) { el.innerHTML = '<p class="loading">No members yet.</p>'; return; }
+      el.innerHTML = data.map(m => `
+        <div class="record-item">
+          <strong>${m.full_name}</strong> &nbsp; <span class="badge badge-${(m.membership_status||'pending').toLowerCase()}">${m.membership_status || 'Pending'}</span>
+          <br/><small>${m.email || ''} · ${m.phone || ''} · ${m.membership_type || ''}</small>
+          ${m.branch_of_service ? `<br/><small style="color:#666;">Branch: ${m.branch_of_service}</small>` : ''}
+          <div class="record-actions">
+            <button class="btn-primary" style="font-size:0.75rem;padding:4px 10px;" onclick="updateMemberStatus('${m.id}','active')">Activate</button>
+            <button class="btn-danger" style="font-size:0.75rem;padding:4px 10px;" onclick="deleteRecord('site_members','${m.id}',loadMembers)">Delete</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    async function updateMemberStatus(id, status) {
+      await window.supabase.from('site_members').update({ membership_status: status }).eq('id', id);
+      loadMembers(); loadStats();
+    }
+
+    async function loadMaintenance() {
+      const { data } = await window.supabase.from('building_maintenance').select('*').order('created_at', { ascending: false });
+      const el = document.getElementById('maintenance-list');
+      if (!data || !data.length) { el.innerHTML = '<p class="loading">No maintenance records.</p>'; return; }
+      el.innerHTML = data.map(r => `
+        <div class="record-item">
+          <strong>${r.title}</strong> &nbsp; <span class="badge badge-${r.status==='Open'?'open':r.status==='Completed'?'confirmed':'pending'}">${r.status}</span>
+          &nbsp; <small style="color:#B22234;">${r.priority || 'Medium'} Priority</small>
+          <br/><small>${r.location || ''} ${r.due_date ? '· Due: ' + formatDate(r.due_date) : ''}</small>
+          ${r.description ? `<br/><small style="color:#666;">${r.description}</small>` : ''}
+          <div class="record-actions">
+            <button class="btn-gold" style="font-size:0.75rem;padding:4px 10px;" onclick="editMaintenance(${JSON.stringify(r).replace(/"/g,'&quot;')})">Edit</button>
+            <button class="btn-danger" style="font-size:0.75rem;padding:4px 10px;" onclick="deleteRecord('building_maintenance','${r.id}',loadMaintenance)">Delete</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    async function loadStaff() {
+      const { data } = await window.supabase.from('staff').select('*').order('sort_order');
+      const el = document.getElementById('staff-list');
+      if (!data || !data.length) { el.innerHTML = '<p class="loading">No staff records.</p>'; return; }
+      el.innerHTML = data.map(s => `
+        <div class="record-item">
+          <strong>${s.full_name}</strong> &nbsp; <small style="color:#B22234;">${s.role || ''}</small>
+          <br/><small>${s.staff_type || ''} · ${s.department || ''} · ${s.email || ''}</small>
+          ${s.branch_service ? `<br/><small style="color:#666;">Branch: ${s.branch_service}</small>` : ''}
+          <div class="record-actions">
+            <button class="btn-danger" style="font-size:0.75rem;padding:4px 10px;" onclick="deleteRecord('staff','${s.id}',loadStaff)">Delete</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    async function loadInventory() {
+      const { data } = await window.supabase.from('inventory').select('*').order('item_name');
+      const el = document.getElementById('inventory-list');
+      if (!data || !data.length) { el.innerHTML = '<p class="loading">No inventory items.</p>'; return; }
+      el.innerHTML = data.map(i => `
+        <div class="record-item">
+          <strong>${i.item_name}</strong> &nbsp; <small style="color:#888;">${i.category || ''}</small>
+          ${i.quantity <= i.min_quantity ? '&nbsp;<span class="badge badge-cancelled">Low Stock</span>' : ''}
+          <br/><small>Qty: ${i.quantity} ${i.unit || ''} · Cost: $${i.cost_per_unit || 0} · ${i.location || ''}</small>
+          <div class="record-actions">
+            <button class="btn-gold" style="font-size:0.75rem;padding:4px 10px;" onclick="editInventory(${JSON.stringify(i).replace(/"/g,'&quot;')})">Edit</button>
+            <button class="btn-danger" style="font-size:0.75rem;padding:4px 10px;" onclick="deleteRecord('inventory','${i.id}',loadInventory)">Delete</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    async function loadEvents() {
+      const { data } = await window.supabase.from('events').select('*').order('event_date', { ascending: false }).limit(50);
+      const el = document.getElementById('events-admin-list');
+      if (!data || !data.length) { el.innerHTML = '<p class="loading">No events.</p>'; return; }
+      el.innerHTML = data.map(e => `
+        <div class="record-item">
+          <strong>${e.title}</strong> &nbsp; <small style="color:#B22234;">${e.event_type || ''}</small>
+          <br/><small>${e.event_date ? formatDate(e.event_date) : '—'} ${e.start_time ? '@ ' + e.start_time : ''}</small>
+          ${e.description ? `<br/><small style="color:#666;">${e.description.substring(0,80)}</small>` : ''}
+          <div class="record-actions">
+            <button class="btn-gold" style="font-size:0.75rem;padding:4px 10px;" onclick="editEvent(${JSON.stringify(e).replace(/"/g,'&quot;')})">Edit</button>
+            <button class="btn-danger" style="font-size:0.75rem;padding:4px 10px;" onclick="deleteRecord('events','${e.id}',loadEvents)">Delete</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    async function loadOfficers() {
+      const { data } = await window.supabase.from('officers').select('*').order('sort_order');
+      const el = document.getElementById('officers-admin-list');
+      if (!data || !data.length) { el.innerHTML = '<p class="loading">No officers yet. Add them above.</p>'; return; }
+      el.innerHTML = data.map(o => `
+        <div class="record-item">
+          <strong>${o.name || o.full_name}</strong> &nbsp; <small style="color:#B22234;">${o.title || o.position || ''}</small>
+          <br/><small>${o.email || ''} · ${o.phone || ''}</small>
+          <div class="record-actions">
+            <button class="btn-gold" style="font-size:0.75rem;padding:4px 10px;" onclick="editOfficer(${JSON.stringify(o).replace(/"/g,'&quot;')})">Edit</button>
+            <button class="btn-danger" style="font-size:0.75rem;padding:4px 10px;" onclick="deleteRecord('officers','${o.id}',loadOfficers)">Delete</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    async function loadGallery() {
+      const { data } = await window.supabase.from('gallery').select('*').order('created_at', { ascending: false });
+      const el = document.getElementById('gallery-admin-list');
+      if (!data || !data.length) { el.innerHTML = '<p class="loading">No gallery photos yet.</p>'; return; }
+      el.innerHTML = data.map(g => `
+        <div class="gallery-admin-item">
+          <img src="${g.photo_url || g.image_url || ''}" alt="${g.caption || ''}" onerror="this.src=''" />
+          <div class="item-actions">
+            <small style="color:#888;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${g.caption || 'No caption'}</small>
+            <button class="btn-danger" style="font-size:0.7rem;padding:3px 8px;" onclick="deleteRecord('gallery','${g.id}',loadGallery)">✕</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    async function deleteRecord(table, id, reload) {
+      if (!confirm('Delete this record?')) return;
+      await window.supabase.from(table).delete().eq('id', id);
+      reload(); loadStats();
+    }
+
+    // MAINTENANCE CRUD
+    function openMaintenanceModal(data) {
+      document.getElementById('m_edit_id').value = '';
+      document.getElementById('m_title').value = '';
+      document.getElementById('m_description').value = '';
+      document.getElementById('m_priority').value = 'Medium';
+      document.getElementById('m_status').value = 'Open';
+      document.getElementById('m_location').value = '';
+      document.getElementById('m_due_date').value = '';
+      document.getElementById('mModalTitle').textContent = 'Add Maintenance Record';
+      openModal('maintenanceModal');
+    }
+    function editMaintenance(r) {
+      document.getElementById('m_edit_id').value = r.id;
+      document.getElementById('m_title').value = r.title || '';
+      document.getElementById('m_description').value = r.description || '';
+      document.getElementById('m_priority').value = r.priority || 'Medium';
+      document.getElementById('m_status').value = r.status || 'Open';
+      document.getElementById('m_location').value = r.location || '';
+      document.getElementById('m_due_date').value = r.due_date || '';
+      document.getElementById('mModalTitle').textContent = 'Edit Maintenance Record';
+      openModal('maintenanceModal');
+    }
+    async function saveMaintenance() {
+      const id = document.getElementById('m_edit_id').value;
+      const title = toStr(document.getElementById('m_title').value);
+      if (!title) { document.getElementById('m-modal-error').textContent='Title is required.'; document.getElementById('m-modal-error').style.display='block'; return; }
+      const payload = {
+        title, description: toStr(document.getElementById('m_description').value),
+        priority: toStr(document.getElementById('m_priority').value),
+        status: toStr(document.getElementById('m_status').value),
+        location: toStr(document.getElementById('m_location').value),
+        due_date: toDate(document.getElementById('m_due_date').value)
+      };
+      if (id) await window.supabase.from('building_maintenance').update(payload).eq('id', id);
+      else await window.supabase.from('building_maintenance').insert([payload]);
+      closeModal('maintenanceModal'); loadMaintenance();
+    }
+
+    // EVENT CRUD
+    function openEventModal() {
+      document.getElementById('ev_edit_id').value = '';
+      document.getElementById('ev_title').value = '';
+      document.getElementById('ev_date').value = '';
+      document.getElementById('ev_type').value = 'Social';
+      document.getElementById('ev_start').value = '';
+      document.getElementById('ev_end').value = '';
+      document.getElementById('ev_desc').value = '';
+      openModal('eventModal');
+    }
+    function editEvent(e) {
+      document.getElementById('ev_edit_id').value = e.id;
+      document.getElementById('ev_title').value = e.title || '';
+      document.getElementById('ev_date').value = e.event_date || '';
+      document.getElementById('ev_type').value = e.event_type || 'Social';
+      document.getElementById('ev_start').value = e.start_time || '';
+      document.getElementById('ev_end').value = e.end_time || '';
+      document.getElementById('ev_desc').value = e.description || '';
+      openModal('eventModal');
+    }
+    async function saveEvent() {
+      const id = document.getElementById('ev_edit_id').value;
+      const title = toStr(document.getElementById('ev_title').value);
+      const date = toDate(document.getElementById('ev_date').value);
+      if (!title || !date) { document.getElementById('ev-modal-error').textContent='Title and date required.'; document.getElementById('ev-modal-error').style.display='block'; return; }
+      const payload = { title, event_date: date, event_type: toStr(document.getElementById('ev_type').value), start_time: toStr(document.getElementById('ev_start').value), end_time: toStr(document.getElementById('ev_end').value), description: toStr(document.getElementById('ev_desc').value) };
+      if (id) await window.supabase.from('events').update(payload).eq('id', id);
+      else await window.supabase.from('events').insert([payload]);
+      closeModal('eventModal'); loadEvents(); loadStats();
+    }
+
+    // OFFICER CRUD
+    function openOfficerModal() {
+      document.getElementById('o_edit_id').value = '';
+      ['o_name','o_title','o_email','o_phone','o_photo'].forEach(id => document.getElementById(id).value = '');
+      document.getElementById('o_sort').value = '0';
+      openModal('officerModal');
+    }
+    function editOfficer(o) {
+      document.getElementById('o_edit_id').value = o.id;
+      document.getElementById('o_name').value = o.name || o.full_name || '';
+      document.getElementById('o_title').value = o.title || o.position || '';
+      document.getElementById('o_email').value = o.email || '';
+      document.getElementById('o_phone').value = o.phone || '';
+      document.getElementById('o_photo').value = o.photo_url || '';
+      document.getElementById('o_sort').value = o.sort_order || 0;
+      openModal('officerModal');
+    }
+    async function saveOfficer() {
+      const id = document.getElementById('o_edit_id').value;
+      const name = toStr(document.getElementById('o_name').value);
+      const title = toStr(document.getElementById('o_title').value);
+      if (!name || !title) { document.getElementById('o-modal-error').textContent='Name and title required.'; document.getElementById('o-modal-error').style.display='block'; return; }
+      const payload = { name, full_name: name, title, position: title, email: toStr(document.getElementById('o_email').value), phone: toStr(document.getElementById('o_phone').value), photo_url: toStr(document.getElementById('o_photo').value), sort_order: toNum(document.getElementById('o_sort').value) || 0, is_active: true };
+      if (id) await window.supabase.from('officers').update(payload).eq('id', id);
+      else await window.supabase.from('officers').insert([payload]);
+      closeModal('officerModal'); loadOfficers();
+    }
+
+    // GALLERY CRUD
+    function openGalleryModal() {
+      document.getElementById('g_url').value = '';
+      document.getElementById('g_caption').value = '';
+      document.getElementById('g_category').value = 'General';
+      openModal('galleryModal');
+    }
+    async function saveGallery() {
+      const url = toStr(document.getElementById('g_url').value);
+      if (!url) { document.getElementById('g-modal-error').textContent='Photo URL required.'; document.getElementById('g-modal-error').style.display='block'; return; }
+      const payload = { photo_url: url, image_url: url, caption: toStr(document.getElementById('g_caption').value), category: toStr(document.getElementById('g_category').value) };
+      await window.supabase.from('gallery').insert([payload]);
+      closeModal('galleryModal'); loadGallery();
+    }
+
+    // INVENTORY CRUD
+    function openInventoryModal() {
+      document.getElementById('inv_edit_id').value = '';
+      document.getElementById('inv_name').value = '';
+      document.getElementById('inv_category').value = 'General';
+      document.getElementById('inv_qty').value = '0';
+      document.getElementById('inv_unit').value = 'each';
+      document.getElementById('inv_min').value = '0';
+      document.getElementById('inv_cost').value = '0';
+      document.getElementById('inv_supplier').value = '';
+      document.getElementById('inv_location').value = '';
+      openModal('inventoryModal');
+    }
+    function editInventory(i) {
+      document.getElementById('inv_edit_id').value = i.id;
+      document.getElementById('inv_name').value = i.item_name || '';
+      document.getElementById('inv_category').value = i.category || 'General';
+      document.getElementById('inv_qty').value = i.quantity || 0;
+      document.getElementById('inv_unit').value = i.unit || 'each';
+      document.getElementById('inv_min').value = i.min_quantity || 0;
+      document.getElementById('inv_cost').value = i.cost_per_unit || 0;
+      document.getElementById('inv_supplier').value = i.supplier || '';
+      document.getElementById('inv_location').value = i.location || '';
+      openModal('inventoryModal');
+    }
+    async function saveInventory() {
+      const id = document.getElementById('inv_edit_id').value;
+      const name = toStr(document.getElementById('inv_name').value);
+      if (!name) { document.getElementById('inv-modal-error').textContent='Item name required.'; document.getElementById('inv-modal-error').style.display='block'; return; }
+      const payload = { item_name: name, category: toStr(document.getElementById('inv_category').value), quantity: toNum(document.getElementById('inv_qty').value) || 0, unit: toStr(document.getElementById('inv_unit').value) || 'each', min_quantity: toNum(document.getElementById('inv_min').value) || 0, cost_per_unit: toNum(document.getElementById('inv_cost').value) || 0, supplier: toStr(document.getElementById('inv_supplier').value), location: toStr(document.getElementById('inv_location').value) };
+      if (id) await window.supabase.from('inventory').update(payload).eq('id', id);
+      else await window.supabase.from('inventory').insert([payload]);
+      closeModal('inventoryModal'); loadInventory();
+    }
+
+    function changePassword() {
+      const curr = document.getElementById('curr_pass').value;
+      const np = document.getElementById('new_pass').value;
+      const cp = document.getElementById('confirm_pass').value;
+      const errEl = document.getElementById('pass-error');
+      const sucEl = document.getElementById('pass-success');
+      errEl.style.display = 'none'; sucEl.style.display = 'none';
+      if (curr !== getStoredPass()) { errEl.textContent = 'Current password is incorrect.'; errEl.style.display = 'block'; return; }
+      if (np.length < 6) { errEl.textContent = 'New password must be at least 6 characters.'; errEl.style.display = 'block'; return; }
+      if (np !== cp) { errEl.textContent = 'Passwords do not match.'; errEl.style.display = 'block'; return; }
+      localStorage.setItem(PASS_KEY, np);
+      sucEl.style.display = 'block';
+      document.getElementById('curr_pass').value = '';
+      document.getElementById('new_pass').value = '';
+      document.getElementById('confirm_pass').value = '';
+    }
+
+    function formatDate(d) {
+      if (!d) return '—';
+      const dt = new Date(d + 'T00:00:00');
+      return dt.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
+    }
+  </script>
+</body>
+</html>

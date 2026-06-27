@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Events — American Legion Post 300</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-inner">
+      <div class="nav-brand">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/American_Legion_emblem.svg/120px-American_Legion_emblem.svg.png" alt="American Legion" class="nav-logo" />
+        <span>American Legion Post 300<small>William J. Bordelon Post — San Antonio, TX</small></span>
+      </div>
+      <div class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="events.html">Events</a>
+        <a href="hall-rental.html">Hall Rental</a>
+        <a href="officers.html">Officers</a>
+        <a href="membership.html">Join Us</a>
+        <a href="admin.html" class="btn-admin">Admin</a>
+      </div>
+      <button class="hamburger" onclick="toggleMenu()">☰</button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="../index.html">Home</a>
+      <a href="events.html">Events</a>
+      <a href="hall-rental.html">Hall Rental</a>
+      <a href="officers.html">Officers</a>
+      <a href="membership.html">Join Us</a>
+      <a href="admin.html">Admin</a>
+    </div>
+  </nav>
+
+  <div class="page-hero">
+    <h1>Events Calendar</h1>
+    <p>Post 300 · Dungeons & Dragons · $2 Tuesdays · Whiskey Wednesdays · Bingo & More</p>
+  </div>
+
+  <div class="section">
+    <!-- CALENDAR -->
+    <div class="calendar-wrap" style="margin-bottom:2rem;">
+      <div class="cal-header">
+        <button class="cal-nav" onclick="prevMonth()">&#8249;</button>
+        <h3 id="calTitle"></h3>
+        <button class="cal-nav" onclick="nextMonth()">&#8250;</button>
+      </div>
+      <div class="cal-grid">
+        <div class="cal-day-header">Sun</div>
+        <div class="cal-day-header">Mon</div>
+        <div class="cal-day-header">Tue</div>
+        <div class="cal-day-header">Wed</div>
+        <div class="cal-day-header">Thu</div>
+        <div class="cal-day-header">Fri</div>
+        <div class="cal-day-header">Sat</div>
+      </div>
+      <div class="cal-grid" id="calBody"></div>
+    </div>
+
+    <!-- EVENTS LIST -->
+    <h2 class="section-title">Upcoming Events</h2>
+    <div id="events-list" class="events-grid">
+      <p class="loading">Loading events...</p>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-col"><h4>Post 300</h4><p>William J. Bordelon Post</p><p>3290 Grosenbacher Rd, San Antonio, TX 78245</p></div>
+      <div class="footer-col"><h4>Contact</h4><a href="tel:2106743364">(210) 674-3364</a><a href="mailto:alpost300@yahoo.com">alpost300@yahoo.com</a></div>
+    </div>
+    <div class="footer-bottom">© 2026 American Legion Post 300 — William J. Bordelon Post</div>
+  </footer>
+
+  <script src="../js/supabase.js"></script>
+  <script>
+    function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+
+    let calYear, calMonth, allEvents = [];
+    const now = new Date();
+    calYear = now.getFullYear();
+    calMonth = now.getMonth();
+
+    const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+    function renderCalendar() {
+      document.getElementById('calTitle').textContent = `${MONTHS[calMonth]} ${calYear}`;
+      const firstDay = new Date(calYear, calMonth, 1).getDay();
+      const daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
+      const todayStr = new Date().toISOString().split('T')[0];
+
+      const eventMap = {};
+      allEvents.forEach(e => {
+        if (!eventMap[e.event_date]) eventMap[e.event_date] = [];
+        eventMap[e.event_date].push(e);
+      });
+
+      let html = '';
+      for (let i = 0; i < firstDay; i++) {
+        html += `<div class="cal-day other-month"></div>`;
+      }
+      for (let d = 1; d <= daysInMonth; d++) {
+        const pad = String(d).padStart(2,'0');
+        const mPad = String(calMonth+1).padStart(2,'0');
+        const dateStr = `${calYear}-${mPad}-${pad}`;
+        const isToday = dateStr === todayStr;
+        const dayEvts = eventMap[dateStr] || [];
+        html += `<div class="cal-day${isToday?' today':''}${dayEvts.length?' booked':''}">
+          <div class="day-num">${d}</div>
+          ${dayEvts.slice(0,2).map(e=>`<div class="day-event">${e.title}</div>`).join('')}
+          ${dayEvts.length > 2 ? `<div class="day-event">+${dayEvts.length-2} more</div>` : ''}
+        </div>`;
+      }
+      document.getElementById('calBody').innerHTML = html;
+    }
+
+    function prevMonth() { calMonth--; if (calMonth < 0) { calMonth = 11; calYear--; } renderCalendar(); }
+    function nextMonth() { calMonth++; if (calMonth > 11) { calMonth = 0; calYear++; } renderCalendar(); }
+
+    document.addEventListener('supabase:ready', async function () {
+      const todayStr = new Date().toISOString().split('T')[0];
+      const { data: evts } = await window.supabase
+        .from('events')
+        .select('*')
+        .order('event_date');
+
+      allEvents = evts || [];
+      renderCalendar();
+
+      const upcoming = allEvents.filter(e => e.event_date >= todayStr);
+      const el = document.getElementById('events-list');
+      if (upcoming.length) {
+        el.innerHTML = upcoming.map(e => `
+          <div class="evt-card">
+            <div class="evt-date">${formatDate(e.event_date)}</div>
+            <div class="evt-title">${e.title}</div>
+            <div class="evt-type">${e.event_type || ''}</div>
+            ${e.description ? `<div class="evt-desc">${e.description}</div>` : ''}
+            ${e.start_time ? `<div class="evt-desc">🕐 ${e.start_time}</div>` : ''}
+          </div>
+        `).join('');
+      } else {
+        el.innerHTML = '<p style="color:#888;">No upcoming events scheduled. Check back soon!</p>';
+      }
+    });
+
+    function formatDate(d) {
+      if (!d) return '';
+      const dt = new Date(d + 'T00:00:00');
+      return dt.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
+    }
+  </script>
+</body>
+</html>

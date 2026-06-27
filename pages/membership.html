@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Membership — American Legion Post 300</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-inner">
+      <div class="nav-brand">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/American_Legion_emblem.svg/120px-American_Legion_emblem.svg.png" alt="American Legion" class="nav-logo" />
+        <span>American Legion Post 300<small>William J. Bordelon Post — San Antonio, TX</small></span>
+      </div>
+      <div class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="events.html">Events</a>
+        <a href="hall-rental.html">Hall Rental</a>
+        <a href="officers.html">Officers</a>
+        <a href="membership.html">Join Us</a>
+        <a href="admin.html" class="btn-admin">Admin</a>
+      </div>
+      <button class="hamburger" onclick="toggleMenu()">☰</button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="../index.html">Home</a>
+      <a href="events.html">Events</a>
+      <a href="hall-rental.html">Hall Rental</a>
+      <a href="officers.html">Officers</a>
+      <a href="membership.html">Join Us</a>
+      <a href="admin.html">Admin</a>
+    </div>
+  </nav>
+
+  <div class="page-hero">
+    <h1>Join American Legion Post 300</h1>
+    <p>Membership · Sons of the American Legion · Auxiliary</p>
+  </div>
+
+  <div class="section">
+
+    <!-- MEMBERSHIP TYPES -->
+    <div class="membership-info">
+      <div class="mem-card">
+        <h3>American Legion Members</h3>
+        <p>Eligible wartime veterans with qualifying service. Serve your community and honor your service by joining Post 300.</p>
+      </div>
+      <div class="mem-card">
+        <h3>Sons of the American Legion</h3>
+        <p>Open to male descendants and stepchildren of members of the American Legion, living or deceased.</p>
+      </div>
+      <div class="mem-card">
+        <h3>American Legion Auxiliary</h3>
+        <p>The world's largest women's patriotic service organization. Open to female relatives of eligible veterans.</p>
+      </div>
+      <div class="mem-card">
+        <h3>Youth Programs</h3>
+        <p>Post 300 actively supports youth activities, scholarships, Americanism programs, and community service initiatives.</p>
+      </div>
+    </div>
+
+    <!-- MEMBERSHIP FORM -->
+    <h2 class="section-title">Membership Application</h2>
+    <div class="form-wrap">
+      <form id="membershipForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name *</label>
+            <input type="text" id="m_first_name" required />
+          </div>
+          <div class="form-group">
+            <label>Last Name *</label>
+            <input type="text" id="m_last_name" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Email *</label>
+            <input type="email" id="m_email" required />
+          </div>
+          <div class="form-group">
+            <label>Phone</label>
+            <input type="tel" id="m_phone" placeholder="(210) 000-0000" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Date of Birth</label>
+            <input type="date" id="m_dob" />
+          </div>
+          <div class="form-group">
+            <label>Membership Type *</label>
+            <select id="m_membership_type">
+              <option value="American Legion">American Legion Member</option>
+              <option value="Sons of the American Legion">Sons of the American Legion</option>
+              <option value="Auxiliary">American Legion Auxiliary</option>
+              <option value="Associate">Associate Member</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Branch of Service</label>
+            <select id="m_branch">
+              <option value="">Select Branch</option>
+              <option value="Army">Army</option>
+              <option value="Navy">Navy</option>
+              <option value="Marine Corps">Marine Corps</option>
+              <option value="Air Force">Air Force</option>
+              <option value="Space Force">Space Force</option>
+              <option value="Coast Guard">Coast Guard</option>
+              <option value="N/A">N/A (Auxiliary/SAL)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Years of Service</label>
+            <input type="number" id="m_years_service" min="0" max="50" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Address</label>
+          <input type="text" id="m_address" placeholder="Street address" />
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>City</label>
+            <input type="text" id="m_city" value="San Antonio" />
+          </div>
+          <div class="form-group">
+            <label>ZIP Code</label>
+            <input type="text" id="m_zip" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Notes / Comments</label>
+          <textarea id="m_notes" placeholder="Additional information..."></textarea>
+        </div>
+        <div id="form-error" class="form-error"></div>
+        <div id="form-success" class="form-success">
+          ✅ Thank you for applying! A Post 300 representative will contact you shortly.
+        </div>
+        <button type="submit" class="btn-primary" style="width:100%;">Submit Application</button>
+      </form>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-col"><h4>Post 300</h4><p>William J. Bordelon Post</p><p>3290 Grosenbacher Rd, San Antonio, TX 78245</p></div>
+      <div class="footer-col"><h4>Contact</h4><a href="tel:2106743364">(210) 674-3364</a><a href="mailto:alpost300@yahoo.com">alpost300@yahoo.com</a></div>
+    </div>
+    <div class="footer-bottom">© 2026 American Legion Post 300 — William J. Bordelon Post</div>
+  </footer>
+
+  <script src="../js/supabase.js"></script>
+  <script>
+    function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+
+    document.getElementById('membershipForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const errEl = document.getElementById('form-error');
+      const sucEl = document.getElementById('form-success');
+      errEl.style.display = 'none';
+      sucEl.style.display = 'none';
+
+      const first = toStr(document.getElementById('m_first_name').value);
+      const last = toStr(document.getElementById('m_last_name').value);
+      const email = toStr(document.getElementById('m_email').value);
+
+      if (!first || !last || !email) {
+        errEl.textContent = 'Please fill in all required fields.';
+        errEl.style.display = 'block';
+        return;
+      }
+
+      const payload = {
+        full_name: `${first} ${last}`,
+        email: email,
+        phone: toStr(document.getElementById('m_phone').value),
+        date_of_birth: toDate(document.getElementById('m_dob').value),
+        membership_type: toStr(document.getElementById('m_membership_type').value),
+        branch_of_service: toStr(document.getElementById('m_branch').value),
+        years_of_service: toNum(document.getElementById('m_years_service').value),
+        address: toStr(document.getElementById('m_address').value),
+        city: toStr(document.getElementById('m_city').value),
+        zip_code: toStr(document.getElementById('m_zip').value),
+        notes: toStr(document.getElementById('m_notes').value),
+        membership_status: 'pending',
+        role: 'member'
+      };
+
+      const { error } = await window.supabase.from('site_members').insert([payload]);
+      if (error) {
+        errEl.textContent = 'Submission failed: ' + error.message;
+        errEl.style.display = 'block';
+      } else {
+        sucEl.style.display = 'block';
+        document.getElementById('membershipForm').reset();
+      }
+    });
+  </script>
+</body>
+</html>
