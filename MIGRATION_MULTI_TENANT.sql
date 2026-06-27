@@ -36,7 +36,7 @@ create table if not exists public.posts (
 -- STEP 2: SEED BOTH POSTS
 -- ================================================================
 insert into public.posts
-  (post_slug, post_name, post_number, address, phone, email, website, city, state, zip_code, facebook_url, founded_year, namesake, theme_primary, theme_secondary)
+  (post_slug, post_name, post_number, address, phone, email, website, logo_url, hero_image_url, theme_primary, theme_secondary, is_active)
 values
   (
     'amlpost579',
@@ -46,14 +46,11 @@ values
     null,
     null,
     null,
-    'San Antonio',
-    'TX',
-    '78227',
-    null,
     null,
     null,
     '#0B1F3A',
-    '#B22234'
+    '#B22234',
+    true
   ),
   (
     'amlpost300',
@@ -63,16 +60,25 @@ values
     '(210) 674-3364',
     'alpost300@yahoo.com',
     'https://post300tx.org',
-    'San Antonio',
-    'TX',
-    '78245',
-    'https://www.facebook.com/ALPost300TX/',
-    '1995',
-    'Staff Sergeant William James Bordelon, Medal of Honor recipient',
+    null,
+    null,
     '#0B1F3A',
-    '#B22234'
+    '#B22234',
+    true
   )
 on conflict (post_slug) do nothing;
+
+-- Add extra metadata columns if they don't exist yet
+alter table public.posts add column if not exists city text;
+alter table public.posts add column if not exists state text default 'TX';
+alter table public.posts add column if not exists zip_code text;
+alter table public.posts add column if not exists facebook_url text;
+alter table public.posts add column if not exists founded_year text;
+alter table public.posts add column if not exists namesake text;
+
+-- Now fill in the extra metadata
+update public.posts set city = 'San Antonio', state = 'TX', zip_code = '78227' where post_slug = 'amlpost579';
+update public.posts set city = 'San Antonio', state = 'TX', zip_code = '78245', facebook_url = 'https://www.facebook.com/ALPost300TX/', founded_year = '1995', namesake = 'Staff Sergeant William James Bordelon, Medal of Honor recipient' where post_slug = 'amlpost300';
 
 -- ================================================================
 -- STEP 3: ADD post_id TO ALL MAJOR TABLES
