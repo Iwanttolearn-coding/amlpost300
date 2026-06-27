@@ -196,6 +196,7 @@
         if (!payload.email) { errEl.textContent = 'Please enter your email address.'; errEl.style.display='block'; return; }
         if (!payload.membership_type) { errEl.textContent = 'Please select a membership type.'; errEl.style.display='block'; return; }
 
+        if (window.POST_ID) payload.post_id = window.POST_ID;
         const { error } = await window.supabase.from('site_members').insert(payload);
         if (error) { errEl.textContent = 'Error submitting application: ' + error.message; errEl.style.display='block'; console.error(error); return; }
         sucEl.style.display = 'block';

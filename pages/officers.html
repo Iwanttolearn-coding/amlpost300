@@ -60,7 +60,10 @@
   <script>
     document.addEventListener('supabase:ready', async () => {
       const { data, error } = await window.supabase
-        .from('officers').select('*').eq('is_active', true).order('sort_order');
+        .from('officers').select('*')
+        .eq('is_active', true)
+        .eq('post_id', window.POST_ID || '00000000-0000-0000-0000-000000000000')
+        .order('sort_order');
       const el = document.getElementById('officers-list');
       if (error || !data || !data.length) { el.innerHTML = '<p style="color:#888;">No officers listed at this time.</p>'; return; }
       el.innerHTML = data.map(o => `

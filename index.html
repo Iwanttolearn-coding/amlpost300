@@ -133,7 +133,9 @@
       // Announcements
       const { data: ann } = await window.supabase
         .from('announcements').select('title,category,body,is_active')
-        .eq('is_active', true).order('created_at', { ascending: false }).limit(6);
+        .eq('is_active', true)
+        .eq('post_id', window.POST_ID || '00000000-0000-0000-0000-000000000000')
+        .order('created_at', { ascending: false }).limit(6);
       const annEl = document.getElementById('announcements-list');
       if (ann && ann.length) {
         annEl.innerHTML = ann.map(a => `
@@ -150,6 +152,7 @@
       const today = new Date().toISOString().split('T')[0];
       const { data: evts } = await window.supabase
         .from('events').select('title,event_date,event_type,start_time')
+        .eq('post_id', window.POST_ID || '00000000-0000-0000-0000-000000000000')
         .gte('event_date', today).order('event_date').limit(6);
       const evtEl = document.getElementById('events-preview-list');
       if (evts && evts.length) {

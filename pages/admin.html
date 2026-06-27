@@ -658,6 +658,7 @@
   // ═══════════════════════════════════════════════
   //  SUPABASE WRAPPER
   // ═══════════════════════════════════════════════
+  // POST-AWARE Supabase wrapper — all GETs filter by post_id, all POSTs include post_id
   async function sb(table, method='GET', data=null, id=null, filter=null) {
     await new Promise(res => {
       if(window.supabase) return res();
@@ -666,8 +667,14 @@
     let q = window.supabase.from(table);
     if (method==='GET') {
       q = q.select('*').order('created_at', {ascending:false});
+      // Filter by post_id if available
+      if (window.POST_ID) q = q.eq('post_id', window.POST_ID);
       if (filter) Object.entries(filter).forEach(([k,v]) => q = q.eq(k,v));
-    } else if (method==='POST') { q = q.insert(data).select(); }
+    } else if (method==='POST') {
+      // Auto-inject post_id on every insert
+      if (window.POST_ID && data) data.post_id = window.POST_ID;
+      q = q.insert(data).select();
+    }
     else if (method==='PATCH') { q = q.update(data).eq('id',id).select(); }
     else if (method==='DELETE') { q = q.delete().eq('id',id); }
     const { data: res, error } = await q;

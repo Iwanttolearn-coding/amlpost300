@@ -177,8 +177,8 @@
     document.addEventListener('supabase:ready', async () => {
       // Load booked dates from both events and confirmed rentals
       const [{ data: evts }, { data: rentals }] = await Promise.all([
-        window.supabase.from('events').select('event_date'),
-        window.supabase.from('hall_rental_inquiries').select('event_date').in('status', ['confirmed','approved'])
+        window.supabase.from('events').select('event_date').eq('post_id', window.POST_ID || '00000000-0000-0000-0000-000000000000'),
+        window.supabase.from('hall_rental_inquiries').select('event_date').eq('post_id', window.POST_ID || '00000000-0000-0000-0000-000000000000').in('status', ['confirmed','approved'])
       ]);
       bookedDates = [
         ...((evts||[]).map(e => e.event_date)),
@@ -250,6 +250,7 @@
       if (!payload.event_date) { errEl.textContent = 'Please select an event date.'; errEl.style.display='block'; return; }
       if (!payload.event_type) { errEl.textContent = 'Please select an event type.'; errEl.style.display='block'; return; }
 
+      if (window.POST_ID) payload.post_id = window.POST_ID;
       const { error } = await window.supabase.from('hall_rental_inquiries').insert(payload);
       if (error) { errEl.textContent = 'Error: ' + error.message; errEl.style.display='block'; return; }
       sucEl.style.display = 'block';

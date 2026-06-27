@@ -83,7 +83,9 @@
 
     document.addEventListener('supabase:ready', async () => {
       const { data, error } = await window.supabase
-        .from('events').select('*').order('event_date');
+        .from('events').select('*')
+        .eq('post_id', window.POST_ID || '00000000-0000-0000-0000-000000000000')
+        .order('event_date');
       if (error) { console.error(error); return; }
       allEvents = data || [];
       renderCalendar();
