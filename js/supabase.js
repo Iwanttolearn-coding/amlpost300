@@ -1,8 +1,7 @@
 // Supabase client — American Legion Post 300 (William J. Bordelon Post)
-// !! REPLACE WITH YOUR NEW POST 300 SUPABASE URL & ANON KEY AFTER CREATING THE PROJECT !!
 (function () {
-  const SUPABASE_URL = 'YOUR_POST300_SUPABASE_URL';
-  const SUPABASE_ANON_KEY = 'YOUR_POST300_SUPABASE_ANON_KEY';
+  const SUPABASE_URL = 'https://udohkokiatruhmavujql.supabase.co';
+  const SUPABASE_ANON_KEY = 'sb_publishable_B5qnXKbdOslZX-wrajaibw_gg8YE1VP';
 
   const script = document.createElement('script');
   script.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js';

@@ -275,7 +275,7 @@
   <script src="../js/supabase.js"></script>
   <script>
     const PASS_KEY = 'al300_admin_pass';
-    function getStoredPass() { return localStorage.getItem(PASS_KEY) || 'post300admin'; }
+    function getStoredPass() { return localStorage.getItem(PASS_KEY) || 'AML579PostCommander!'; }
 
     function checkLogin() {
       const pass = document.getElementById('adminPass').value;
@@ -285,7 +285,7 @@
         loadAll();
       } else {
         const err = document.getElementById('loginError');
-        err.textContent = 'Incorrect password. Try: post300admin';
+        err.textContent = 'Incorrect password. Try: AML579PostCommander!';
         err.style.display = 'block';
       }
     }
